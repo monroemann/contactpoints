@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :points
   resources :contact_types
   resources :contact_groups
   resources :contacts

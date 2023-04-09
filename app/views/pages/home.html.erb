@@ -1,13 +1,248 @@
 <div class="container">
 
-	<h1>You are signed in to contact points!</h1>
+	<br>
 
-	<h2>Recently Added Contacts</h2>
-		<ul>
-	  	<% @recently_added_contacts.each do |contact| %>
-	  		<li><%= contact.first_name %></li>
-	  	<% end %>
-		</ul>
+	<div class="row">
+		<div class="col">
+			<h2>Recommended Next To Contact</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Mobile</th>
+			      <th>Email</th>
+			      <th>Points</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+							<td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.mobile_phone_1, contact %></td>
+			        <td><%= link_to contact.email_1, contact %></td>
+			        <td><%= link_to contact.points, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	
+	<div class="row">
+		<div class="col">
+			<h2>Going Up</h2>
+			  <table class="table">
+				  <thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    <% @contacts.each do |contact| %>
+				      <tr>
+				        <td><%= link_to contact.first_name, contact %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+		</div>
+
+		<div class="col">
+			<h2>Going Down</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>	
+
+		<div class="col">
+			<h2>At Zero</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h2>Holding Steady</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">		
+		<div class="col">
+			<h2>Needs Attention</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h2>Recently Added</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h2>True Best Friends</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>		
+
+		<div class="col">
+			<h2>Best Friends</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<h2>Friends</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h2>Acquaintances</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h2>Close to Zero</h2>
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.first_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
 
 	<p>ADMIN: <%= link_to "Contact Types", contact_types_path %></p>
 
