@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
 
-<%= render @contact_type %>
+    <div class="mx-auto py-5">
 
-<div>
-  <%= link_to "Edit this contact type", edit_contact_type_path(@contact_type) %> |
-  <%= link_to "Back to contact types", contact_types_path %>
+      <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this contact type", @contact_type, method: :delete %>
+      <%= render @contact_type %>
+
+      <div>
+        <%= link_to "Edit this contact type", edit_contact_type_path(@contact_type) %> |
+        <%= link_to "Back to contact types", contact_types_path %>
+
+        <%= button_to "Destroy this contact type", @contact_type, method: :delete %>
+      </div>
+
+    </div>
+  </div>
 </div>

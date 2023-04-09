@@ -3,7 +3,7 @@ class ContactTypesController < ApplicationController
 
   # GET /contact_types or /contact_types.json
   def index
-    @contact_types = ContactType.all
+    @contact_types = current_user.contact_types
   end
 
   # GET /contact_types/1 or /contact_types/1.json
@@ -22,6 +22,7 @@ class ContactTypesController < ApplicationController
   # POST /contact_types or /contact_types.json
   def create
     @contact_type = ContactType.new(contact_type_params)
+    @contact_type.user = current_user
 
     respond_to do |format|
       if @contact_type.save

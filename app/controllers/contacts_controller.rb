@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -66,6 +66,15 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(:first_name, :last_name, :last_known_country, :last_known_city, :mobile_phone_1, :mobile_phone_2, :office_phone_1, :office_phone_2, :home_phone, :other_phone, :email_1, :email_2, :email_3, :email_4, :email_5, :website_1, :website_2, :website_3, :website_4, :website_5, :website_6, :website_7, :website_8, :contact_apps, :birthday, :address_1, :address_2, :how_we_met, :things_I_like, :best_memories, :areas_for_improvement, :notes)
+      params.require(:contact).permit(:first_name, :last_name, :last_known_country, 
+                                      :last_known_city, :mobile_phone_1, :mobile_phone_2, 
+                                      :office_phone_1, :office_phone_2, :home_phone, 
+                                      :other_phone, :email_1, :email_2, :email_3, 
+                                      :email_4, :email_5, :website_1, :website_2, 
+                                      :website_3, :website_4, :website_5, :website_6, 
+                                      :website_7, :website_8, :contact_apps, :birthday, 
+                                      :address_1, :address_2, :how_we_met, :things_I_like, 
+                                      :best_memories, :areas_for_improvement, :notes, 
+                                      contact_groups:[], contact_types:[])
     end
 end

@@ -1,9 +1,19 @@
-<h1>New contact type</h1>
+<div class="container">
+  <div class="card">
 
-<%= render "form", contact_type: @contact_type %>
+    <div class="mx-auto py-5">
 
-<br>
+      <h1>New Contact Type</h1>
+      <p>Contact types are ways to categorize your contacts based on what they do, e.g. Doctor, Pilot, Teacher, Publicist, etc. You can create 5 on the free plan, and unlimited on the paid plan.</p>
 
-<div>
-  <%= link_to "Back to contact types", contact_types_path %>
+      <%= render "form", contact_type: @contact_type %>
+
+      <br>
+
+      <div>
+        <%= link_to "Back to contact types", contact_types_path %>
+      </div>
+
+    </div>
+  </div>
 </div>

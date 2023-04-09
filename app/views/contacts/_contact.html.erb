@@ -1,162 +1,169 @@
-<div id="<%= dom_id contact %>">
-  <p>
-    <strong>First name:</strong>
-    <%= contact.first_name %>
-  </p>
+<div class="container">
+  <div class="card">
 
-  <p>
-    <strong>Last name:</strong>
-    <%= contact.last_name %>
-  </p>
+    <div class="mx-auto py-5">
 
-  <p>
-    <strong>Last known country:</strong>
-    <%= contact.last_known_country %>
-  </p>
+      <div id="<%= dom_id contact %>">
 
-  <p>
-    <strong>Last known city:</strong>
-    <%= contact.last_known_city %>
-  </p>
+        <div class="row">
+          <p class="col-md-3">
+            <strong>Name:</strong>
+            <%= contact.first_name %> <%= contact.last_name %>
+          </p>
 
-  <p>
-    <strong>Mobile phone 1:</strong>
-    <%= contact.mobile_phone_1 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Last known country:</strong>
+            <%= contact.last_known_country %>
+          </p>
 
-  <p>
-    <strong>Mobile phone 2:</strong>
-    <%= contact.mobile_phone_2 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Last known city:</strong>
+            <%= contact.last_known_city %>
+          </p>
 
-  <p>
-    <strong>Office phone 1:</strong>
-    <%= contact.office_phone_1 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Mobile phone 1:</strong>
+            <%= contact.mobile_phone_1 %>
+          </p>
 
-  <p>
-    <strong>Office phone 2:</strong>
-    <%= contact.office_phone_2 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Mobile phone 2:</strong>
+            <%= contact.mobile_phone_2 %>
+          </p>
 
-  <p>
-    <strong>Home phone:</strong>
-    <%= contact.home_phone %>
-  </p>
+          <p class="col-md-3">
+            <strong>Office phone 1:</strong>
+            <%= contact.office_phone_1 %>
+          </p>
 
-  <p>
-    <strong>Other phone:</strong>
-    <%= contact.other_phone %>
-  </p>
+          <p class="col-md-3">
+            <strong>Office phone 2:</strong>
+            <%= contact.office_phone_2 %>
+          </p>
 
-  <p>
-    <strong>Email 1:</strong>
-    <%= contact.email_1 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Home phone:</strong>
+            <%= contact.home_phone %>
+          </p>
 
-  <p>
-    <strong>Email 2:</strong>
-    <%= contact.email_2 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Other phone:</strong>
+            <%= contact.other_phone %>
+          </p>
 
-  <p>
-    <strong>Email 3:</strong>
-    <%= contact.email_3 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Email 1:</strong>
+            <%= contact.email_1 %>
+          </p>
 
-  <p>
-    <strong>Email 4:</strong>
-    <%= contact.email_4 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Email 2:</strong>
+            <%= contact.email_2 %>
+          </p>
 
-  <p>
-    <strong>Email 5:</strong>
-    <%= contact.email_5 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Email 3:</strong>
+            <%= contact.email_3 %>
+          </p>
 
-  <p>
-    <strong>Website 1:</strong>
-    <%= contact.website_1 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Email 4:</strong>
+            <%= contact.email_4 %>
+          </p>
 
-  <p>
-    <strong>Website 2:</strong>
-    <%= contact.website_2 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Email 5:</strong>
+            <%= contact.email_5 %>
+          </p>
 
-  <p>
-    <strong>Website 3:</strong>
-    <%= contact.website_3 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 1:</strong>
+            <%= contact.website_1 %>
+          </p>
 
-  <p>
-    <strong>Website 4:</strong>
-    <%= contact.website_4 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 2:</strong>
+            <%= contact.website_2 %>
+          </p>
 
-  <p>
-    <strong>Website 5:</strong>
-    <%= contact.website_5 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 3:</strong>
+            <%= contact.website_3 %>
+          </p>
 
-  <p>
-    <strong>Website 6:</strong>
-    <%= contact.website_6 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 4:</strong>
+            <%= contact.website_4 %>
+          </p>
 
-  <p>
-    <strong>Website 7:</strong>
-    <%= contact.website_7 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 5:</strong>
+            <%= contact.website_5 %>
+          </p>
 
-  <p>
-    <strong>Website 8:</strong>
-    <%= contact.website_8 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 6:</strong>
+            <%= contact.website_6 %>
+          </p>
 
-  <p>
-    <strong>Contact apps:</strong>
-    <%= contact.contact_apps %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 7:</strong>
+            <%= contact.website_7 %>
+          </p>
 
-  <p>
-    <strong>Birthday:</strong>
-    <%= contact.birthday %>
-  </p>
+          <p class="col-md-3">
+            <strong>Website 8:</strong>
+            <%= contact.website_8 %>
+          </p>
 
-  <p>
-    <strong>Address 1:</strong>
-    <%= contact.address_1 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Contact apps:</strong>
+            <%= contact.contact_apps %>
+          </p>
 
-  <p>
-    <strong>Address 2:</strong>
-    <%= contact.address_2 %>
-  </p>
+          <p class="col-md-3">
+            <strong>Birthday:</strong>
+            <%= contact.birthday %>
+          </p>
 
-  <p>
-    <strong>How we met:</strong>
-    <%= contact.how_we_met %>
-  </p>
+          <p class="col-md-3">
+            <strong>Address 1:</strong>
+            <%= contact.address_1 %>
+          </p>
 
-  <p>
-    <strong>Things i like:</strong>
-    <%= contact.things_I_like %>
-  </p>
+          <p class="col-md-3">
+            <strong>Address 2:</strong>
+            <%= contact.address_2 %>
+          </p>
 
-  <p>
-    <strong>Best memories:</strong>
-    <%= contact.best_memories %>
-  </p>
+          <p class="col-md-3">
+            <strong>How we met:</strong>
+            <%= contact.how_we_met %>
+          </p>
 
-  <p>
-    <strong>Areas for improvement:</strong>
-    <%= contact.areas_for_improvement %>
-  </p>
+          <p class="col-md-3">
+            <strong>Things i like:</strong>
+            <%= contact.things_I_like %>
+          </p>
 
-  <p>
-    <strong>Notes:</strong>
-    <%= contact.notes %>
-  </p>
+          <p class="col-md-3">
+            <strong>Best memories:</strong>
+            <%= contact.best_memories %>
+          </p>
 
+          <p class="col-md-3">
+            <strong>Areas for improvement:</strong>
+            <%= contact.areas_for_improvement %>
+          </p>
+
+          <p class="col-md-3">
+            <strong>Notes:</strong>
+            <%= contact.notes %>
+          </p>
+
+        
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

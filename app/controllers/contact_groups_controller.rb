@@ -3,7 +3,7 @@ class ContactGroupsController < ApplicationController
 
   # GET /contact_groups or /contact_groups.json
   def index
-    @contact_groups = ContactGroup.all
+    @contact_groups = current_user.contact_groups
   end
 
   # GET /contact_groups/1 or /contact_groups/1.json
@@ -22,6 +22,7 @@ class ContactGroupsController < ApplicationController
   # POST /contact_groups or /contact_groups.json
   def create
     @contact_group = ContactGroup.new(contact_group_params)
+    @contact_group.user = current_user
 
     respond_to do |format|
       if @contact_group.save

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 	end
 
 	def home
-		@recently_added_contacts = Contact.all.order(:created_at)
+		@recently_added_contacts = current_user.contacts.order(:created_at)
 	end
 	
 end
