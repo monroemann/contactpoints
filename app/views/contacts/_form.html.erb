@@ -1,177 +1,189 @@
-<%= form_with(model: contact) do |form| %>
-  <% if contact.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-        <% contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+
+      <%= form_with(model: contact) do |form| %>
+        <% if contact.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+            <ul>
+              <% contact.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
-  </div>
+        <div class="row">
 
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
-  </div>
+          <div class="col">
+            <%= form.label :first_name, style: "display: block" %>
+            <%= form.text_field :first_name %>
+          </div>
 
-  <div>
-    <%= form.label :last_known_country, style: "display: block" %>
-    <%= form.text_field :last_known_country %>
-  </div>
+          <div class="col">
+            <%= form.label :last_name, style: "display: block" %>
+            <%= form.text_field :last_name %>
+          </div>
 
-  <div>
-    <%= form.label :last_known_city, style: "display: block" %>
-    <%= form.text_field :last_known_city %>
-  </div>
+          <div class="col">
+            <%= form.label :last_known_country, style: "display: block" %>
+            <%= form.text_field :last_known_country %>
+          </div>
 
-  <div>
-    <%= form.label :mobile_phone_1, style: "display: block" %>
-    <%= form.text_field :mobile_phone_1 %>
-  </div>
+          <div class="col">
+            <%= form.label :last_known_city, style: "display: block" %>
+            <%= form.text_field :last_known_city %>
+          </div>
 
-  <div>
-    <%= form.label :mobile_phone_2, style: "display: block" %>
-    <%= form.text_field :mobile_phone_2 %>
-  </div>
+          <div class="col">
+            <%= form.label :mobile_phone_1, style: "display: block" %>
+            <%= form.text_field :mobile_phone_1 %>
+          </div>
 
-  <div>
-    <%= form.label :office_phone_1, style: "display: block" %>
-    <%= form.text_field :office_phone_1 %>
-  </div>
+          <div class="col">
+            <%= form.label :office_phone_1, style: "display: block" %>
+            <%= form.text_field :office_phone_1 %>
+          </div>
 
-  <div>
-    <%= form.label :office_phone_2, style: "display: block" %>
-    <%= form.text_field :office_phone_2 %>
-  </div>
+          <div class="col">
+            <%= form.label :home_phone, style: "display: block" %>
+            <%= form.text_field :home_phone %>
+          </div>
 
-  <div>
-    <%= form.label :home_phone, style: "display: block" %>
-    <%= form.text_field :home_phone %>
-  </div>
+          <div class="col">
+            <%= form.label :email_1, style: "display: block" %>
+            <%= form.text_field :email_1 %>
+          </div>
 
-  <div>
-    <%= form.label :other_phone, style: "display: block" %>
-    <%= form.text_field :other_phone %>
-  </div>
+          <div class="col">
+            <%= form.label :website_1, style: "display: block" %>
+            <%= form.text_field :website_1 %>
+          </div>
 
-  <div>
-    <%= form.label :email_1, style: "display: block" %>
-    <%= form.text_field :email_1 %>
-  </div>
+          <div class="col">
+            <%= form.label :contact_apps, style: "display: block" %>
+            <%= form.text_field :contact_apps %>
+          </div>
 
-  <div>
-    <%= form.label :email_2, style: "display: block" %>
-    <%= form.text_field :email_2 %>
-  </div>
+          <div class="col">
+            <%= form.label :birthday, style: "display: block" %>
+            <%= form.text_field :birthday %>
+          </div>
 
-  <div>
-    <%= form.label :email_3, style: "display: block" %>
-    <%= form.text_field :email_3 %>
-  </div>
+          <div class="col">
+            <%= form.label :address_1, style: "display: block" %>
+            <%= form.text_area :address_1 %>
+          </div>
 
-  <div>
-    <%= form.label :email_4, style: "display: block" %>
-    <%= form.text_field :email_4 %>
-  </div>
+          <div class="col">
+            <%= form.label :how_we_met, style: "display: block" %>
+            <%= form.text_area :how_we_met %>
+          </div>
 
-  <div>
-    <%= form.label :email_5, style: "display: block" %>
-    <%= form.text_field :email_5 %>
-  </div>
+          <div class="col">
+            <%= form.label :things_I_like, style: "display: block" %>
+            <%= form.text_area :things_I_like %>
+          </div>
 
-  <div>
-    <%= form.label :website_1, style: "display: block" %>
-    <%= form.text_field :website_1 %>
-  </div>
+          <div class="col">
+            <%= form.label :best_memories, style: "display: block" %>
+            <%= form.text_area :best_memories %>
+          </div>
 
-  <div>
-    <%= form.label :website_2, style: "display: block" %>
-    <%= form.text_field :website_2 %>
-  </div>
+          <div class="col">
+            <%= form.label :areas_for_improvement, style: "display: block" %>
+            <%= form.text_area :areas_for_improvement %>
+          </div>
 
-  <div>
-    <%= form.label :website_3, style: "display: block" %>
-    <%= form.text_field :website_3 %>
-  </div>
+          <div class="col">
+            <%= form.label :notes, style: "display: block" %>
+            <%= form.text_area :notes %>
+          </div>
 
-  <div>
-    <%= form.label :website_4, style: "display: block" %>
-    <%= form.text_field :website_4 %>
-  </div>
+        </div>
 
-  <div>
-    <%= form.label :website_5, style: "display: block" %>
-    <%= form.text_field :website_5 %>
-  </div>
+        <div class="row mt-5">
 
-  <div>
-    <%= form.label :website_6, style: "display: block" %>
-    <%= form.text_field :website_6 %>
-  </div>
+          <div class="col">
+            <%= form.label :office_phone_2, style: "display: block" %>
+            <%= form.text_field :office_phone_2 %>
+          </div>
 
-  <div>
-    <%= form.label :website_7, style: "display: block" %>
-    <%= form.text_field :website_7 %>
-  </div>
+          <div class="col">
+            <%= form.label :other_phone, style: "display: block" %>
+            <%= form.text_field :other_phone %>
+          </div>
 
-  <div>
-    <%= form.label :website_8, style: "display: block" %>
-    <%= form.text_field :website_8 %>
-  </div>
+          <div class="col">
+            <%= form.label :email_2, style: "display: block" %>
+            <%= form.text_field :email_2 %>
+          </div>
 
-  <div>
-    <%= form.label :contact_apps, style: "display: block" %>
-    <%= form.text_field :contact_apps %>
-  </div>
+          <div class="col">
+            <%= form.label :email_3, style: "display: block" %>
+            <%= form.text_field :email_3 %>
+          </div>
 
-  <div>
-    <%= form.label :birthday, style: "display: block" %>
-    <%= form.text_field :birthday %>
-  </div>
+          <div class="col">
+            <%= form.label :email_4, style: "display: block" %>
+            <%= form.text_field :email_4 %>
+          </div>
 
-  <div>
-    <%= form.label :address_1, style: "display: block" %>
-    <%= form.text_area :address_1 %>
-  </div>
+          <div class="col">
+            <%= form.label :email_5, style: "display: block" %>
+            <%= form.text_field :email_5 %>
+          </div>
 
-  <div>
-    <%= form.label :address_2, style: "display: block" %>
-    <%= form.text_area :address_2 %>
-  </div>
+          <div class="col">
+            <%= form.label :website_2, style: "display: block" %>
+            <%= form.text_field :website_2 %>
+          </div>
 
-  <div>
-    <%= form.label :how_we_met, style: "display: block" %>
-    <%= form.text_area :how_we_met %>
-  </div>
+          <div class="col">
+            <%= form.label :website_3, style: "display: block" %>
+            <%= form.text_field :website_3 %>
+          </div>
 
-  <div>
-    <%= form.label :things_I_like, style: "display: block" %>
-    <%= form.text_field :things_I_like %>
-  </div>
+          <div class="col">
+            <%= form.label :website_4, style: "display: block" %>
+            <%= form.text_field :website_4 %>
+          </div>
 
-  <div>
-    <%= form.label :best_memories, style: "display: block" %>
-    <%= form.text_area :best_memories %>
-  </div>
+          <div class="col">
+            <%= form.label :website_5, style: "display: block" %>
+            <%= form.text_field :website_5 %>
+          </div>
 
-  <div>
-    <%= form.label :areas_for_improvement, style: "display: block" %>
-    <%= form.text_field :areas_for_improvement %>
-  </div>
+          <div class="col">
+            <%= form.label :website_6, style: "display: block" %>
+            <%= form.text_field :website_6 %>
+          </div>
 
-  <div>
-    <%= form.label :notes, style: "display: block" %>
-    <%= form.text_field :notes %>
-  </div>
+          <div class="col">
+            <%= form.label :website_7, style: "display: block" %>
+            <%= form.text_field :website_7 %>
+          </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+          <div class="col">
+            <%= form.label :website_8, style: "display: block" %>
+            <%= form.text_field :website_8 %>
+          </div>
+
+          <div class="col">
+            <%= form.label :mobile_phone_2, style: "display: block" %>
+            <%= form.text_field :mobile_phone_2 %>
+          </div>
+
+          <div class="col">
+            <%= form.label :address_2, style: "display: block" %>
+            <%= form.text_area :address_2 %>
+          </div>
+
+        </div>
+        <br><br>
+        <div>
+          <%= form.submit %>
+        </div>
+
+      <% end %>
+

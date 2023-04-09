@@ -23,4 +23,4 @@
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link btn btn-danger btn-sm mx-5" %>
+<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete , class: "nav-link btn btn-danger btn-sm mx-5" %>
