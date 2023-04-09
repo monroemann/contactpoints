@@ -19,4 +19,8 @@
 <li class="nav-item mr-2" style="float: right">
   <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_groups/new">Add New Contact Group</a>
 </li>
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link btn btn-danger btn-sm mx-5" %>
