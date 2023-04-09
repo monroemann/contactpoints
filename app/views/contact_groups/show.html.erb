@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @contact_group %>
+
+<div>
+  <%= link_to "Edit this contact group", edit_contact_group_path(@contact_group) %> |
+  <%= link_to "Back to contact groups", contact_groups_path %>
+
+  <%= button_to "Destroy this contact group", @contact_group, method: :delete %>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+
+	<h1>You are signed in to contact points!</h1>
+
+	<h2>Recently Added Contacts</h2>
+		<ul>
+	  	<% @recently_added_contacts.each do |contact| %>
+	  		<li><%= contact.first_name %></li>
+	  	<% end %>
+		</ul>
+
+	<p>ADMIN: <%= link_to "Categories", categories_path %></p>
+
+</div>
