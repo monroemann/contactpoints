@@ -1,6 +1,8 @@
 class ContactGroup < ApplicationRecord
 
 	belongs_to :user
-	has_and_belongs_to_many :contacts
+	
+	has_many :contact_groupings, dependent: :destroy
+	has_many :contacts, through: :contact_groupings
 
 end

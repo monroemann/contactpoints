@@ -1,6 +1,9 @@
 class ContactType < ApplicationRecord
 
 	belongs_to :user
-	has_and_belongs_to_many :contacts
+	
+	has_many :contact_typings, dependent: :destroy
+	has_many :contacts, through: :contact_typings
+
 
 end

@@ -161,6 +161,20 @@
             <%= contact.notes %>
           </p>
 
+          <p class="col-md-3">
+            <strong>Groups:</strong>
+            <% contact.contact_groups.each do |group| %>
+              <%= group.name %>
+            <% end %>
+          </p>
+
+          <p class="col-md-3">
+            <strong>Types:</strong>
+            <% contact.contact_types.each do |type| %>
+              <%= type.name %>
+            <% end %>
+          </p>          
+
         
         </div>
       </div>
