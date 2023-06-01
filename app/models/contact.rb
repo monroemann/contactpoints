@@ -1,6 +1,7 @@
 class Contact < ApplicationRecord
 
 	belongs_to :user
+	belongs_to :category
 
 	has_many :contact_groupings, dependent: :destroy
 	has_many :contact_groups, through: :contact_groupings

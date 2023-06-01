@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card">
+
+    <p style="color: green"><%= notice %></p>
+
+    <h1>Interaction types</h1>
+
+    <div id="interaction_types">
+      <% @interaction_types.each do |interaction_type| %>
+        <%= render interaction_type %>
+        <p>
+          <%= link_to "Show this interaction type", interaction_type %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= link_to "New interaction type", new_interaction_type_path %>
+
+  </div><!--end card div -->
+</div><!--end container div -->

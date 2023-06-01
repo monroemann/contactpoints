@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :contacts
   has_many :contact_groups
   has_many :contact_types
+  has_many :interactions
+  has_many :categories
 
 end

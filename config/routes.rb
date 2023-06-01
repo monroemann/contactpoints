@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :interaction_types
+  resources :interactions
   resources :categories
   resources :points
   resources :contact_types

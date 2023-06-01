@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card">
+
+    <p style="color: green"><%= notice %></p>
+
+    <%= render @interaction_type %>
+
+    <div>
+      <%= link_to "Edit this interaction type", edit_interaction_type_path(@interaction_type) %> |
+      <%= link_to "Back to interaction types", interaction_types_path %>
+
+      <%= button_to "Destroy this interaction type", @interaction_type, method: :delete %>
+    </div>
+
+  </div><!--end card div -->
+</div><!--end container div -->
