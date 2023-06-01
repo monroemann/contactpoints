@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_223049) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_225611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -108,6 +108,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_223049) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.bigint "interaction_type_id"
+    t.datetime "date"
+    t.text "length"
+    t.text "location"
+    t.boolean "i_initiated", default: false
+    t.index ["contact_id"], name: "index_interactions_on_contact_id"
+    t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -127,4 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_223049) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "interactions", "contacts"
+  add_foreign_key "interactions", "interaction_types"
 end
