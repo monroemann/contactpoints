@@ -1,6 +1,6 @@
-<li class="nav-item active mr-2">
+<!-- <li class="nav-item active mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/">Home <span class="sr-only">(current)</span></a>
-</li>
+</li> -->
 <li class="nav-item mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/contacts">Contacts</a>
 </li>
@@ -13,14 +13,20 @@
 <li class="nav-item mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="#">Points</a>
 </li>
-<li class="nav-item mr-2">
+<!-- <li class="nav-item mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="#">Tasks</a>
+</li> -->
+<li class="nav-item mr-2" style="float: right">
+  <%= link_to 'New Contact', new_contact_path, class: "nav-link btn btn-primary btn-sm", style: "color: white" %>
 </li>
 <li class="nav-item mr-2" style="float: right">
-  <%= link_to 'Add Contact', new_contact_path, class: "nav-link btn btn-primary btn-sm", style: "color: white" %>
+  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_groups/new">New Group</a>
 </li>
 <li class="nav-item mr-2" style="float: right">
-  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_groups/new">Add New Group</a>
+  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_types/new">New Type</a>
+</li>
+<li class="nav-item mr-2" style="float: right">
+  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/interactions/new">New Interaction</a>
 </li>
 <form class="form-inline my-2 my-lg-0">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
