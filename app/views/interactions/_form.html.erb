@@ -22,6 +22,36 @@
   </div>
 
   <div>
+    <p>With Whom? - dropdown of contacts</p>
+  </div>
+
+  <div>
+    <%= form.label :length, style: "display: block" %>
+    <%= form.text_area :length %>
+    <p>[turn into a dropdown: 15 min, 30 min, 45 min, 1 hour, 2 hours, Half Day, Full Day, 2-Day, Overnight, Weekend, 3-Day-Plus, One Week, One Week Plus]
+  </div>  
+
+  <div>
+    <p><strong>Interaction Type</strong> - dropdown</p>
+  </div>
+
+  <div>
+    <p><strong>I Initiated Contact?</strong> - boolean </p>
+  </div>
+
+  <div>
+    <p><strong>Business?</strong> - boolean - you work together either at a job, vendor, business, etc.  Turn these three into 'interaction category' model?</p>
+  </div>
+
+  <div>
+    <p><strong>Social?</strong> - boolean - you both are happy to be in the other's company</p>
+  </div>
+
+  <div>
+    <p><strong>Transactional?</strong>  - boolean - you or they are getting something transactional out of the meeting/contact</p>
+  </div>
+  
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
