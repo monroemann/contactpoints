@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Interaction categories</h1>
+
+<div id="interaction_categories">
+  <% @interaction_categories.each do |interaction_category| %>
+    <%= render interaction_category %>
+    <p>
+      <%= link_to "Show this interaction category", interaction_category %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New interaction category", new_interaction_category_path %>
