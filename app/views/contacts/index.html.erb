@@ -9,18 +9,18 @@
   <table class="table">
     <thead>
       <tr>
-        <th>First</th>
-        <th>Last</th>
+        <th><%= sort_link(@query, :first_name, "First", default_order: :asc) %></th>
+        <th><%= sort_link(@query, :last_name, "Last", default_order: :asc) %></th>
   <!--       <th>Last known country</th> -->
-        <th>Last City</th>
+        <th><%= sort_link(@query, :last_known_city, "Last City", default_order: :asc) %></th>
   <!--       <th>Contact apps</th> -->
-        <th>Cell</th>
+        <th><%= sort_link(@query, :mobile_phone_1, "Cell", default_order: :asc) %></th>
   <!--  <th>Mobile phone 2</th>
         <th>Office phone 1</th>
         <th>Office phone 2</th>
         <th>Home phone</th>
         <th>Other phone</th> -->
-        <th>Email</th>
+        <th><%= sort_link(@query, :email_1, "Email", default_order: :asc) %></th>
   <!--  <th>Email 2</th>
         <th>Email 3</th>
         <th>Email 4</th>
@@ -33,12 +33,12 @@
         <th>Website 6</th>
         <th>Website 7</th>
         <th>Website 8</th> -->
-        <th>Bday</th>
+        <th><%= sort_link(@query, :birthday, "Bday", default_order: :asc) %></th>
   <!--  <th>Address 1</th>
         <th>Address 2</th>-->
-        <th>How Met</th>
+        <th><%= sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th>
   <!--  <th>Things i like</th> -->
-        <th>Best Memories</th>
+        <th><%= sort_link(@query, :best_memories, "Best Memories", default_order: :asc) %></th>
   <!--  <th>Areas for improvement</th>
         <th>Notes</th> -->
         <th colspan="3"></th>
@@ -48,8 +48,8 @@
     <tbody>
       <% @contacts.each do |contact| %>
         <tr>
-          <td><%= contact.first_name %></td>
-          <td><%= contact.last_name %></td>
+          <td><%= link_to contact.first_name, contact %></td>
+          <td><%= link_to contact.last_name, contact %></td>
   <!--         <td><%# contact.last_known_country %></td> -->
           <td><%= contact.last_known_city %></td>
           <!-- <td><%# contact.contact_apps %></td> -->

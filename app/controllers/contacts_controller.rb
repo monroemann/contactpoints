@@ -4,6 +4,10 @@ class ContactsController < ApplicationController
   # GET /contacts or /contacts.json
   def index
     @contacts = current_user.contacts
+
+    #Ransack variables for search
+    @query = Contact.ransack(params[:q])
+    @results = @query.result(distinct: true)
   end
 
   # GET /contacts/1 or /contacts/1.json
