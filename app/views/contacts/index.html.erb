@@ -6,6 +6,8 @@
 
   <h1>Contacts</h1>
 
+  <%= pluralize(@results.count, "Results") %>
+
   <table class="table">
     <thead>
       <tr>
@@ -46,7 +48,7 @@
     </thead>
 
     <tbody>
-      <% @contacts.each do |contact| %>
+      <% @results.each do |contact| %>
         <tr>
           <td><%= link_to contact.first_name, contact %></td>
           <td><%= link_to contact.last_name, contact %></td>
