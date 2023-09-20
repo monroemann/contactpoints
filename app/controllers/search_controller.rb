@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
 	def index
-		@results = search_for_contacts
+		results = search_for_contacts
 
 		respond_to do |format|
 			format.turbo_stream do
@@ -15,7 +15,7 @@ class SearchController < ApplicationController
 	end
 
 	def suggestions
-		@results = search_for_contacts
+		results = search_for_contacts
 
 		respond_to do |format|
 			format.turbo_stream do

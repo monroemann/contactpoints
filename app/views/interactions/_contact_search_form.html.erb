@@ -1,3 +1,8 @@
+<div data-controller="search">
+  <input type="text">
+  <button>Greet</button>
+</div>
+
 <%= form_with(url: search_path, method: :post, class: 'w-60',
     data: {
       controller: 'search',
@@ -6,7 +11,7 @@
           }
   ) do |form| %>
 
-        <div class='relative'>
+        <div class=''>
           <%= form.text_field :query, data: {
             search_target: 'input',
             action: 'blur -> search#hideSuggestions',
