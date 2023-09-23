@@ -51,6 +51,11 @@ gem "bootsnap", require: false
 # Ransack for search
 gem 'ransack'
 
+# SearchKick for search
+# Elastisearch for autocomplete
+gem 'searchkick'
+gem 'elasticsearch', '~>7.17'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

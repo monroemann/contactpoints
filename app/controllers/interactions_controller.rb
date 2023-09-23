@@ -13,6 +13,7 @@ class InteractionsController < ApplicationController
   # GET /interactions/new
   def new
     @interaction = Interaction.new
+    #@results = 
   end
 
   # GET /interactions/1/edit

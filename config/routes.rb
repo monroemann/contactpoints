@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     root 'pages#home', as: :authenticated_root
   end
 
+  post 'search', to: 'search#index', as: 'search'
+  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+
   root to: 'pages#index'
 
 end
