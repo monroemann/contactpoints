@@ -1,12 +1,8 @@
-<div data-controller="search">
-  <input type="text">
-  <button>Greet</button>
-</div>
 
 <%= form_with(url: search_path, method: :post, class: 'w-60',
     data: {
-      controller: 'search',
-      action: 'keyup -> search#suggestions',
+      controller: 'hello',
+      action: 'keyup -> hello#greet',
       suggestions_url: search_suggestions_path,
           }
   ) do |form| %>

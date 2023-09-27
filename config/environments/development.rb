@@ -70,4 +70,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # To avoid having to restart server and recompile assets manually on each js change
+  # bundle exec rake assets:precompile 
+  config.assets.compile = false
+  config.assets.debug = false
+
 end

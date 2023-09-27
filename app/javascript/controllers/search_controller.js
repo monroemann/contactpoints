@@ -61,4 +61,3 @@ export default class extends Controller {
 }
 
 console.log("hello222");
-alert("asd")
