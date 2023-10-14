@@ -3,4 +3,4 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 
-console.log("application js")
+console.log("application js is being called")

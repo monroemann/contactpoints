@@ -23,8 +23,25 @@
 
   <div>
     <p>With Whom? - dropdown of contacts</p>
-    <%= render partial: "contact_search_form", locals: { results: [] } %>
+      <%= form.text_area :contact, url: search_path, method: :post, class: 'autocomplete-form',
+    data: {
+      controller: 'search',
+      action: 'keyup->search#suggestions',
+      suggestions_url: search_suggestions_path,
+          } %>
   </div>
+  
+    <%# render partial: "contact_search_form", locals: { results: [] } %>
+
+
+
+
+
+
+
+
+
+
 
   <div>
     <%= form.label :length, style: "display: block" %>

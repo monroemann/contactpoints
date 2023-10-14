@@ -6,15 +6,17 @@ export default class extends Controller {
   static targets = ["input", "suggestions"];
 
   connect() { 
-    console.log("connected", this.element);
-    document.addEventListener("click"), (event) => {
-      if (!this.element.contains(event.target)) {
-        this.hideSuggestions();
-      }
-    }
+    console.log("search controller working - connect method called", this.element);
+    // document.addEventListener("click", (event) => { // <-- Corrected syntax
+    //   if (!this.element.contains(event.target)) {
+    //     this.hideSuggestions();
+    //   }
+    // });
   }
+
   
   suggestions() {
+    console.log("Suggestion Function Running");
     const query = this.inputTarget.value;
     const url = this.element.dataset.suggestionsUrl;
 
@@ -59,5 +61,3 @@ export default class extends Controller {
   }
 
 }
-
-console.log("hello222");
