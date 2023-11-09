@@ -9,5 +9,5 @@ window.Stimulus   = application
 
 export { application }
 
-console.log("other javascript.js is being called");
+console.log("other javascript.js is being called HAPPY HAPPY ");
 console.log("why do we have two application.js?");

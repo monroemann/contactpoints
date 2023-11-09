@@ -73,7 +73,5 @@ Rails.application.configure do
 
   # To avoid having to restart server and recompile assets manually on each js change
   # bundle exec rake assets:precompile 
-  config.assets.compile = false
-  config.assets.debug = false
 
 end
