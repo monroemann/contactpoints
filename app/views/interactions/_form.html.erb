@@ -22,9 +22,28 @@
   </div>
 
   <div>
-    <p>With Whom? - dropdown of contacts</p>
-    <%= render partial: "contact_search_form", locals: { results: [] } %>
+    <p>With Whom?</p>
+      <%= form.select :contact_ids, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
+        {prompt: 'Select Person'},
+        class: 'autocomplete-form', multiple: true,
+        data: {
+          controller: 'search',
+          oldaction: 'keyup->search#suggestions',
+          suggestions_url: search_suggestions_path, search_target: "input"
+              } %>
   </div>
+  
+    <%# render partial: "contact_search_form", locals: { results: [] } %>
+
+
+
+
+
+
+
+
+
+
 
   <div>
     <%= form.label :length, style: "display: block" %>

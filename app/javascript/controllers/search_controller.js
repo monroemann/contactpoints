@@ -1,20 +1,27 @@
 import { Controller } from "@hotwired/stimulus"
+import TomSelect from "tom-select"
 
 // Connects to data-controller="search"
 export default class extends Controller {
 
-  static targets = ["input", "suggestions"];
+  // static targets = ["input", "suggestions"];
 
   connect() { 
-    console.log("connected", this.element);
-    document.addEventListener("click"), (event) => {
-      if (!this.element.contains(event.target)) {
-        this.hideSuggestions();
-      }
-    }
+    console.log("YES search controller working - connect method called", this.element);
+    new TomSelect(this.element, {
+      createOnBlur: true,
+      create: true
+    });
+    // document.addEventListener("click", (event) => { // <-- Corrected syntax
+    //   if (!this.element.contains(event.target)) {
+    //     this.hideSuggestions();
+    //   }
+    // });
   }
+
   
   suggestions() {
+    console.log("Suggestion Function Running");
     const query = this.inputTarget.value;
     const url = this.element.dataset.suggestionsUrl;
 
@@ -59,6 +66,3 @@ export default class extends Controller {
   }
 
 }
-
-console.log("hello222");
-alert("asd")
