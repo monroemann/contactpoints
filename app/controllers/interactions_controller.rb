@@ -12,6 +12,7 @@ class InteractionsController < ApplicationController
 
   # GET /interactions/new
   def new
+    @contacts = current_user.contacts
     @interaction = Interaction.new
     #@results = 
   end
@@ -66,6 +67,7 @@ class InteractionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interaction_params
-      params.require(:interaction).permit(:name, :description)
+      params.require(:interaction).permit(:name, :description, :contact_id, :contact_ids, :date,
+                                          :length, :location, :i_initiated, :interaction_type_id)
     end
 end
