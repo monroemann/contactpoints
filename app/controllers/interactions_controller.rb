@@ -24,10 +24,12 @@ class InteractionsController < ApplicationController
   # POST /interactions or /interactions.json
   def create
     @interaction = Interaction.new(interaction_params)
+    @contacts = current_user.contacts
 
     respond_to do |format|
       if @interaction.save
-        format.html { redirect_to interaction_url(@interaction), notice: "Interaction was successfully created." }
+        format.html { redirect_to interaction_url(@interaction), 
+          notice: "Interaction was successfully created." }
         format.json { render :show, status: :created, location: @interaction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +42,8 @@ class InteractionsController < ApplicationController
   def update
     respond_to do |format|
       if @interaction.update(interaction_params)
-        format.html { redirect_to interaction_url(@interaction), notice: "Interaction was successfully updated." }
+        format.html { redirect_to interaction_url(@interaction), 
+          notice: "Interaction was successfully updated." }
         format.json { render :show, status: :ok, location: @interaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +57,8 @@ class InteractionsController < ApplicationController
     @interaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to interactions_url, notice: "Interaction was successfully destroyed." }
+      format.html { redirect_to interactions_url, 
+        notice: "Interaction was successfully destroyed." }
       format.json { head :no_content }
     end
   end
