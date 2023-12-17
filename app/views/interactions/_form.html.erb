@@ -1,5 +1,6 @@
-<form>
+
 <%= form_with(model: interaction) do |form| %>
+
   <% if interaction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
@@ -24,7 +25,7 @@
 
     <div>
       <p>With Whom?</p>
-        <%= form.select :contact_ids, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
+        <%= form.select :contact_id, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
           {prompt: 'With whom did you have this Interaction?'},
           class: 'autocomplete-form',
           data: {
@@ -45,7 +46,8 @@
     <br>
 
     <div>
-      <p><strong>Interaction Type</strong> - dropdown</p>
+      <p>Interaction Type?<p>
+      <%= form.select :interaction_type_id, @interaction_types.map{|i| ["#{i.name}", i.id]} %>
     </div>
 
     <div>
@@ -65,4 +67,3 @@
     </div>
   
 <% end %>
-</form>

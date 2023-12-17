@@ -13,6 +13,7 @@ class InteractionsController < ApplicationController
   # GET /interactions/new
   def new
     @contacts = current_user.contacts
+    @interaction_types = InteractionType.all
     @interaction = Interaction.new
     #@results = 
   end
@@ -23,7 +24,7 @@ class InteractionsController < ApplicationController
 
   # POST /interactions or /interactions.json
   def create
-    @interaction = Interaction.new(interaction_params)
+    @interaction = current_user.interactions.new(interaction_params)
     @contacts = current_user.contacts
 
     respond_to do |format|
@@ -71,7 +72,8 @@ class InteractionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interaction_params
-      params.require(:interaction).permit(:name, :description, :contact_id, :contact_ids, :date,
-                                          :length, :location, :i_initiated, :interaction_type_id)
+      params.require(:interaction).permit(:name, :description, :contact_id, :date,
+                                          :length, :location, :i_initiated, 
+                                          :interaction_type_id, :user_id)
     end
 end
