@@ -29,7 +29,8 @@ class Contact < ApplicationRecord
 
   # Uncomment to make the search bar work; but it keeps causing faraday issues on new contacts
 	def self.ransackable_associations(auth_object = nil)
-    ["category", "contact_groupings", "contact_groups", "contact_types", "contact_typings", "user"]
+    ["category", "contact_groupings", "contact_groups", "contact_categories", 
+      "contact_types", "contact_typings", "user"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
