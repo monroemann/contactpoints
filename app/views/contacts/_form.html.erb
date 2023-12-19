@@ -102,13 +102,11 @@
           <div class="col">
             <%= form.label :contact_groups, style: "display: block" %>
             <%= form.collection_check_boxes :contact_group_ids, ContactGroup.all, :id, :name, { multiple: true } %>
-            </div>
           </div>
 
           <div class="col">
             <%= form.label :contact_types, style: "display: block" %>
             <%= form.collection_check_boxes :contact_type_ids, ContactType.all, :id, :name, { multiple: true } %>
-
           </div>
         </div>
 
