@@ -2,44 +2,44 @@
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/">Home <span class="sr-only">(current)</span></a>
 </li> -->
 
-<li class="nav-item mr-2">
-  <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/contacts">Contacts</a>
+<li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contacts">Contacts</a>
 </li>
 
-<li class="nav-item mr-2">
-  <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/contact_groups">Groups</a>
+<li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contact_groups">Groups</a>
 </li>
 
-<li class="nav-item mr-2">
-  <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/contact_types">Types</a>
+<li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contact_types">Types</a>
 </li>
 
-<li class="nav-item mr-2">
-  <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/points">Points</a>
+<li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/points">Points</a>
 </li>
 
 <!-- <li class="nav-item mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="#">Tasks</a>
 </li> -->
 
-<li class="nav-item mr-2" style="float: right">
-  <a class="nav-link btn btn-primary btn-sm" style="color: white" href="/interactions/new">New Interaction</a>
+<li class="nav-item me-2" style="float: right">
+  <a class="btn btn-primary btn-sm" type="button" style="color: white" href="/interactions/new">New Interaction</a>
 </li>
 
-<li class="nav-item mr-2" style="float: right">
-  <%= link_to 'New Contact', new_contact_path, class: "nav-link btn btn-secondary btn-sm", style: "color: white" %>
+<li class="nav-item me-2" style="float: right">
+  <%= link_to 'New Contact', new_contact_path, class: "btn btn-secondary btn-sm", type: "button", style: "color: white" %>
 </li>
 
-<li class="nav-item mr-2" style="float: right">
-  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_groups/new">New Group</a>
+<li class="nav-item me-2" style="float: right">
+  <a class="btn btn-secondary btn-sm" type="button" style="color: white" href="/contact_groups/new">New Group</a>
 </li>
 
-<li class="nav-item mr-2" style="float: right">
-  <a class="nav-link btn btn-secondary btn-sm" style="color: white" href="/contact_types/new">New Type</a>
+<li class="nav-item me-2" style="float: right">
+  <a class="btn btn-secondary btn-sm" type="button" style="color: white" href="/contact_types/new">New Type</a>
 </li>
 
 <form class="form-inline my-2 my-lg-0">
     <%= render 'contacts/search_form' %>
 </form>
 
-<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete , class: "nav-link btn btn-danger btn-sm mx-5" %>
+<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>

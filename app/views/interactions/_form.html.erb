@@ -1,4 +1,6 @@
+
 <%= form_with(model: interaction) do |form| %>
+
   <% if interaction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
@@ -11,63 +13,57 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name, placeholder: "What is the best name for this Interaction?", class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
+    <div>
+      <%= form.label :description, style: "display: block" %>
+      <%= form.text_area :description, placeholder: "Where did it happen? Doing What? Why were you there?", class: "form-control" %>
+    </div>
 
-  <div>
-    <p>With Whom?</p>
-      <%= form.select :contact_ids, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
-        {prompt: 'Select Person'},
-        class: 'autocomplete-form', multiple: true,
-        data: {
-          controller: 'search',
-          oldaction: 'keyup->search#suggestions',
-          suggestions_url: search_suggestions_path, search_target: "input"
-              } %>
-  </div>
+    <div>
+      <p>With Whom?</p>
+        <%= form.select :contact_id, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
+          {prompt: 'With whom did you have this Interaction?'},
+          class: 'autocomplete-form',
+          data: {
+            controller: 'search',
+            oldaction: 'keyup->search#suggestions',
+            suggestions_url: search_suggestions_path, search_target: "input"
+                } %>
+    </div>
+      <%# render partial: "contact_search_form", locals: { results: [] } %>
+
+    <br>
+    
+    <div>
+      <p>Length of Interaction?</p>
+      <%= form.select :length, [['15 min','15 min'],['30 min','30 min'],['45 min','45 min'],['1 hour','1 hour'],['2 hours','2 hours'],['Half Day','Half Day'],['Full Day','Full Day'],['2-Day','2-Day'],['Overnight','Overnight'],['Weekend','Weekend'],['3-Day Plus','3-Day Plus'],['One Week','One Week'],['One Week Plus','One Week Plus']], class: "form-select", style: "width: 200px; border-radius: 5px"  %>
+    </div>  
+
+    <br>
+
+    <div>
+      <p>Interaction Type?<p>
+      <%= form.select :interaction_type_id, @interaction_types.map{|i| ["#{i.name}", i.id]} %>
+    </div>
+
+    <div>
+      <p><strong>I Initiated Contact?</strong> - boolean </p>
+    </div>
+
+    <div>
+      <p><strong>Interaction Category?</strong> - multiple checkboxes.  Business/Career/Work = you work together either at a job, vendor, business, etc.  Social/Personal = you both are happy to be in the other's company.  Transactional - You or they are getting something transactional out of the meeting/contact.</p>
+    </div>
+
+    <div>
+      <p><strong>Emotional Reaction</strong> - multiple checkboxes: happy, excited, calm, trusting, angry, disappointed, sad, frustrated, let down, inspired, motivated, abandoned, confused, smiling, laughing, optimistic, pessimistic, creative, depressed, hopeless, hopeful, problems solved, problems created, emotionally tired, energized</p>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
   
-    <%# render partial: "contact_search_form", locals: { results: [] } %>
-
-
-
-
-
-
-
-
-
-
-
-  <div>
-    <%= form.label :length, style: "display: block" %>
-    <%= form.text_area :length %>
-    <p>[turn into a dropdown: 15 min, 30 min, 45 min, 1 hour, 2 hours, Half Day, Full Day, 2-Day, Overnight, Weekend, 3-Day-Plus, One Week, One Week Plus]
-  </div>  
-
-  <div>
-    <p><strong>Interaction Type</strong> - dropdown</p>
-  </div>
-
-  <div>
-    <p><strong>I Initiated Contact?</strong> - boolean </p>
-  </div>
-
-  <div>
-    <p><strong>Interaction Category?</strong> - multiple checkboxes.  Business/Career/Work = you work together either at a job, vendor, business, etc.  Social/Personal = you both are happy to be in the other's company.  Transactional - You or they are getting something transactional out of the meeting/contact.</p>
-  </div>
-
-  <div>
-    <p><strong>Emotional Reaction</strong> - multiple checkboxes: happy, excited, calm, trusting, angry, disappointed, sad, frustrated, let down, inspired, motivated, abandoned, confused, smiling, laughing, optimistic, pessimistic, creative, depressed, hopeless, hopeful, problems solved, problems created, emotionally tired, energized</p>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

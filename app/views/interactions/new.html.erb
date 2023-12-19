@@ -1,14 +1,18 @@
 <div class="container">
   <div class="card">    
 
-    <h1>New interaction</h1>
+    <div class="container">
 
-    <%= render "form", interaction: @interaction %>
+      <h1>New interaction</h1>
 
-    <br>
+      <%= render "form", interaction: @interaction %>
 
-    <div>
-      <%= link_to "Back to interactions", interactions_path %>
+      <br>
+
+      <div>
+        <%= link_to "Back to interactions", interactions_path %>
+      </div>
+
     </div>
 
   </div><!--end card div -->
