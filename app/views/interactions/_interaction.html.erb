@@ -31,4 +31,11 @@
     <% end %>
   </p>
 
+  <p>
+    <strong>Emotional Reactions:</strong>
+    <% interaction.emotional_reactions.each do |reaction| %>
+      <%= reaction.name %>
+    <% end %>
+  </p>  
+
 </div>

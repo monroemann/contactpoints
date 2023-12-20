@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+      <p style="color: green"><%= notice %></p>
+
+      <h1>Emotional reactions</h1>
+
+      <div id="emotional_reactions">
+        <% @emotional_reactions.each do |emotional_reaction| %>
+          <%= render emotional_reaction %>
+          <p>
+            <%= link_to "Show this emotional reaction", emotional_reaction %>
+          </p>
+        <% end %>
+      </div>
+
+      <%= link_to "New emotional reaction", new_emotional_reaction_path %>
+
+    </div>
+  </div>
+</div>
