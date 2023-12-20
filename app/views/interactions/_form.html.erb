@@ -51,7 +51,8 @@
     </div>
 
     <div>
-      <p><strong>I Initiated Contact?</strong> - boolean </p>
+      <p><strong>You Initiated Contact?</strong></p>
+      <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select' %>
     </div>
 
     <div>

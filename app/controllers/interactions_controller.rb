@@ -4,6 +4,7 @@ class InteractionsController < ApplicationController
   # GET /interactions or /interactions.json
   def index
     @interactions = Interaction.all
+
   end
 
   # GET /interactions/1 or /interactions/1.json
@@ -86,8 +87,9 @@ class InteractionsController < ApplicationController
     def interaction_params
       params.require(:interaction).permit(:name, :description, :contact_id, :date,
                                           :length, :location, :i_initiated, 
-                                          :user_id, :interaction_type_id, 
+                                          :user_id, :interaction_type_id,
+                                          :you_initiated_contact,  
                                           interaction_category_ids:[], 
-                                          emotional_reaction_ids:[])
+                                          emotional_reaction_ids:[] )
     end
 end

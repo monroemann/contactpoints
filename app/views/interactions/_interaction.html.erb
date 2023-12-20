@@ -21,8 +21,14 @@
 
   <p>
     <strong>Interaction Type:</strong>
-    <%= interaction.interaction_type.name %>
+    <%= interaction.interaction_type&.name %>
   </p>
+
+  <p>
+    <strong>Who Initiated Contact?</strong>
+    <%= interaction.you_initiated_contact ? "You did.  Good job!" : "No, #{interaction.contact.first_name} initiated contact.  You're popular!" %>
+  </p>
+
 
   <p>
     <strong>Interaction Categories:</strong>
