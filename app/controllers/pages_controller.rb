@@ -4,8 +4,11 @@ class PagesController < ApplicationController
 	end
 
 	def home
-		@recently_added_contacts = current_user.contacts.where(category_id: 4).order(:created_at)
-		@contacts = current_user.contacts
+		@recently_added_contacts = current_user.contacts
+																					.where(category_id: 1)
+																					.order(:created_at)
+																					.limit(5)
+		@contacts = current_user.contacts.limit(5)
 	end
 	
 end
