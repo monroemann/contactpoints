@@ -1,16 +1,19 @@
 <div class="container">
   <div class="card">
 
-    <p style="color: green"><%= notice %></p>
+    <div class="container">
 
-    <%= render @interaction %>
+      <p style="color: green"><%= notice %></p>
 
-    <div>
-      <%= link_to "Edit this interaction", edit_interaction_path(@interaction) %> |
-      <%= link_to "Back to interactions", interactions_path %>
+      <%= render @interaction %>
 
-      <%= button_to "Destroy this interaction", @interaction, method: :delete %>
+      <div>
+        <%= link_to "Edit this interaction", edit_interaction_path(@interaction) %> |
+        <%= link_to "Back to interactions", interactions_path %>
+
+        <%= button_to "Destroy this interaction", @interaction, method: :delete %>
+      </div>
+
     </div>
-
   </div><!--end card div -->
 </div><!--end container div -->

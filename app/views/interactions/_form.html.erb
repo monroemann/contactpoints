@@ -55,8 +55,10 @@
     </div>
 
     <div>
-      <p><strong>Interaction Category?</strong> - multiple checkboxes.  Business/Career/Work = you work together either at a job, vendor, business, etc.  Social/Personal = you both are happy to be in the other's company.  Transactional - You or they are getting something transactional out of the meeting/contact.</p>
+      <p><strong>Interaction Category?</strong></p>
+      <%= form.collection_check_boxes :interaction_category_ids, @interaction_categories, :id, :name, { multiple: true, include_hidden: false } %>
     </div>
+    <br>
 
     <div>
       <p><strong>Emotional Reaction</strong> - multiple checkboxes: happy, excited, calm, trusting, angry, disappointed, sad, frustrated, let down, inspired, motivated, abandoned, confused, smiling, laughing, optimistic, pessimistic, creative, depressed, hopeless, hopeful, problems solved, problems created, emotionally tired, energized</p>

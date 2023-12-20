@@ -14,12 +14,16 @@ class InteractionsController < ApplicationController
   def new
     @contacts = current_user.contacts
     @interaction_types = InteractionType.all
+    @interaction_categories = InteractionCategory.all
     @interaction = Interaction.new
-    #@results = 
   end
 
   # GET /interactions/1/edit
   def edit
+      @contacts = current_user.contacts
+      @interaction = Interaction.find(params[:id])
+      @interaction_types = InteractionType.all
+      @interaction_categories = InteractionCategory.all
   end
 
   # POST /interactions or /interactions.json
@@ -33,6 +37,7 @@ class InteractionsController < ApplicationController
           notice: "Interaction was successfully created." }
         format.json { render :show, status: :created, location: @interaction }
       else
+        @interaction_types = InteractionType.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @interaction.errors, status: :unprocessable_entity }
       end
@@ -74,6 +79,7 @@ class InteractionsController < ApplicationController
     def interaction_params
       params.require(:interaction).permit(:name, :description, :contact_id, :date,
                                           :length, :location, :i_initiated, 
-                                          :interaction_type_id, :user_id)
+                                          :user_id, :interaction_type_id, 
+                                          interaction_category_ids:[])
     end
 end

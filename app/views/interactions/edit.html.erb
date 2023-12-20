@@ -1,10 +1,19 @@
-<h1>Editing interaction</h1>
+<div class="container">
+  <div class="card">
 
-<%= render "form", interaction: @interaction %>
+    <div class="container">
 
-<br>
+      <h1>Editing interaction</h1>
 
-<div>
-  <%= link_to "Show this interaction", @interaction %> |
-  <%= link_to "Back to interactions", interactions_path %>
+      <%= render "form", interaction: @interaction %>
+
+      <br>
+
+      <div>
+        <%= link_to "Show this interaction", @interaction %> |
+        <%= link_to "Back to interactions", interactions_path %>
+      </div>
+
+    </div>
+  </div>
 </div>

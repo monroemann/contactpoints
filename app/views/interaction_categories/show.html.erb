@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
 
-<%= render @interaction_category %>
+    <div class="container">
 
-<div>
-  <%= link_to "Edit this interaction category", edit_interaction_category_path(@interaction_category) %> |
-  <%= link_to "Back to interaction categories", interaction_categories_path %>
+      <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this interaction category", @interaction_category, method: :delete %>
+      <%= render @interaction_category %>
+
+      <div>
+        <%= link_to "Edit this interaction category", edit_interaction_category_path(@interaction_category) %> |
+        <%= link_to "Back to interaction categories", interaction_categories_path %>
+
+        <%= button_to "Destroy this interaction category", @interaction_category, method: :delete %>
+      </div>
+
+    </div>
+  </div>
 </div>

@@ -1,10 +1,19 @@
-<h1>Editing contact type</h1>
+<div class="container">
+  <div class="card">
 
-<%= render "form", contact_type: @contact_type %>
+    <div class="container">
 
-<br>
+      <h1>Editing contact type</h1>
 
-<div>
-  <%= link_to "Show this contact type", @contact_type %> |
-  <%= link_to "Back to contact types", contact_types_path %>
-</div>
+      <%= render "form", contact_type: @contact_type %>
+
+      <br>
+
+      <div>
+        <%= link_to "Show this contact type", @contact_type %> |
+        <%= link_to "Back to contact types", contact_types_path %>
+      </div>
+
+    </div>
+  </div>
+</div>    

@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
 
-<%= render @point %>
+    <div class="container">
 
-<div>
-  <%= link_to "Edit this point", edit_point_path(@point) %> |
-  <%= link_to "Back to points", points_path %>
+        <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this point", @point, method: :delete %>
+        <%= render @point %>
+
+        <div>
+          <%= link_to "Edit this point", edit_point_path(@point) %> |
+          <%= link_to "Back to points", points_path %>
+
+          <%= button_to "Destroy this point", @point, method: :delete %>
+        </div>
+
+    </div>
+  </div>
 </div>

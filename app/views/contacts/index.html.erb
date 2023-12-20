@@ -1,96 +1,100 @@
-
-
 <div class="container">
+  <div class="card">
 
-  <p id="notice" style="color: green"><%= notice %></p>
+    <div class="container">
 
-  <h1>Contacts</h1>
+        <p id="notice" style="color: green"><%= notice %></p>
 
-  <%= pluralize(@results.count, "Results") %>
+        <h1>Contacts</h1>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= sort_link(@query, :first_name, "First", default_order: :asc) %></th>
-        <th><%= sort_link(@query, :last_name, "Last", default_order: :asc) %></th>
-  <!--       <th>Last known country</th> -->
-        <th><%= sort_link(@query, :last_known_city, "Last City", default_order: :asc) %></th>
-  <!--       <th>Contact apps</th> -->
-        <th><%= sort_link(@query, :mobile_phone_1, "Cell", default_order: :asc) %></th>
-  <!--  <th>Mobile phone 2</th>
-        <th>Office phone 1</th>
-        <th>Office phone 2</th>
-        <th>Home phone</th>
-        <th>Other phone</th> -->
-        <th><%= sort_link(@query, :email_1, "Email", default_order: :asc) %></th>
-  <!--  <th>Email 2</th>
-        <th>Email 3</th>
-        <th>Email 4</th>
-        <th>Email 5</th>
-        <th>Website 1</th>
-        <th>Website 2</th>
-        <th>Website 3</th>
-        <th>Website 4</th>
-        <th>Website 5</th>
-        <th>Website 6</th>
-        <th>Website 7</th>
-        <th>Website 8</th> -->
-        <th><%= sort_link(@query, :birthday, "Bday", default_order: :asc) %></th>
-  <!--  <th>Address 1</th>
-        <th>Address 2</th>-->
-        <th><%= sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th>
-  <!--  <th>Things i like</th> -->
-        <th><%= sort_link(@query, :best_memories, "Best Memories", default_order: :asc) %></th>
-  <!--  <th>Areas for improvement</th>
-        <th>Notes</th> -->
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+        <%= pluralize(@results.count, "Results") %>
 
-    <tbody>
-      <% @results.each do |contact| %>
-        <tr>
-          <td><%= link_to contact.first_name, contact %></td>
-          <td><%= link_to contact.last_name, contact %></td>
-  <!--         <td><%# contact.last_known_country %></td> -->
-          <td><%= contact.last_known_city %></td>
-          <!-- <td><%# contact.contact_apps %></td> -->
-          <td><%= contact.mobile_phone_1 %></td>
-          <!-- <td><%# contact.mobile_phone_2 %></td>
-          <td><%# contact.office_phone_1 %></td>
-          <td><%# contact.office_phone_2 %></td>
-          <td><%# contact.home_phone %></td>
-          <td><%# contact.other_phone %></td> -->
-          <td><%= contact.email_1 %></td>
-  <!--         <td><%# contact.email_2 %></td>
-          <td><%# contact.email_3 %></td>
-          <td><%# contact.email_4 %></td>
-          <td><%# contact.email_5 %></td>
-          <td><%# contact.website_1 %></td>
-          <td><%# contact.website_2 %></td>
-          <td><%# contact.website_3 %></td>
-          <td><%# contact.website_4 %></td>
-          <td><%# contact.website_5 %></td>
-          <td><%# contact.website_6 %></td>
-          <td><%# contact.website_7 %></td>
-          <td><%# contact.website_8 %></td> -->
-          <td><%= contact.birthday %></td>
-          <!-- <td><%# contact.address_1 %></td>
-          <td><%# contact.address_2 %></td> -->
-          <td><%= contact.how_we_met %></td>
-          <!-- <td><%# contact.things_I_like %></td> -->
-          <td><%= contact.best_memories %></td>
-  <!--         <td><%# contact.areas_for_improvement %></td>
-          <td><%# contact.notes %></td> -->
-          <td><%= link_to 'Show', contact %></td>
-          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= sort_link(@query, :first_name, "First", default_order: :asc) %></th>
+              <th><%= sort_link(@query, :last_name, "Last", default_order: :asc) %></th>
+        <!--       <th>Last known country</th> -->
+              <th><%= sort_link(@query, :last_known_city, "Last City", default_order: :asc) %></th>
+        <!--       <th>Contact apps</th> -->
+              <th><%= sort_link(@query, :mobile_phone_1, "Cell", default_order: :asc) %></th>
+        <!--  <th>Mobile phone 2</th>
+              <th>Office phone 1</th>
+              <th>Office phone 2</th>
+              <th>Home phone</th>
+              <th>Other phone</th> -->
+              <th><%= sort_link(@query, :email_1, "Email", default_order: :asc) %></th>
+        <!--  <th>Email 2</th>
+              <th>Email 3</th>
+              <th>Email 4</th>
+              <th>Email 5</th>
+              <th>Website 1</th>
+              <th>Website 2</th>
+              <th>Website 3</th>
+              <th>Website 4</th>
+              <th>Website 5</th>
+              <th>Website 6</th>
+              <th>Website 7</th>
+              <th>Website 8</th> -->
+              <th><%= sort_link(@query, :birthday, "Bday", default_order: :asc) %></th>
+        <!--  <th>Address 1</th>
+              <th>Address 2</th>-->
+              <th><%= sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th>
+        <!--  <th>Things i like</th> -->
+              <th><%= sort_link(@query, :best_memories, "Best Memories", default_order: :asc) %></th>
+        <!--  <th>Areas for improvement</th>
+              <th>Notes</th> -->
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <br>
+          <tbody>
+            <% @results.each do |contact| %>
+              <tr>
+                <td><%= link_to contact.first_name, contact %></td>
+                <td><%= link_to contact.last_name, contact %></td>
+        <!--         <td><%# contact.last_known_country %></td> -->
+                <td><%= contact.last_known_city %></td>
+                <!-- <td><%# contact.contact_apps %></td> -->
+                <td><%= contact.mobile_phone_1 %></td>
+                <!-- <td><%# contact.mobile_phone_2 %></td>
+                <td><%# contact.office_phone_1 %></td>
+                <td><%# contact.office_phone_2 %></td>
+                <td><%# contact.home_phone %></td>
+                <td><%# contact.other_phone %></td> -->
+                <td><%= contact.email_1 %></td>
+        <!--         <td><%# contact.email_2 %></td>
+                <td><%# contact.email_3 %></td>
+                <td><%# contact.email_4 %></td>
+                <td><%# contact.email_5 %></td>
+                <td><%# contact.website_1 %></td>
+                <td><%# contact.website_2 %></td>
+                <td><%# contact.website_3 %></td>
+                <td><%# contact.website_4 %></td>
+                <td><%# contact.website_5 %></td>
+                <td><%# contact.website_6 %></td>
+                <td><%# contact.website_7 %></td>
+                <td><%# contact.website_8 %></td> -->
+                <td><%= contact.birthday %></td>
+                <!-- <td><%# contact.address_1 %></td>
+                <td><%# contact.address_2 %></td> -->
+                <td><%= contact.how_we_met %></td>
+                <!-- <td><%# contact.things_I_like %></td> -->
+                <td><%= contact.best_memories %></td>
+        <!--         <td><%# contact.areas_for_improvement %></td>
+                <td><%# contact.notes %></td> -->
+                <td><%= link_to 'Show', contact %></td>
+                <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+                <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-  <%= link_to 'New Contact', new_contact_path, class: 'button-link' %>
+        <br>
+
+        <%= link_to 'New Contact', new_contact_path, class: 'button-link' %>
+    </div>
+
+  </div>
 </div>
