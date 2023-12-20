@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_044923) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_193731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -162,6 +162,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_044923) do
     t.text "location"
     t.boolean "i_initiated", default: false
     t.integer "user_id"
+    t.boolean "you_initiated_contact", default: true
     t.index ["contact_id"], name: "index_interactions_on_contact_id"
     t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   end
