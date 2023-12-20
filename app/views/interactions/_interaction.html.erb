@@ -21,7 +21,14 @@
 
   <p>
     <strong>Interaction Type:</strong>
-    <%= interaction.interaction_type_id %>
+    <%= interaction.interaction_type.name %>
+  </p>
+
+  <p>
+    <strong>Interaction Categories:</strong>
+    <% interaction.interaction_categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
   </p>
 
 </div>
