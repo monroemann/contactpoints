@@ -1,20 +1,23 @@
 <div class="container">
   <div class="card">
 
-    <p style="color: green"><%= notice %></p>
+    <div class="container">
 
-    <h1>Interactions</h1>
+      <p style="color: green"><%= notice %></p>
 
-    <div id="interactions">
-      <% @interactions.each do |interaction| %>
-        <%= render interaction %>
-        <p>
-          <%= link_to "Show this interaction", interaction %>
-        </p>
-      <% end %>
+      <h1>Interactions</h1>
+
+      <div id="interactions">
+        <% @interactions.each do |interaction| %>
+          <%= render interaction %>
+          <p>
+            <%= link_to "Show this interaction", interaction %>
+          </p>
+        <% end %>
+      </div>
+
+      <%= link_to "New interaction", new_interaction_path %>
+
     </div>
-
-    <%= link_to "New interaction", new_interaction_path %>
-
   </div><!--end card div -->
 </div><!--end container div -->

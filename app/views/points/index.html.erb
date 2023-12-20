@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
 
-<h1>Points</h1>
+    <div class="container">
 
-<div id="points">
-  <% @points.each do |point| %>
-    <%= render point %>
-    <p>
-      <%= link_to "Show this point", point %>
-    </p>
-  <% end %>
+        <p style="color: green"><%= notice %></p>
+
+        <h1>Points</h1>
+
+        <div id="points">
+          <% @points.each do |point| %>
+            <%= render point %>
+            <p>
+              <%= link_to "Show this point", point %>
+            </p>
+          <% end %>
+        </div>
+
+        <%= link_to "New point", new_point_path %>
+
+    </div>
+  </div>
 </div>
 
-<%= link_to "New point", new_point_path %>

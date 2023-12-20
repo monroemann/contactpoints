@@ -1,15 +1,18 @@
 <div class="container">
   <div class="card">
 
-    <h1>New interaction type</h1>
+    <div class="container">
 
-    <%= render "form", interaction_type: @interaction_type %>
+      <h1>New interaction type</h1>
 
-    <br>
+      <%= render "form", interaction_type: @interaction_type %>
 
-    <div>
-      <%= link_to "Back to interaction types", interaction_types_path %>
+      <br>
+
+      <div>
+        <%= link_to "Back to interaction types", interaction_types_path %>
+      </div>
+
     </div>
-
   </div><!--end card div -->
 </div><!--end container div -->
