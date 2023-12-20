@@ -61,7 +61,8 @@
     <br>
 
     <div>
-      <p><strong>Emotional Reaction</strong> - multiple checkboxes: happy, excited, calm, trusting, angry, disappointed, sad, frustrated, let down, inspired, motivated, abandoned, confused, smiling, laughing, optimistic, pessimistic, creative, depressed, hopeless, hopeful, problems solved, problems created, emotionally tired, energized</p>
+      <p><strong>Emotional Reaction</strong>
+      <%= form.collection_check_boxes :emotional_reaction_ids, @emotional_reactions, :id, :name, { multiple: true, include_hidden: false } %>
     </div>
 
     <div>

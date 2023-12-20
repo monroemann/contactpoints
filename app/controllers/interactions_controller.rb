@@ -15,6 +15,7 @@ class InteractionsController < ApplicationController
     @contacts = current_user.contacts
     @interaction_types = InteractionType.all
     @interaction_categories = InteractionCategory.all
+    @emotional_reactions = EmotionalReaction.all
     @interaction = Interaction.new
   end
 
@@ -24,6 +25,7 @@ class InteractionsController < ApplicationController
       @interaction = Interaction.find(params[:id])
       @interaction_types = InteractionType.all
       @interaction_categories = InteractionCategory.all
+      @emotional_reactions = EmotionalReaction.all
   end
 
   # POST /interactions or /interactions.json
@@ -38,6 +40,8 @@ class InteractionsController < ApplicationController
         format.json { render :show, status: :created, location: @interaction }
       else
         @interaction_types = InteractionType.all
+        @interaction_categories = InteractionCategory.all
+        @emotional_reactions = EmotionalReaction.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @interaction.errors, status: :unprocessable_entity }
       end
@@ -52,6 +56,9 @@ class InteractionsController < ApplicationController
           notice: "Interaction was successfully updated." }
         format.json { render :show, status: :ok, location: @interaction }
       else
+        @interaction_types = InteractionType.all
+        @interaction_categories = InteractionCategory.all
+        @emotional_reactions = EmotionalReaction.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @interaction.errors, status: :unprocessable_entity }
       end
@@ -80,6 +87,7 @@ class InteractionsController < ApplicationController
       params.require(:interaction).permit(:name, :description, :contact_id, :date,
                                           :length, :location, :i_initiated, 
                                           :user_id, :interaction_type_id, 
-                                          interaction_category_ids:[])
+                                          interaction_category_ids:[], 
+                                          emotional_reaction_ids:[])
     end
 end

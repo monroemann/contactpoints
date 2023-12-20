@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+      <p style="color: green"><%= notice %></p>
+
+      <%= render @emotional_reaction %>
+
+      <div>
+        <%= link_to "Edit this emotional reaction", edit_emotional_reaction_path(@emotional_reaction) %> |
+        <%= link_to "Back to emotional reactions", emotional_reactions_path %>
+
+        <%= button_to "Destroy this emotional reaction", @emotional_reaction, method: :delete %>
+      </div>
+
+    </div>
+  </div>
+</div>

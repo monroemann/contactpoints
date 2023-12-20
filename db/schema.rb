@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_031010) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_044923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031010) do
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
+  create_table "emotional_reactions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interact_interact_categories", force: :cascade do |t|
     t.bigint "interaction_id"
     t.bigint "interaction_category_id"
@@ -123,6 +130,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031010) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "interaction_emotional_reactions", force: :cascade do |t|
+    t.bigint "emotional_reaction_id", null: false
+    t.bigint "interaction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["emotional_reaction_id", "interaction_id"], name: "index_interact_emotional_react_on_emotion_and_interact", unique: true
+    t.index ["emotional_reaction_id"], name: "index_interaction_emotional_reactions_on_emotional_reaction_id"
+    t.index ["interaction_id"], name: "index_interaction_emotional_reactions_on_interaction_id"
   end
 
   create_table "interaction_types", force: :cascade do |t|
@@ -168,6 +185,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031010) do
 
   add_foreign_key "categories", "users"
   add_foreign_key "contacts", "categories"
+  add_foreign_key "interaction_emotional_reactions", "emotional_reactions"
+  add_foreign_key "interaction_emotional_reactions", "interactions"
   add_foreign_key "interactions", "contacts"
   add_foreign_key "interactions", "interaction_types"
 end

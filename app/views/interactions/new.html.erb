@@ -5,6 +5,8 @@
 
       <h1>New interaction</h1>
 
+      <p>NOTE: If this interaction has a new contact, please <%= link_to "add that person", new_contact_path %> to the database before starting to fill out this form.</p>
+
       <%= render "form", interaction: @interaction %>
 
       <br>
