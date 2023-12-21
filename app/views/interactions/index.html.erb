@@ -7,9 +7,14 @@
 
       <h1>Interactions</h1>
 
+       <table class="table">
+          <thead>
+            <tr>
+              <th>
+
       <div id="interactions">
         <% @interactions.each do |interaction| %>
-          <%= render interaction %>
+          <%= render partial: 'interaction', locals: { interaction: interaction } %>
           <p>
             <%= link_to "Show this interaction", interaction %>
           </p>
