@@ -9,6 +9,7 @@ class InteractionsController < ApplicationController
 
   # GET /interactions/1 or /interactions/1.json
   def show
+    @interaction = Interaction.find(params[:id])
   end
 
   # GET /interactions/new
@@ -40,6 +41,7 @@ class InteractionsController < ApplicationController
         format.html { redirect_to interaction_url(@interaction), 
           notice: "Interaction was successfully created." }
         format.json { render :show, status: :created, location: @interaction }
+        logger.info @interaction.errors.full_messages
       else
         @interaction_types = InteractionType.all
         @interaction_categories = InteractionCategory.all
@@ -87,11 +89,12 @@ class InteractionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interaction_params
-      params.require(:interaction).permit(:name, :description, :contact_id, :date,
-                                          :length, :location, :i_initiated, 
-                                          :user_id, :interaction_type_id,
-                                          :you_initiated_contact,  
-                                          interaction_category_ids:[], 
-                                          emotional_reaction_ids:[] )
+      params.require(:interaction).permit(
+        :name, :description, :contact_id, :date, :length, :location,
+        :i_initiated, :user_id, :interaction_type_id, :you_initiated_contact,
+        interaction_category_ids: [],
+        emotional_reaction_ids: []
+      )
     end
+
 end

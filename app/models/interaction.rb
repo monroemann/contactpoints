@@ -1,27 +1,41 @@
 class Interaction < ApplicationRecord
 
-		belongs_to :user
-		belongs_to :contact
-		belongs_to :interaction_type
+	belongs_to :user
+	belongs_to :contact
+	belongs_to :interaction_type
 
-		validates :user, presence: true
+	validates :user, presence: true
 
-		has_many :interact_interact_categories, dependent: :destroy
-  	has_many :interaction_categories, through: :interact_interact_categories
+	has_many :interact_interact_categories, dependent: :destroy
+	has_many :interaction_categories, through: :interact_interact_categories
 
- 	 	has_many :interaction_emotional_reactions, dependent: :destroy
-  	has_many :emotional_reactions, through: :interaction_emotional_reactions
+	has_many :interaction_emotional_reactions, dependent: :destroy
+	has_many :emotional_reactions, through: :interaction_emotional_reactions
 
-	 	def contact_full_name
-	    "#{contact.first_name} #{contact.last_name}" if contact.present?
-	  end
+  has_many :points, dependent: :destroy
+  has_many :contacts, through: :points
 
-	  #points code
+ 	def contact_full_name
+    "#{contact.first_name} #{contact.last_name}" if contact.present?
+  end
 
-    def update_points
-      points_to_update = calculate_points_based_on_attributes
-      contact.update(points: contact.points + points_to_update)
-    end
+  #points code
+
+  def total_points
+    points.sum(&:total_points)
+  end
+
+  def update_points
+    puts " ******* Updating points for interaction #{id} *********"
+    points.create(
+      interaction: self,
+      contact_id: contact_id,
+      interaction_type_points: calculate_points_for_interaction_type,
+      interaction_length_points: calculate_points_for_interaction_length,
+      emotional_reactions_points: calculate_points_for_emotional_reactions,
+      who_initiated_contact_points: calculate_points_for_who_initiated_contact
+    )
+  end
 
   private
 
