@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_21_043209) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_22_094137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_21_043209) do
     t.string "website_7"
     t.string "website_8"
     t.string "contact_apps"
-    t.string "birthday"
+    t.date "birthday"
     t.text "address_1"
     t.text "address_2"
     t.text "how_we_met"
@@ -105,6 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_21_043209) do
     t.bigint "user_id"
     t.integer "points", default: 0
     t.bigint "category_id", default: 1, null: false
+    t.date "date_first_met"
     t.index ["category_id"], name: "index_contacts_on_category_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end

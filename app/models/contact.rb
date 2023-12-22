@@ -19,6 +19,22 @@ class Contact < ApplicationRecord
   #Automatically adds each new contact as Recently Added
   after_create :assign_to_default_category
 
+  def known_since
+    return 'Unknown' if date_first_met.nil?
+
+    difference_in_days = (Date.today - date_first_met).to_i
+    years = difference_in_days / 365
+    months = (difference_in_days % 365) / 30
+
+    result = if years > 0 && months > 0
+      "#{years} #{'year'.pluralize(years)}, #{months} #{'month'.pluralize(months)}"
+    elsif years > 0
+      "#{years} #{'year'.pluralize(years)}"
+    else
+      "#{months} #{'month'.pluralize(months)}"
+    end
+  end
+
   def assign_to_default_category
     default_category = user.categories.find_by(id: 1)
 

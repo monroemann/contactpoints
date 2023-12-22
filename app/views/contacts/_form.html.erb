@@ -25,6 +25,11 @@
           </div>
 
           <div class="col">
+            <%= form.label :date_first_met, style: "display: block" %>
+            <%= form.date_select :date_first_met, start_year: Date.current.year - 100, end_year: Date.current.year, order: [:month, :day, :year], prompt: true %>
+          </div>          
+
+          <div class="col">
             <%= form.label :last_known_country, style: "display: block" %>
             <%= form.text_field :last_known_country %>
           </div>
@@ -66,7 +71,8 @@
 
           <div class="col">
             <%= form.label :birthday, style: "display: block" %>
-            <%= form.text_field :birthday %>
+            <%= form.date_select :birthday, start_year: Date.current.year - 100, end_year: Date.current.year, order: [:month, :day, :year], prompt: true %>
+
           </div>
 
           <div class="col">

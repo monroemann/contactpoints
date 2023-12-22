@@ -81,7 +81,7 @@ class ContactsController < ApplicationController
                                       :website_7, :website_8, :contact_apps, :birthday, 
                                       :address_1, :address_2, :how_we_met, :things_I_like, 
                                       :best_memories, :areas_for_improvement, :notes, :points,
-                                      category_ids:[], contact_group_ids:[], 
+                                      :date_first_met, category_ids:[], contact_group_ids:[], 
                                       contact_type_ids:[])
     end
 end

@@ -12,6 +12,15 @@
           </p>
 
           <p class="col-md-3">
+            <strong>Known Since:</strong>
+              <% if contact.date_first_met %>
+                <%= contact.date_first_met.strftime("%B %e, %Y") %> - <%= contact.known_since %>
+              <% else %>
+                Unknown
+              <% end %>
+          </p>          
+
+          <p class="col-md-3">
             <strong>Last known country:</strong>
             <%= contact.last_known_country %>
           </p>
