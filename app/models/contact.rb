@@ -13,6 +13,9 @@ class Contact < ApplicationRecord
 	has_many :contact_typings, dependent: :destroy
 	has_many :contact_types, through: :contact_typings
 
+  has_many :points
+  has_many :interactions, through: :points
+
   #Automatically adds each new contact as Recently Added
   after_create :assign_to_default_category
 
@@ -22,8 +25,9 @@ class Contact < ApplicationRecord
     if default_category
       categories << default_category
     else
-      # Handle the case where the default category with ID 1 is not found
-      # You may want to log a warning or handle it in a way that fits your application
+      Rails.logger.warn("Default category with ID 1 not found for contact #{id}")
+      fallback_category = user.categories.first # Adjust this logic based on your needs
+      categories << fallback_category if fallback_category
     end
   end
 

@@ -16,19 +16,33 @@
 
   <p>
     <strong>Length:</strong>
-    <%= interaction.length %>
+    <% interaction.points.each do |point| %>
+      <%= interaction.length %>: <%= point.interaction_length_points %> Points
+    <% end %>
   </p>
 
   <p>
     <strong>Interaction Type:</strong>
-    <%= interaction.interaction_type&.name %>
+    <% interaction.points.each do |point| %>
+      <%= interaction.interaction_type&.name %>: <%= point.interaction_type_points %> Points
+    <% end %>
   </p>
 
   <p>
     <strong>Who Initiated Contact?</strong>
-    <%= interaction.you_initiated_contact ? "You did.  Good job!" : "No, #{interaction.contact.first_name} initiated contact.  You're popular!" %>
+    <% interaction.points.each do |point| %>
+      <%= interaction.you_initiated_contact ? "You did.  Good job!" : "No, #{interaction.contact.first_name} initiated contact.  You're popular!" %>:  <%= point.who_initiated_contact_points %> Points
+    <% end %>  
   </p>
 
+  <p>
+    <strong>Emotional Reactions:</strong>
+    <% interaction.points.each do |point| %>
+      <% interaction.emotional_reactions.each do |reaction| %>
+        <%= reaction.name %>
+      <% end %>: <%= point.emotional_reactions_points %> Points
+    <% end %>
+  </p>  
 
   <p>
     <strong>Interaction Categories:</strong>
@@ -38,10 +52,10 @@
   </p>
 
   <p>
-    <strong>Emotional Reactions:</strong>
-    <% interaction.emotional_reactions.each do |reaction| %>
-      <%= reaction.name %>
-    <% end %>
-  </p>  
+    <strong>TOTAL POINTS:</strong>
+    <%= @interaction.total_points %>
+  </p>
+
+
 
 </div>
