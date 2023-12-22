@@ -15,6 +15,11 @@
   </p>
 
   <p>
+    <strong>When:</strong>
+    <%= interaction.date.strftime("%B %e, %Y") %>
+  </p>  
+
+  <p>
     <strong>Length:</strong>
     <% interaction.points.each do |point| %>
       <%= interaction.length %>: <%= point.interaction_length_points %> Points

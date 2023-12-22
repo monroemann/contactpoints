@@ -34,7 +34,11 @@
             suggestions_url: search_suggestions_path, search_target: "input"
                 } %>
     </div>
-      <%# render partial: "contact_search_form", locals: { results: [] } %>
+
+    <div>
+      <p>Date of Interaction</p>
+      <%= form.date_select :date, default: Date.today %>
+    </div>
 
     <br>
     

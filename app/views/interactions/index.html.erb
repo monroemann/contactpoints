@@ -12,6 +12,7 @@
             <tr>
               <th>Name</th>
               <th>With</th>
+              <th>When</th>
               <th>Length</th>
               <th>Type</th>
               <th>Init?</th>
@@ -26,6 +27,7 @@
               <tr>
                 <td><%= link_to interaction.name, interaction %></td>
                 <td><%= link_to interaction.contact_full_name, interaction.contact %></td>
+                <td><%= interaction.date&.strftime("%B %e, %Y") %></td>
                 <td><%= interaction.length %></td>
                 <td><%= interaction.interaction_type&.name %></td>
                 <td><%= interaction.you_initiated_contact ? "Yes" : "No" %></td>
