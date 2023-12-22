@@ -15,13 +15,15 @@
               <th><%= sort_link(@query, :first_name, "First", default_order: :asc) %></th>
               <th><%= sort_link(@query, :last_name, "Last", default_order: :asc) %></th>
         <!--       <th>Last known country</th> -->
+              <th>Points</th>
+
               <th><%= sort_link(@query, :last_known_city, "Last City", default_order: :asc) %></th>
         <!--       <th>Contact apps</th> -->
               <th><%= sort_link(@query, :mobile_phone_1, "Cell", default_order: :asc) %></th>
         <!--  <th>Mobile phone 2</th>
               <th>Office phone 1</th>
               <th>Office phone 2</th>
-              <th>Home phone</th>
+              <th>Home phone</th> 
               <th>Other phone</th> -->
               <th><%= sort_link(@query, :email_1, "Email", default_order: :asc) %></th>
         <!--  <th>Email 2</th>
@@ -54,6 +56,7 @@
                 <td><%= link_to contact.first_name, contact %></td>
                 <td><%= link_to contact.last_name, contact %></td>
         <!--         <td><%# contact.last_known_country %></td> -->
+                <td><%= contact.total_points %></td>
                 <td><%= contact.last_known_city %></td>
                 <!-- <td><%# contact.contact_apps %></td> -->
                 <td><%= contact.mobile_phone_1 %></td>

@@ -7,19 +7,42 @@
 
       <h1>Interactions</h1>
 
-       <table class="table">
+        <table class="table">
           <thead>
             <tr>
-              <th>
+              <th>Name</th>
+              <th>With</th>
+              <th>Length</th>
+              <th>Type</th>
+              <th>Init?</th>
+              <th>Emotions</th>
+              <th>Categories</th>
+              <th>Points</th>
+            </tr>
+          </thead>
 
-      <div id="interactions">
-        <% @interactions.each do |interaction| %>
-          <%= render partial: 'interaction', locals: { interaction: interaction } %>
-          <p>
-            <%= link_to "Show this interaction", interaction %>
-          </p>
-        <% end %>
-      </div>
+          <tbody>
+            <% @interactions.each do |interaction| %>
+              <tr>
+                <td><%= link_to interaction.name, interaction %></td>
+                <td><%= link_to interaction.contact_full_name, interaction.contact %></td>
+                <td><%= interaction.length %></td>
+                <td><%= interaction.interaction_type&.name %></td>
+                <td><%= interaction.you_initiated_contact ? "Yes" : "No" %></td>
+                <td><% interaction.emotional_reactions.each do |reaction| %>
+                      <%= reaction.name %>
+                    <% end %></td>
+                <td><% interaction.interaction_categories.each do |category| %>
+                      <%= category.name %>
+                    <% end %></td>
+                <td><%= interaction.total_points %></td>
+                <td><%= link_to 'Show', interaction %></td>
+                <td><%= link_to 'Edit', edit_interaction_path(interaction) %></td>
+                <td><%= link_to 'Destroy', interaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
       <%= link_to "New interaction", new_interaction_path %>
 

@@ -2,7 +2,7 @@ class Contact < ApplicationRecord
 
 	belongs_to :user
 
-	has_many :interactions
+	has_many :interactions, dependent: :destroy
 
 	has_many :contact_categories, dependent: :destroy
   has_many :categories, through: :contact_categories
@@ -31,10 +31,13 @@ class Contact < ApplicationRecord
     end
   end
 
-  # Uncomment to make the search bar work; but it keeps causing faraday issues on new contacts
-	def self.ransackable_associations(auth_object = nil)
+  def total_points
+    interactions.sum(&:total_points)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
     ["category", "contact_groupings", "contact_groups", "contact_categories", 
-      "contact_types", "contact_typings", "user"]
+      "contact_types", "contact_typings", "user", "points"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -44,7 +47,8 @@ class Contact < ApplicationRecord
       "id", "last_known_city", "last_known_country", "last_name", "mobile_phone_1", 
       "mobile_phone_2", "notes", "office_phone_1", "office_phone_2", "other_phone", 
       "points", "things_I_like", "updated_at", "user_id", "website_1", "website_2", 
-      "website_3", "website_4", "website_5", "website_6", "website_7", "website_8"]
+      "website_3", "website_4", "website_5", "website_6", "website_7", "website_8",
+      "points"]
   end
 
   searchkick text_middle: [:first_name, :last_name, :last_known_country, :last_known_city]
