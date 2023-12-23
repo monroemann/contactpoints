@@ -3,11 +3,13 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
+  
     @contacts = current_user.contacts
 
     #Ransack variables for search
     @query = Contact.ransack(params[:q])
     @results = @query.result(distinct: true)
+
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -78,7 +80,7 @@ class ContactsController < ApplicationController
                                       :website_3, :website_4, :website_5, :website_6, 
                                       :website_7, :website_8, :contact_apps, :birthday, 
                                       :address_1, :address_2, :how_we_met, :things_I_like, 
-                                      :best_memories, :areas_for_improvement, :notes, 
+                                      :best_memories, :areas_for_improvement, :notes, :points,
                                       category_ids:[], contact_group_ids:[], 
                                       contact_type_ids:[])
     end
