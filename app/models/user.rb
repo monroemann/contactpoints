@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :contacts
-  has_many :contact_groups
-  has_many :contact_types
-  has_many :interactions
+  has_many :contacts, dependent: :destroy
+  has_many :contact_groups, dependent: :destroy
+  has_many :contact_types, dependent: :destroy
+  has_many :interactions, dependent: :destroy
   has_many :categories
+  has_many :locations, class_name: 'Location', dependent: :destroy
+
 
 end

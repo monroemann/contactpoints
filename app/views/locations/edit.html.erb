@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+      <h1>Editing location</h1>
+
+      <%= render "form", location: @location %>
+
+      <br>
+
+      <div>
+        <%= link_to "Show this location", @location %> |
+        <%= link_to "Back to locations", locations_path %>
+      </div>
+    </div>
+  </div>
+</div>
