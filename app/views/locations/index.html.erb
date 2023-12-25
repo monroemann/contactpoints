@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+      <p style="color: green"><%= notice %></p>
+
+      <h1>Locations</h1>
+
+      <div id="locations">
+        <% @locations.each do |location| %>
+          <%= render location %>
+          <p>
+            <%= link_to "Show this location", location %>
+          </p>
+        <% end %>
+      </div>
+
+      <%= link_to "New location", new_location_path %>
+    </div>
+  </div>   
+</div>

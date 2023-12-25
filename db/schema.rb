@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_22_094137) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,6 +143,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_22_094137) do
     t.index ["interaction_id"], name: "index_interaction_emotional_reactions_on_interaction_id"
   end
 
+  create_table "interaction_locations", force: :cascade do |t|
+    t.bigint "interaction_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interaction_id"], name: "index_interaction_locations_on_interaction_id"
+    t.index ["location_id"], name: "index_interaction_locations_on_location_id"
+  end
+
   create_table "interaction_types", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -164,8 +173,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_22_094137) do
     t.boolean "i_initiated", default: false
     t.integer "user_id"
     t.boolean "you_initiated_contact", default: true
+    t.bigint "location_id"
     t.index ["contact_id"], name: "index_interactions_on_contact_id"
     t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -197,8 +216,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_22_094137) do
   add_foreign_key "contacts", "categories"
   add_foreign_key "interaction_emotional_reactions", "emotional_reactions"
   add_foreign_key "interaction_emotional_reactions", "interactions"
+  add_foreign_key "interaction_locations", "interactions"
+  add_foreign_key "interaction_locations", "locations"
   add_foreign_key "interactions", "contacts"
   add_foreign_key "interactions", "interaction_types"
+  add_foreign_key "locations", "users"
   add_foreign_key "points", "contacts"
   add_foreign_key "points", "interactions"
 end

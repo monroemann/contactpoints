@@ -19,6 +19,18 @@
     </div>
 
     <div>
+      <p>Location?</p>
+        <%= form.select :location_id, @locations.map{|l| ["#{l.name}", l.id]}, 
+          {prompt: 'Where did you have this Interaction?'},
+          class: 'autocomplete-form',
+          data: {
+            controller: 'search',
+            oldaction: 'keyup->search#suggestions',
+            suggestions_url: search_suggestions_path, search_target: "input"
+                } %>
+    </div>
+
+    <div>
       <%= form.label :description, style: "display: block" %>
       <%= form.text_area :description, placeholder: "Where did it happen? Doing What? Why were you there?", class: "form-control" %>
     </div>

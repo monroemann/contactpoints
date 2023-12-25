@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations
   resources :emotional_reactions
 
   resources :interaction_categories

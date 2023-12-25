@@ -19,6 +19,10 @@ class Contact < ApplicationRecord
   #Automatically adds each new contact as Recently Added
   after_create :assign_to_default_category
 
+  def full_name
+  "#{first_name} #{last_name}".strip
+  end
+
   def known_since
     return 'Unknown' if date_first_met.nil?
 

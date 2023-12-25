@@ -2,6 +2,7 @@ class Interaction < ApplicationRecord
 
 	belongs_to :user
 	belongs_to :contact
+  belongs_to :location
 	belongs_to :interaction_type
 
 	validates :user, presence: true

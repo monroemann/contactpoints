@@ -15,6 +15,7 @@ class InteractionsController < ApplicationController
   # GET /interactions/new
   def new
     @contacts = current_user.contacts
+    @locations = current_user.locations.uniq
     @interaction_types = InteractionType.all
     @interaction_categories = InteractionCategory.all
     @emotional_reactions = EmotionalReaction.all
@@ -24,6 +25,7 @@ class InteractionsController < ApplicationController
   # GET /interactions/1/edit
   def edit
       @contacts = current_user.contacts
+      @locations = current_user.locations
       @interaction = Interaction.find(params[:id])
       @interaction_types = InteractionType.all
       @interaction_categories = InteractionCategory.all
@@ -34,6 +36,7 @@ class InteractionsController < ApplicationController
   def create
     @interaction = current_user.interactions.new(interaction_params)
     @contacts = current_user.contacts
+    @locations = current_user.locations
 
     respond_to do |format|
       if @interaction.save
@@ -90,10 +93,9 @@ class InteractionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def interaction_params
       params.require(:interaction).permit(
-        :name, :description, :contact_id, :date, :length, :location,
+        :name, :description, :contact_id, :date, :length, :location_id,
         :i_initiated, :user_id, :interaction_type_id, :you_initiated_contact,
-        interaction_category_ids: [],
-        emotional_reaction_ids: []
+        interaction_category_ids: [], emotional_reaction_ids: []
       )
     end
 

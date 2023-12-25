@@ -12,6 +12,7 @@
             <tr>
               <th>Name</th>
               <th>With</th>
+              <th>Where</th>
               <th>When</th>
               <th>Length</th>
               <th>Type</th>
@@ -27,6 +28,7 @@
               <tr>
                 <td><%= link_to interaction.name, interaction %></td>
                 <td><%= link_to interaction.contact_full_name, interaction.contact %></td>
+                <td><%= link_to interaction.location&.name, interaction.location %></td>
                 <td><%= interaction.date&.strftime("%B %e, %Y") %></td>
                 <td><%= interaction.length %></td>
                 <td><%= interaction.interaction_type&.name %></td>
@@ -38,9 +40,9 @@
                       <%= category.name %>
                     <% end %></td>
                 <td><%= interaction.total_points %></td>
-                <td><%= link_to 'Show', interaction %></td>
-                <td><%= link_to 'Edit', edit_interaction_path(interaction) %></td>
-                <td><%= link_to 'Destroy', interaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'S', interaction %></td>
+                <td><%= link_to 'E', edit_interaction_path(interaction) %></td>
+                <td><%= link_to 'D', interaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>

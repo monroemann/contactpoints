@@ -3,19 +3,23 @@
 </li> -->
 
 <li class="nav-item me-2">
-  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contacts">Contacts</a>
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contacts" style="color: white" href="/contacts">C</a>
 </li>
 
 <li class="nav-item me-2">
-  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contact_groups">Groups</a>
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contact Groups" style="color: white" href="/contact_groups">G</a>
 </li>
 
 <li class="nav-item me-2">
-  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/contact_types">Types</a>
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contact Types" style="color: white" href="/contact_types">T</a>
 </li>
 
 <li class="nav-item me-2">
-  <a class="btn btn-outline-success btn-sm" type="button" style="color: white" href="/interactions">Interactions</a>
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Locations" style="color: white" href="/locations">L</a>
+</li>
+
+<li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Interactions" style="color: white" href="/interactions">I</a>
 </li>
 
 <!-- <li class="nav-item mr-2">
@@ -31,6 +35,10 @@
 </li>
 
 <li class="nav-item me-2" style="float: right">
+  <%= link_to 'New Location', new_location_path, class: "btn btn-secondary btn-sm", type: "button", style: "color: white" %>
+</li>
+
+<li class="nav-item me-2" style="float: right">
   <a class="btn btn-secondary btn-sm" type="button" style="color: white" href="/contact_groups/new">New Group</a>
 </li>
 
@@ -42,4 +50,4 @@
     <%= render 'contacts/search_form' %>
 </form>
 
-<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>
+<%= button_to 'LogOut', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>
