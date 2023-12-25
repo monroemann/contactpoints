@@ -5,6 +5,10 @@
 	<div class="row">
 		<div class="col">
 			<h4>Recommended Next To Contact</h2>
+				<!-- 1 with zero points, 1 recently_added_contact, 1 whose points have dropped recently -->
+				<!-- 1 you haven't talked to in six months -->
+				<!-- To begin with, it can be just 5 random contacts, that you have not contacted in the last 6 months, that you have not skipped in last month.  Then add more from there -->
+				<!-- Need to add a 'skip' button that skips for 1 month -->
 				<table class="table">
 				<thead>
 			    <tr>
@@ -18,7 +22,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-							<td><%= link_to contact.first_name, contact %></td>
+							<td><%= link_to contact.full_name, contact %></td>
 			        <td><%= link_to contact.mobile_phone_1, contact %></td>
 			        <td><%= link_to contact.email_1, contact %></td>
 			        <td><%= link_to contact.total_points, contact %></td>
@@ -31,6 +35,7 @@
 	<div class="row">
 		<div class="col">
 			<h4>Going Up (<%= @contacts.count %>)</h2>
+				<!-- All those whose points have gone up recently, most poits gained at top -->
 			  <table class="table">
 				  <thead>
 				    <tr>
@@ -41,7 +46,7 @@
 				  <tbody>
 				    <% @contacts.each do |contact| %>
 				      <tr>
-				        <td><%= link_to contact.first_name, contact %></td>
+				        <td><%= link_to contact.full_name, contact %></td>
 				      </tr>
 				    <% end %>
 				  </tbody>
@@ -50,6 +55,7 @@
 
 		<div class="col">
 			<h4>Going Down (<%= @contacts.count %>)</h2>
+				<!-- All those whose points have gone down recently, most points lost at top -->
 				<table class="table">
 				<thead>
 			    <tr>
@@ -60,7 +66,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -69,6 +75,7 @@
 
 		<div class="col">
 			<h4>At Zero (<%= @contacts.count %>)</h2>
+				<!-- All contacts with zero points -->
 				<table class="table">
 				<thead>
 			    <tr>
@@ -79,7 +86,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -88,27 +95,29 @@
 
 		<div class="col">
 			<h4>Holding Steady (<%= @contacts.count %>)</h2>
+<!-- All those whose points have stayed at same value for last month -->
 				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @recently_added_contacts.each do |contact| %>
-			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @recently_added_contacts.each do |contact| %>
+				      <tr>
+				        <td><%= link_to contact.full_name, contact %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 
 	<div class="row">		
 		<div class="col">
 			<h4>Needs Attention (<%= @contacts.count %>)</h2>
+				<!-- All those whose points have been going down consistently, or have been at zero, for more than six months -->				
 				<table class="table">
 				<thead>
 			    <tr>
@@ -119,7 +128,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -128,6 +137,8 @@
 
 		<div class="col">
 			<h4>Recently Added (<%= @contacts.count %>)</h2>
+<!-- All those who have been added within the last 3 months -->
+
 				<table class="table">
 				<thead>
 			    <tr>
@@ -138,7 +149,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -147,6 +158,8 @@
 
 		<div class="col">
 			<h4>True Best Friends (<%= @contacts.count %>)</h2>
+<!-- All those whose points are above 200, who you've known for more than two years, and who has reached out to your within the last two years at least 5 times in a social manner and who gives you 90% or more positive than negative emotions -->
+
 				<table class="table">
 				<thead>
 			    <tr>
@@ -157,7 +170,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -166,6 +179,8 @@
 
 		<div class="col">
 			<h4>Best Friends (<%= @contacts.count %>)</h2>
+	<!-- All those whose points are above 100, who you've known for more than one year, and who has reached out to your within the last year at least 3 times in a social manner, and who gives you at least 80% or more positive than negative emotions -->
+
 				<table class="table">
 				<thead>
 			    <tr>
@@ -176,7 +191,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -187,6 +202,7 @@
 	<div class="row">
 		<div class="col">
 			<h4>Friends (<%= @contacts.count %>)</h2>
+		<!-- All those whose points are above 50, who you've known for more than six months, and who has reached out to your within the last six months at least once in a social manner, and who gives you at least 70% or more positive than negative emotions -->
 				<table class="table">
 				<thead>
 			    <tr>
@@ -197,7 +213,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -206,6 +222,7 @@
 
 		<div class="col">
 			<h4>Acquaintances (<%= @contacts.count %>)</h2>
+	<!-- All those whose points are above 25, who you've known for more than three months, and with whom you've interacted at least once in a social manner in the last 3 months, and who gives you at least 60% or more positive than negative emotions -->
 				<table class="table">
 				<thead>
 			    <tr>
@@ -216,7 +233,7 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -225,6 +242,7 @@
 
 		<div class="col">
 			<h4>Close to Zero (<%= @contacts.count %>)</h2>
+	<!-- All those whose points that have been going down over the last year, and have 25 points or less -->			
 				<table class="table">
 				<thead>
 			    <tr>
@@ -235,13 +253,198 @@
 			  <tbody>
 			    <% @recently_added_contacts.each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.first_name, contact %></td>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h4>When Sad, Call (<%= @contacts.count %>)</h2>
+		<!-- All those who are at least a friend, who consistently cheer you up and make you feel better, are patient, and do not have negative emotions. -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
 			      </tr>
 			    <% end %>
 			  </tbody>
 			</table>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col">
+			<h4>Limit Your Time With (<%= @contacts.count %>)</h2>
+	<!-- All those with whom you are at least an acquiantance, who leave you with 70% or more negative emotions. -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h4>Hang Out More With (<%= @contacts.count %>)</h2>
+	<!-- All those whose points are positive, who consistently leave you with 90% positive emotions.  -->			
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+	<div class="col">
+			<h4>Your Top Ten (<%= @contacts.count %>)</h2>
+		<!-- You spend the most time with these people based on minutes.  These people are your future. -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+		<div class="col">
+			<h4>Best Places (<%= @contacts.count %>)</h2>
+	<!-- Places that have the most friends, BFs, and TBFs.  Go to these places when lonely and sad, and you'll feel better in no time -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+	<div class="row">
+
+		<div class="col">
+			<h4>Happiest Locations (<%= @contacts.count %>)</h2>
+	<!-- These locations are associated with at least 70% or higher positive emotions.  Hang out in these places more often -->			
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+				<div class="col">
+			<h4>Avoid or Fix These Locations (<%= @contacts.count %>)</h2>
+	<!-- Places that have 70% or higher negative emotions -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+				<div class="col">
+			<h4>Huge Let Downs (<%= @contacts.count %>)</h2>
+	<!-- People who have consistently let you down -->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+
+				<div class="col">
+			<h4>Takers & Leeches (<%= @contacts.count %>)</h2>
+	<!-- People who consistently take from you and rarely show any gratitude-->
+				<table class="table">
+				<thead>
+			    <tr>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @recently_added_contacts.each do |contact| %>
+			      <tr>
+			        <td><%= link_to contact.full_name, contact %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
 
 
 	<p>ADMIN:</p> 
