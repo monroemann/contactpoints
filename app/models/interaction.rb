@@ -28,6 +28,8 @@ class Interaction < ApplicationRecord
 
   def update_points
     puts " ******* Updating points for interaction #{id} *********"
+
+    points.destroy_all
     points.create(
       interaction: self,
       contact_id: contact_id,
@@ -74,17 +76,17 @@ class Interaction < ApplicationRecord
     when '45 min' then 7
     when '1 hour' then 9
     when '2 hour' then 11
-    when 'Half Day Get Together' then 13
-    when 'Full Day Get Together' then 15
+    when 'Half Day' then 13
+    when 'Full Day' then 15
     when 'Overnight, Two-Day Adventure, or Weekend' then 17
-    when 'Full On Vacation' then 20
+    when 'Full-On Vacation' then 20
     else 0
     end
   end
 
   def calculate_points_for_emotional_reactions
 
-    positive_emotions = ['Happy', 'Excited', 'Trusting', 'Inspired', 'Motivated', 
+    positive_emotions = ['Happy', 'Excited', 'Calm', 'Trusting', 'Inspired', 'Motivated', 
                           'Smiling', 'Laughing', 'Optimistic', 'Creative', 'Energized', 
                           'Joyful', 'Values', 'Appreciated', 'Grateful', 'Appreciative', 
                           'Loved', 'Desired', 'Special', 'Smart', 'Intellectual', 'Problems Solved', 
@@ -110,7 +112,7 @@ class Interaction < ApplicationRecord
   end
 
   def calculate_points_for_who_initiated_contact
-    you_initiated_contact == 'true' ? 1 : 3
+    you_initiated_contact == true ? 1 : 3
   end
 
 end
