@@ -32,8 +32,26 @@ class PagesController < ApplicationController
 		# FIX
 		@needs_attention = @contacts		
 
-		# FIX
-		@true_best_friends = @contacts
+		# DONE
+		# All those whose points are above 200, who you've known for more than two years, 
+		# and who have reached out to your within the last two years at least 5 times 
+		# in a social manner and who gives you 90% or more positive than negative emotions
+	@true_best_friends = current_user.contacts
+	  .joins(:interactions)
+	  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+	  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+	  .where("contacts.points > ?", 200)
+	  .where("contacts.date_first_met <= ?", 2.years.ago)
+	  .where("interactions.date >= ?", 2.years.ago)
+	  .group("contacts.id")  # Modify the group clause
+	  .having("COUNT(CASE WHEN interactions.i_initiated = false AND emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.9 * COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
+	  .having("COUNT(CASE WHEN interactions.i_initiated = false THEN 1 ELSE NULL END) >= 5")
+
+  @true_best_friends_count = @true_best_friends.count
+
+		  puts "@true_best_friends: #{@true_best_friends.inspect}"
+		  puts "@true_best_friends_count: #{@true_best_friends_count.inspect}"
+
 
 		# FIX
 		@best_friends = @contacts

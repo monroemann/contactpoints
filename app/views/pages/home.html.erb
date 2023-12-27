@@ -7,7 +7,7 @@
 			<h4>Recommended Next To Contact</h2>
 				<!-- 1 with zero points, 1 recently_added_contact, 1 whose points have dropped recently -->
 				<!-- 1 you haven't talked to in six months -->
-				<!-- To begin with, it can be just 5 random contacts, that you have not contacted in the last 6 months, that you have not skipped in last month.  Then add more from there -->
+				<!-- To begin with, it can be just 5 random contacts, that you have not contacted in the last 6 months (or , that you have not skipped in last month.  Then add more from there -->
 				<!-- Need to add a 'skip' button that skips for 1 month -->
 				<table class="table">
 				<thead>
@@ -162,9 +162,7 @@
 		</div>
 
 		<div class="col">
-			<h4>True Best Friends (<%= @true_best_friends.count %>)</h2>
-<!-- All those whose points are above 200, who you've known for more than two years, and who has reached out to your within the last two years at least 5 times in a social manner and who gives you 90% or more positive than negative emotions -->
-
+		<h4>True Best Friends (<%= @true_best_friends.any? ? @true_best_friends_count.count : 0 %>)</h4>
 				<table class="table">
 				<thead>
 			    <tr>
