@@ -19,9 +19,9 @@
           <% @contact_types.each do |contact_type| %>
             <tr>
               <td><%= contact_type.name %></td>
-              <td><%= link_to 'Show', contact_type %></td>
-              <td><%= link_to 'Edit', edit_contact_type_path(contact_type) %></td>
-              <td><%= link_to 'Destroy', contact_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'S', contact_type %></td>
+              <td><%= link_to 'E', edit_contact_type_path(contact_type) %></td>
+              <td><%= link_to 'D', contact_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
