@@ -54,7 +54,7 @@
 		</div>
 
 		<div class="col">
-			<h4>Going Down (<%= @going_down.count %>)</h2>
+			<h4>Going Down (<%= @going_down.compact.count %>)</h2>
 				<!-- All those whose points have gone down recently, most points lost at top -->
 				<table class="table">
 				<thead>
@@ -64,11 +64,16 @@
 			  </thead>
 
 			  <tbody>
-			    <% @going_down.each do |contact| %>
-			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
-			      </tr>
-			    <% end %>
+					<% if @going_down %>
+					  <% @going_down.compact.each do |contact| %>
+					    <% if contact %>
+					      <tr>
+					        <td><%= link_to contact.full_name, contact %></td>
+					      </tr>
+					    <% end %>
+					  <% end %>
+					<% end %>
+
 			  </tbody>
 			</table>
 		</div>	
