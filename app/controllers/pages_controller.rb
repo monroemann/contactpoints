@@ -17,7 +17,12 @@ class PagesController < ApplicationController
 
 		@going_down = @contacts
 
-		@at_zero = @contacts		
+		contacts_with_zero_points = current_user.contacts.select do |contact|
+		  contact.total_points == 0
+		end
+
+		@at_zero = contacts_with_zero_points.shuffle.take(5)
+
 
 		@holding_steady = @contacts
 
