@@ -75,7 +75,7 @@ class Interaction < ApplicationRecord
     when '30 min' then 5
     when '45 min' then 7
     when '1 hour' then 9
-    when '2 hour' then 11
+    when '2 hours' then 11
     when 'Half Day' then 13
     when 'Full Day' then 15
     when 'Overnight, Two-Day Adventure, or Weekend' then 17

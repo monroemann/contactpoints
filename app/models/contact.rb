@@ -55,6 +55,11 @@ class Contact < ApplicationRecord
     interactions.sum(&:total_points)
   end
 
+  def update_points
+    new_points = total_points
+    update_columns(points: new_points)
+  end
+
   def self.ransackable_associations(auth_object = nil)
     ["category", "contact_groupings", "contact_groups", "contact_categories", 
       "contact_types", "contact_typings", "user", "points"]
