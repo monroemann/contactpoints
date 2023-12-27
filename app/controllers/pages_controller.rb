@@ -36,6 +36,8 @@ class PagesController < ApplicationController
 		# All those whose points are above 200, who you've known for more than two years, 
 		# and who have reached out to your within the last two years at least 5 times 
 		# in a social manner and who gives you 90% or more positive than negative emotions
+
+		# NEED TO ADD: And... who you've interacted with in any way over the last three months
 		@true_best_friends = current_user.contacts
 		  .joins(:interactions)
 		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
@@ -56,6 +58,8 @@ class PagesController < ApplicationController
 		# All those whose points are above 100, who you've known for more than one year, 
 		# who have reached out to you within the last year at least 3 times in a social manner, 
 		# and who gives you at least 80% or more positive than negative emotions
+
+		# NEED TO ADD: And... who you've interacted with in any way over the last six months
 		@best_friends = current_user.contacts
 			.joins(:interactions)
 		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
@@ -73,8 +77,26 @@ class PagesController < ApplicationController
 			puts @best_friends.to_sql
 			 
 
-		# FIX
-		@friends = @contacts
+		#All those whose points are above 50, who you've known for more than six months, who has 
+		# reached out to you within the last six months at least once in a social manner, and 
+		# who gives you at least 70% or more positive than negative emotions
+
+		# NEED TO ADD: And... who you've interacted with in any way over the last nine months
+		# Maybe just change the interaction.date query to 2 years here, 1 year above, 6 months 
+		# for TBFs.  That may work.
+		@friends = current_user.contacts
+			.joins(:interactions)
+		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+		  .where("contacts.points > ?", 50)
+		  .where("contacts.date_first_met <= ?", 6.months.ago)
+		  .where("interactions.date >= ?", 6.months.ago)
+		  .group("contacts.id")  # Modify the group clause
+			.having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.7 * 
+				COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
+			.having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 1")
+
+		@friends_count = @friends.count
 
 		# FIX
 		@acquaintances = @contacts
@@ -108,6 +130,9 @@ class PagesController < ApplicationController
 
 		# FIX
 		@takers_and_leeches = @contacts
+
+		# Add
+		# @fairweather_friends = 
 		
 	end
 
