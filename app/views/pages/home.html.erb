@@ -2,7 +2,7 @@
 
 	<br>
 
-	<div class="row">
+	<div class="row mb-4">
 		<div class="col">
 			<h4>Recommended Next To Contact</h4>
 				<!-- 1 with zero points, 1 recently_added_contact, 1 whose points have dropped recently -->
@@ -31,10 +31,12 @@
 			  </tbody>
 			</table>
 		</div>
+	</div>
 	
-	<div class="row">
+	<div class="row mb-4">
 		<div class="col">
-			<h4>Going Up (<%= @going_up.count %>)</h4>
+			<div class="card p-4">
+			<h5>Going Up (<%= @going_up.count %>)</h5>
 				<!-- All those whose points have gone up recently, most poits gained at top -->
 			  <table class="table">
 				  <thead>
@@ -54,62 +56,68 @@
 				    <% end %>
 				  </tbody>
 				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Going Down (<%= @going_down.compact.count %>)</h4>
-				<!-- All those whose points have gone down recently, most points lost at top -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">
+				<h5>Going Down (<%= @going_down.compact.count %>)</h5>
+					<!-- All those whose points have gone down recently, most points lost at top -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-					<% if @going_down %>
-					  <% @going_down.compact.first(5).each do |contact| %>
-					    <% if contact %>
-					      <tr>
-					        <td style="display: flex; justify-content: space-between;">
-					        	<%= link_to contact.full_name, contact %>
-					        	<%= contact[:points] %>
-					        </td>
-					      </tr>
-					    <% end %>
-					  <% end %>
-					<% end %>
+				  <tbody>
+						<% if @going_down %>
+						  <% @going_down.compact.first(5).each do |contact| %>
+						    <% if contact %>
+						      <tr>
+						        <td style="display: flex; justify-content: space-between;">
+						        	<%= link_to contact.full_name, contact %>
+						        	<%= contact[:points] %>
+						        </td>
+						      </tr>
+						    <% end %>
+						  <% end %>
+						<% end %>
 
-			  </tbody>
-			</table>
+				  </tbody>
+				</table>
+			</div>	
 		</div>	
 
 		<div class="col">
-			<h4>At Zero (<%= @at_zero.count %>)</h4>
-				<!-- All contacts with zero points -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">
+				<h5>At Zero (<%= @at_zero.count %>)</h5>
+					<!-- All contacts with zero points -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @at_zero.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @at_zero.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Holding Steady (<%= @holding_steady.count %>)</h4>
-<!-- All those whose points have stayed at same value for last month -->
+			<div class="card p-4">			
+				<h5>Holding Steady (<%= @holding_steady.count %>)</h5>
+	<!-- All those whose points have stayed at same value for last month -->
 				<table class="table">
 					<thead>
 				    <tr>
@@ -130,368 +138,399 @@
 				</table>
 			</div>
 		</div>
+	</div>	
 
-	<div class="row">		
+	<div class="row mb-4">		
 		<div class="col">
-			<h4>Needs Attention (<%= @needs_attention.count %>)</h4>
-				<!-- All those whose points have been going down consistently, or have been at zero, for more than six months -->				
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Needs Attention (<%= @needs_attention.count %>)</h5>
+					<!-- All those whose points have been going down consistently, or have been at zero, for more than six months -->				
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @needs_attention.first(5).each do |contact| %>
-			      <tr>
-							<td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @needs_attention.first(5).each do |contact| %>
+				      <tr>
+								<td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Recently Added (<%= @recently_added_contacts.count %>)</h4>
-<!-- All those who have been added within the last 3 months -->
+			<div class="card p-4">			
+				<h5>Recently Added (<%= @recently_added_contacts.count %>)</h5>
+	<!-- All those who have been added within the last 3 months -->
 
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @recently_added_contacts.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @recently_added_contacts.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-		<h4>True Best Friends (<%= @true_best_friends.any? ? @true_best_friends_count.count : 0 %>)</h4>
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>True Best Friends (<%= @true_best_friends.any? ? @true_best_friends_count.count : 0 %>)</h5>
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @true_best_friends.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @true_best_friends.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>		
 
 		<div class="col">
-			<h4>Best Friends (<%= @best_friends_count.any? ? @best_friends_count.count : 0 %>)</h4>
-
+			<div class="card p-4">			
+				<h5>Best Friends (<%= @best_friends_count.any? ? @best_friends_count.count : 0 %>)</h5>
 				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @best_friends.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @best_friends.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row mb-4">
 		<div class="col">
-			<h4>Best Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h4>
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Best Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h5>
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @friends.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @friends.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Acquaintances (<%= @acquaintances_count.any? ? @acquaintances_count.count : 0 %>)</h4>
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Acquaintances (<%= @acquaintances_count.any? ? @acquaintances_count.count : 0 %>)</h5>
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @acquaintances.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @acquaintances.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Close to Zero (<%= @close_to_zero.count %>)</h4>
-		
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Close to Zero (<%= @close_to_zero.count %>)</h5>	
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @close_to_zero.first(5).each do |contact| %>
-						<tr>
-						  <td style="display: flex; justify-content: space-between;">
-						    <%= link_to "#{contact.full_name}:", contact %> 
-						    <%= contact[:points] %>
-						  </td>
-						</tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @close_to_zero.first(5).each do |contact| %>
+							<tr>
+							  <td style="display: flex; justify-content: space-between;">
+							    <%= link_to "#{contact.full_name}:", contact %> 
+							    <%= contact[:points] %>
+							  </td>
+							</tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>When Sad, Call (<%= @when_sad_call_count.count %>)</h4>
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>When Sad, Call (<%= @when_sad_call_count.count %>)</h5>
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @when_sad_call.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @when_sad_call.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row mb-4">
 		<div class="col">
-			<h4>Limit Your Time With (<%= @limit_your_time_with.count %>)</h4>
-	<!-- All those with whom you are at least an acquiantance, who leave you with 70% or more negative emotions. -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Limit Your Time With (<%= @limit_your_time_with.count %>)</h5>
+		<!-- All those with whom you are at least an acquiantance, who leave you with 70% or more negative emotions. -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @limit_your_time_with.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-		</div>
-
-		<div class="col">
-			<h4>Hang Out More With (<%= @hang_out_more_with.count %>)</h4>
-	<!-- All those whose points are positive, who consistently leave you with 90% positive emotions.  -->			
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
-
-			  <tbody>
-			    <% @hang_out_more_with.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-		</div>
-
-	<div class="col">
-			<h4>Your Future Is (<%= @your_future_is.count %>)</h4>
-		<!-- You spend the most time with these people based on minutes.  These people are your future. -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
-
-			  <tbody>
-			    <% @your_future_is.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @limit_your_time_with.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
 		<div class="col">
-			<h4>Friendliest Places (<%= @friendliest_places.count %>)</h4>
-	<!-- Places that have the most friends, BFs, and TBFs.  Go to these places when lonely and sad, and you'll feel better in no time -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">			
+				<h5>Hang Out More With (<%= @hang_out_more_with.count %>)</h5>
+		<!-- All those whose points are positive, who consistently leave you with 90% positive emotions.  -->			
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @friendliest_places.first(5).each do |location| %>
-			      <tr>
-			        <td><%= link_to location.name, location %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @hang_out_more_with.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
-
-	<div class="row">
 
 		<div class="col">
-			<h4>Happiest Locations (<%= @happiest_locations.count %>)</h4>
-	<!-- These locations are associated with at least 70% or higher positive emotions.  Hang out in these places more often -->			
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+			<div class="card p-4">
+				<h5>Your Future Is (<%= @your_future_is.count %>)</h5>
+			<!-- You spend the most time with these people based on minutes.  These people are your future. -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @happiest_locations.first(5).each do |location| %>
-			      <tr>
-			        <td><%= link_to location.name, location %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @your_future_is.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
-				<div class="col">
-			<h4>Avoid or Fix These Locations (<%= @avoid_or_fix_locations.count %>)</h4>
-	<!-- Places that have 70% or higher negative emotions -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+		<div class="col">
+			<div class="card p-4">			
+				<h5>Friendliest Places (<%= @friendliest_places.count %>)</h5>
+		<!-- Places that have the most friends, BFs, and TBFs.  Go to these places when lonely and sad, and you'll feel better in no time -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @avoid_or_fix_locations.first(5).each do |location| %>
-			      <tr>
-			        <td><%= link_to location.name, location %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @friendliest_places.first(5).each do |location| %>
+				      <tr>
+				        <td><%= link_to location.name, location %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-4">
+		<div class="col">
+			<div class="card p-4">			
+				<h5>Happiest Locations (<%= @happiest_locations.count %>)</h5>
+		<!-- These locations are associated with at least 70% or higher positive emotions.  Hang out in these places more often -->			
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    <% @happiest_locations.first(5).each do |location| %>
+				      <tr>
+				        <td><%= link_to location.name, location %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
-				<div class="col">
-			<h4>Huge Let Downs (<%= @huge_let_downs.count %>)</h4>
-	<!-- People who have consistently let you down -->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+		<div class="col">
+			<div class="card p-4">			
+				<h5>Avoid or Fix These Locations (<%= @avoid_or_fix_locations.count %>)</h5>
+		<!-- Places that have 70% or higher negative emotions -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @huge_let_downs.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @avoid_or_fix_locations.first(5).each do |location| %>
+				      <tr>
+				        <td><%= link_to location.name, location %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 
-				<div class="col">
-			<h4>Takers & Leeches (<%= @takers_and_leeches.count %>)</h4>
-	<!-- People who consistently take from you and rarely show any gratitude-->
-				<table class="table">
-				<thead>
-			    <tr>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
+		<div class="col">
+			<div class="card p-4">			
+				<h5>Huge Let Downs (<%= @huge_let_downs.count %>)</h5>
+		<!-- People who have consistently let you down -->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
 
-			  <tbody>
-			    <% @takers_and_leeches.first(5).each do |contact| %>
-			      <tr>
-			        <td style="display: flex; justify-content: space-between;">
-			        	<%= link_to contact.full_name, contact %>
-			        	<%= contact[:points] %>
-			        </td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
+				  <tbody>
+				    <% @huge_let_downs.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="col">
+			<div class="card p-4">			
+				<h5>Takers & Leeches (<%= @takers_and_leeches.count %>)</h5>
+		<!-- People who consistently take from you and rarely show any gratitude-->
+					<table class="table">
+					<thead>
+				    <tr>
+				      <th>Name</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    <% @takers_and_leeches.first(5).each do |contact| %>
+				      <tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
