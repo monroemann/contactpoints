@@ -44,10 +44,13 @@
 				  </thead>
 
 				  <tbody>
-				    <% @going_up.each do |contact| %>
+				    <% @going_up.first(5).each do |contact| %>
 				      <tr>
-				        <td><%= link_to contact.full_name, contact %></td>
-				      </tr>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
+				      </tr>			       
 				    <% end %>
 				  </tbody>
 				</table>
@@ -65,10 +68,13 @@
 
 			  <tbody>
 					<% if @going_down %>
-					  <% @going_down.compact.each do |contact| %>
+					  <% @going_down.compact.first(5).each do |contact| %>
 					    <% if contact %>
 					      <tr>
-					        <td><%= link_to contact.full_name, contact %></td>
+					        <td style="display: flex; justify-content: space-between;">
+					        	<%= link_to contact.full_name, contact %>
+					        	<%= contact[:points] %>
+					        </td>
 					      </tr>
 					    <% end %>
 					  <% end %>
@@ -89,9 +95,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @at_zero.each do |contact| %>
+			    <% @at_zero.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -109,9 +118,12 @@
 				  </thead>
 
 				  <tbody>
-				    <% @holding_steady.each do |contact| %>
+				    <% @holding_steady.first(5).each do |contact| %>
 				      <tr>
-				        <td><%= link_to contact.full_name, contact %></td>
+				        <td style="display: flex; justify-content: space-between;">
+				        	<%= link_to contact.full_name, contact %>
+				        	<%= contact[:points] %>
+				        </td>
 				      </tr>
 				    <% end %>
 				  </tbody>
@@ -131,9 +143,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @needs_attention.each do |contact| %>
+			    <% @needs_attention.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+							<td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -152,9 +167,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @recently_added_contacts.each do |contact| %>
+			    <% @recently_added_contacts.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -171,9 +189,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @true_best_friends.each do |contact| %>
+			    <% @true_best_friends.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -191,9 +212,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @best_friends.each do |contact| %>
+			    <% @best_friends.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -212,9 +236,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @friends.each do |contact| %>
+			    <% @friends.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -231,9 +258,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @acquaintances.each do |contact| %>
+			    <% @acquaintances.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -242,7 +272,7 @@
 
 		<div class="col">
 			<h4>Close to Zero (<%= @close_to_zero.count %>)</h4>
-	<!-- All those whose points that have been going down over the last year, and have 25 points or less -->			
+		
 				<table class="table">
 				<thead>
 			    <tr>
@@ -251,10 +281,13 @@
 			  </thead>
 
 			  <tbody>
-			    <% @close_to_zero.each do |contact| %>
-			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
-			      </tr>
+			    <% @close_to_zero.first(5).each do |contact| %>
+						<tr>
+						  <td style="display: flex; justify-content: space-between;">
+						    <%= link_to "#{contact.full_name}:", contact %> 
+						    <%= contact[:points] %>
+						  </td>
+						</tr>
 			    <% end %>
 			  </tbody>
 			</table>
@@ -271,9 +304,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @when_sad_call.each do |contact| %>
+			    <% @when_sad_call.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -293,9 +329,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @limit_your_time_with.each do |contact| %>
+			    <% @limit_your_time_with.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -313,9 +352,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @hang_out_more_with.each do |contact| %>
+			    <% @hang_out_more_with.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -333,9 +375,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @your_future_is.each do |contact| %>
+			    <% @your_future_is.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -353,7 +398,7 @@
 			  </thead>
 
 			  <tbody>
-			    <% @friendliest_places.each do |location| %>
+			    <% @friendliest_places.first(5).each do |location| %>
 			      <tr>
 			        <td><%= link_to location.name, location %></td>
 			      </tr>
@@ -375,7 +420,7 @@
 			  </thead>
 
 			  <tbody>
-			    <% @happiest_locations.each do |location| %>
+			    <% @happiest_locations.first(5).each do |location| %>
 			      <tr>
 			        <td><%= link_to location.name, location %></td>
 			      </tr>
@@ -395,7 +440,7 @@
 			  </thead>
 
 			  <tbody>
-			    <% @avoid_or_fix_locations.each do |location| %>
+			    <% @avoid_or_fix_locations.first(5).each do |location| %>
 			      <tr>
 			        <td><%= link_to location.name, location %></td>
 			      </tr>
@@ -415,9 +460,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @huge_let_downs.each do |contact| %>
+			    <% @huge_let_downs.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>
@@ -435,9 +483,12 @@
 			  </thead>
 
 			  <tbody>
-			    <% @takers_and_leeches.each do |contact| %>
+			    <% @takers_and_leeches.first(5).each do |contact| %>
 			      <tr>
-			        <td><%= link_to contact.full_name, contact %></td>
+			        <td style="display: flex; justify-content: space-between;">
+			        	<%= link_to contact.full_name, contact %>
+			        	<%= contact[:points] %>
+			        </td>
 			      </tr>
 			    <% end %>
 			  </tbody>

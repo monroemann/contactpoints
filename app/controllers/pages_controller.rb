@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 		# DONE
 		@recently_added_contacts = current_user.contacts
 																					.order(created_at: :desc)
-																					.limit(5)
+
 		# FIX
 		@next_to_contact = @contacts
 
@@ -128,8 +128,12 @@ class PagesController < ApplicationController
 	
 		@acquaintances_count = @acquaintances.count
 
-		# FIX
-		@close_to_zero = @contacts
+		# All those [whose points that have been going down over the last year], and have 25 points 
+		# or less
+		@close_to_zero = current_user.contacts
+		  .where("contacts.points < ? AND contacts.points > ?", 25, 0)
+
+		@close_to_zero_count = @close_to_zero.count
 
 		# FIX
 		@when_sad_call = @contacts
