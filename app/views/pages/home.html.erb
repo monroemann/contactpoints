@@ -203,8 +203,7 @@
 
 	<div class="row">
 		<div class="col">
-			<h4>Friends (<%= @friends.count %>)</h4>
-		<!-- All those whose points are above 50, who you've known for more than six months, and who has reached out to your within the last six months at least once in a social manner, and who gives you at least 70% or more positive than negative emotions -->
+			<h4>Best Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h4>
 				<table class="table">
 				<thead>
 			    <tr>
