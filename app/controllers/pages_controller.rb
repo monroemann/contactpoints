@@ -135,8 +135,22 @@ class PagesController < ApplicationController
 
 		@close_to_zero_count = @close_to_zero.count
 
-		# FIX
-		@when_sad_call = @contacts
+		# All those who are at least a friend, who over the last year has consistently listened to you,
+		# cheered you up, or solved problems for you, and do not have more than 30% negative emotions
+		# in the previous 1-year period.
+		@when_sad_call = current_user.contacts
+		  .joins(:interactions)
+		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+		  .where("contacts.points > ?", 50)
+		  .where("contacts.date_first_met <= ?", 1.year.ago)
+		  .where("interactions.date >= ?", 1.year.ago)
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name IN ('Listened To', 'Cheered Up', 'Problems Solved') THEN 1 ELSE NULL END) >= 0.5 * COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END)")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END) <= 0.3 * COUNT(*)")
+		  .distinct
+
+		@when_sad_call_count = @when_sad_call.count
 
 		# FIX
 		@limit_your_time_with = @contacts

@@ -90,7 +90,7 @@ class Interaction < ApplicationRecord
                           'Smiling', 'Laughing', 'Optimistic', 'Creative', 'Energized', 
                           'Joyful', 'Values', 'Appreciated', 'Grateful', 'Appreciative', 
                           'Loved', 'Desired', 'Special', 'Smart', 'Intellectual', 'Problems Solved', 
-                          'Like a Winner', 'Shazam']
+                          'Like a Winner', 'Shazam', 'Listened To', 'Cheered Up']
     
     negative_emotions = ['Angry', 'Disappointed', 'Sad', 'Frustrated', 'Let Down', 'Abandoned', 
                         'Confused', 'Pessimistic', 'Depressed', 'Hopeless',  'Problems Created', 
