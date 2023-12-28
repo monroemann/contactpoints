@@ -143,8 +143,7 @@
 	<div class="row mb-4">		
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Needs Attention (<%= @needs_attention.count %>)</h5>
-					<!-- All those whose points have been going down consistently, or have been at zero, for more than six months -->				
+				<h5>Needs Attention (<%= @needs_attention.count %>)</h5>	
 					<table class="table">
 					<thead>
 				    <tr>
@@ -244,7 +243,7 @@
 	<div class="row mb-4">
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Best Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h5>
+				<h5>Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
 				    <tr>
@@ -342,8 +341,7 @@
 	<div class="row mb-4">
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Limit Your Time With (<%= @limit_your_time_with.count %>)</h5>
-		<!-- All those with whom you are at least an acquiantance, who leave you with 70% or more negative emotions. -->
+				<h5>Limit Your Time With (<%= @limit_your_time_with.any? ? @limit_your_time_with_count.count : 0 %>)</h5>				
 					<table class="table">
 					<thead>
 				    <tr>

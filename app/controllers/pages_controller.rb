@@ -13,10 +13,10 @@ class PagesController < ApplicationController
 		# FIX
 		@next_to_contact = @contacts
 
-		# FIX
+		# FIX OR REMOVE
 		@going_up = @contacts
 
-		# FIX
+		# FIX OR REMOVE
 		@going_down = current_user.contacts.map { |contact| 
 			points_going_down?(contact) }.flatten.uniq
 
@@ -26,12 +26,13 @@ class PagesController < ApplicationController
 		end
 		@at_zero = contacts_with_zero_points.shuffle.take(5)
 
-		# FIX
+		# FIX OR REMOVE
 		@holding_steady = @contacts
 
-		# FIX
-		@needs_attention = @contacts		
-
+		# Fix or remove.  Perhaps not necessary.
+		# All those whose points have been below 25 for more than six months
+		@needs_attention = current_user.contacts
+		 
 		# TRUE BEST FRIENDS
 		# All those whose points are above 200, who you've known for more than two years, 
 		# and who have reached out to you within the last 2 years at least 5 times 
@@ -152,8 +153,18 @@ class PagesController < ApplicationController
 
 		@when_sad_call_count = @when_sad_call.count
 
-		# FIX
-		@limit_your_time_with = @contacts
+		# All those with at least 10 points who leave you with 60% or more negative emotions.
+		@limit_your_time_with = current_user.contacts
+		  .joins(:interactions)
+		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+		  .where("contacts.points > ?", 10)
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END) / COUNT(*) >= 0.6")
+		  .having("COUNT(*) >= 3")
+
+		@limit_your_time_with_count = @limit_your_time_with.count
+
 
 		# FIX
 		@hang_out_more_with = @contacts
