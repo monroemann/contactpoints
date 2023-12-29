@@ -415,8 +415,7 @@
 
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Friendliest Places (<%= @friendliest_places.count %>)</h5>
-		<!-- Places that have the most friends, BFs, and TBFs.  Go to these places when lonely and sad, and you'll feel better in no time -->
+				<h5>Friendliest Places (<%= @friendliest_places.any? ? @friendliest_places_count : 0 %>)</h5>
 					<table class="table">
 					<thead>
 				    <tr>
@@ -438,9 +437,8 @@
 
 	<div class="row mb-4">
 		<div class="col">
-			<div class="card p-4">			
-				<h5>Happiest Locations (<%= @happiest_locations.count %>)</h5>
-		<!-- These locations are associated with at least 70% or higher positive emotions.  Hang out in these places more often -->			
+			<div class="card p-4">		
+			<h5>Happiest Locations (<%= @happiest_locations.any? ? @happiest_locations_count : 0 %>)</h5>
 					<table class="table">
 					<thead>
 				    <tr>
@@ -508,8 +506,7 @@
 
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Takers & Leeches (<%= @takers_and_leeches.count %>)</h5>
-		<!-- People who consistently take from you and rarely show any gratitude-->
+				<h5>Takers & Leeches (<%= @takers_and_leeches.any? ? @takers_and_leeches_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
 				    <tr>

@@ -185,11 +185,52 @@ class PagesController < ApplicationController
 		# FIX
 		@your_future_is = @contacts
 
-		# FIX
-		@friendliest_places = current_user.locations.limit(5)
+		# FRIENDLIEST PLACES
+		# Where you have the most TBFs, BFs, and Fs
 
-		# FIX
-		@happiest_locations = current_user.locations.limit(5)
+		# Count interactions for each contact category (true_best_friends, best_friends, friends)
+		true_best_friends_counts = Interaction.joins(:contact)
+		  .where(contacts: { id: @true_best_friends })
+		  .group("interactions.location_id")
+		  .count
+
+		best_friends_counts = Interaction.joins(:contact)
+		  .where(contacts: { id: @best_friends })
+		  .group("interactions.location_id")
+		  .count
+
+		friends_counts = Interaction.joins(:contact)
+		  .where(contacts: { id: @friends })
+		  .group("interactions.location_id")
+		  .count
+
+		# Combine the counts for all categories
+		all_counts = true_best_friends_counts.merge(best_friends_counts) { |_, true_best, best| true_best + best }
+		                                  .merge(friends_counts) { |_, all_counts, friends| all_counts + friends }
+
+		# Find the location ids with the highest counts
+		max_counts = all_counts.values.max(30) # Get the top 30 highest counts
+		top_location_ids = all_counts.select { |_, count| max_counts.include?(count) }.keys
+
+		# Retrieve the locations with the highest counts
+		@friendliest_places = Location.where(id: top_location_ids)
+
+		@friendliest_places_count = @friendliest_places.count
+
+		# HAPPIEST LOCATIONS
+		# Where your emotions are 70% or more positive
+		@happiest_locations = current_user.locations
+		  .joins(interactions: [:emotional_reactions])
+		  .where("interactions.user_id = ?", current_user.id)
+		  .group("locations.id")
+		  .order(
+		    Arel.sql("SUM(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE 0 END) DESC"),
+		    Arel.sql("locations.name DESC")  # Ensure both criteria are ordered in descending order
+		  )
+		  .first(30)
+
+
+		@happiest_locations_count = @happiest_locations.count
 
 		# FIX
 		@avoid_or_fix_locations = current_user.locations.limit(5)
@@ -204,16 +245,33 @@ class PagesController < ApplicationController
   .where("contacts.date_first_met <= ?", 3.months.ago)
   .where("interactions.date >= ?", 10.years.ago)
   .group("contacts.id")
-  .having("SUM(CASE WHEN emotional_reactions.name IN ('Let Down', 'Abandoned') THEN 1 ELSE 0 END) >= 0.1 * COUNT(*)")  # At least 10% of total interactions are 'Let Down' or 'Abandoned'
+  .having("SUM(CASE WHEN emotional_reactions.name IN ('Let Down', 'Abandoned', 'Disappointed') THEN 1 ELSE 0 END) >= 0.1 * COUNT(*)")  # At least 10% of total interactions are 'Let Down' or 'Abandoned'
+  .having("COUNT(*) >= 3")
+  .distinct
+
+		@huge_let_downs_count = @huge_let_downs.count
+
+		
+		# TAKERS AND LEECHES
+		# People who take from you and don't show gratitude
+		# All those who: Had their first meeting more than 3 months ago; had interactions within 
+		# the last 10 years, at least 10% of the total interactions for each contact have emotional 
+		# reactions with names 'Let Down' or 'Abandoned', and has had at least 3 interactions.
+		@takers_and_leeches = current_user.contacts
+  .joins(:interactions)
+  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+  .where("contacts.date_first_met <= ?", 3.months.ago)
+  .where("interactions.date >= ?", 10.years.ago)
+  .group("contacts.id")
+  .having("SUM(CASE WHEN emotional_reactions.name IN ('Angry', 'Emotionally Tired', 'Depleted', 
+  'Empty', 'Bitter', 'Used', '') THEN 1 ELSE 0 END) >= 0.1 * COUNT(*)")  # At least 10% of total interactions include these
   .having("COUNT(*) >= 3")
   .distinct
 
 
 
-		@huge_let_downs_count = @huge_let_downs.count
-
-		# FIX
-		@takers_and_leeches = @contacts
+		@takers_and_leeches_count = @takers_and_leeches.count
 
 		# Add
 		# @fairweather_friends = 
