@@ -154,7 +154,8 @@ class PagesController < ApplicationController
 
 		@when_sad_call_count = @when_sad_call.count
 
-		# All those with at least 10 points who leave you with 60% or more negative emotions.
+		# All those with at least 10 points and at least 3 interactions who leave you with 
+		# 60% or more negative emotions.
 		@limit_your_time_with = current_user.contacts
 		  .joins(:interactions)
 		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
@@ -167,8 +168,19 @@ class PagesController < ApplicationController
 		@limit_your_time_with_count = @limit_your_time_with.count
 
 
-		# FIX
-		@hang_out_more_with = @contacts
+		# All those with at least 10 points and at least 3 interactions who leave you with 
+		# 80% or more positive emotions
+		@hang_out_more_with = current_user.contacts
+		  .joins(:interactions)
+		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+		  .where("contacts.points > ?", 10)
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) / COUNT(*) >= 0.8")
+		  .having("COUNT(*) > 3")
+
+
+		@hang_out_more_with_count = @hang_out_more_with.count
 
 		# FIX
 		@your_future_is = @contacts

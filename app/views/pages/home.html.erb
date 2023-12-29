@@ -365,7 +365,7 @@
 
 		<div class="col">
 			<div class="card p-4">			
-				<h5>Hang Out More With (<%= @hang_out_more_with.count %>)</h5>
+				<h5>Hang Out More With (<%= @hang_out_more_with.any? ? @hang_out_more_with_count.count : 0 %>)</h5>
 		<!-- All those whose points are positive, who consistently leave you with 90% positive emotions.  -->			
 					<table class="table">
 					<thead>
@@ -540,5 +540,8 @@
 	<p><%= link_to "Interaction Category Types", interaction_categories_path %></p>
 	<p><%= link_to "Interaction Type", interaction_types_path %></p>
 	<p><%= link_to "Emotional Reactions", emotional_reactions_path %></p>
+	<p><%= link_to "Last Known Cities", last_known_cities_path %></p>
+	<p><%= link_to "Last Known Countries", last_known_countries_path %></p>
+
 
 </div>
