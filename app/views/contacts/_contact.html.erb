@@ -30,9 +30,14 @@
           </p>
 
           <p class="col-md-3">
-            <strong>Last known city:</strong>
-            <%= contact.last_known_city %>
+            <strong>Last known cities:</strong>
+            <% if contact.last_known_cities.any? %>
+              <%= contact.last_known_cities.map(&:name).join(', ') %>
+            <% else %>
+              No last known cities
+            <% end %>
           </p>
+
 
           <p class="col-md-3">
             <strong>Mobile phone 1:</strong>
