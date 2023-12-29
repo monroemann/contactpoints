@@ -19,9 +19,8 @@ class Contact < ApplicationRecord
   has_many :contact_countries, dependent: :destroy
   has_many :last_known_countries, through: :contact_countries
 
-  has_one :contact_city, dependent: :destroy
-  has_one :last_known_city, through: :contact_city
-  accepts_nested_attributes_for :contact_city, allow_destroy: true
+  has_many :contact_cities, dependent: :destroy
+  has_many :last_known_cities, through: :contact_cities
 
 
   #Automatically adds each new contact as Recently Added

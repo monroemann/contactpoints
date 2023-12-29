@@ -21,18 +21,23 @@
           </p>          
 
           <p class="col-md-3">
-            <strong>Last known country:</strong>
-              <% if contact.contact_countries.any? %>
-                <%= contact.contact_countries.first.name %>
-              <% else %>
-                No last known country
-              <% end %>
+            <strong>Last known countries:</strong>
+            <% if contact.last_known_countries.any? %>
+              <%= contact.last_known_countries.map(&:name).join(', ') %>
+            <% else %>
+              No last known countries
+            <% end %>
           </p>
 
           <p class="col-md-3">
-            <strong>Last known city:</strong>
-            <%= contact.last_known_city %>
+            <strong>Last known cities:</strong>
+            <% if contact.last_known_cities.any? %>
+              <%= contact.last_known_cities.map(&:name).join(', ') %>
+            <% else %>
+              No last known cities
+            <% end %>
           </p>
+
 
           <p class="col-md-3">
             <strong>Mobile phone 1:</strong>

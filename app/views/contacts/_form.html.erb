@@ -30,28 +30,36 @@
           </div>          
 
           <div>
-            <p>Last Known Country?</p>
-              <%= form.select :last_known_country_id, @last_known_countries.map{|c| ["#{c.name}", c.id]}, 
-                {prompt: 'In which country was this person last located?'},
-                class: 'autocomplete-form',
-                data: {
-                  controller: 'search',
-                  oldaction: 'keyup->search#suggestions',
-                  suggestions_url: search_suggestions_path, search_target: "input"
-                      } %>
+            <p>Last Known Countries?</p>
+            <%= form.collection_select(:last_known_country_ids, @last_known_countries, :id, :name,
+                                       { prompt: 'In which countries was this person last located?' },
+                                       { multiple: true, class: 'autocomplete-form',
+                                         data: {
+                                           controller: 'search',
+                                           oldaction: 'keyup->search#suggestions',
+                                           suggestions_url: search_suggestions_path,
+                                           search_target: "input"
+                                         }
+                                       }
+                                      ) %>
           </div>
 
+
           <div>
-            <p>Last Known City?</p>
-              <%= form.select :last_known_city_id, @last_known_cities.map{|c| ["#{c.name}", c.id]},
-                {prompt: 'In which city was this person last located?'},
-                class: 'autocomplete-form',
-                data: {
-                  controller: 'search',
-                  oldaction: 'keyup->search#suggestions',
-                  suggestions_url: search_suggestions_path, search_target: "input"
-                      } %>
+            <p>Last Known Cities?</p>
+            <%= form.collection_select(:last_known_city_ids, @last_known_cities, :id, :name,
+                                       { prompt: 'In which cities was this person last located?' },
+                                       { multiple: true, class: 'autocomplete-form',
+                                         data: {
+                                           controller: 'search',
+                                           oldaction: 'keyup->search#suggestions',
+                                           suggestions_url: search_suggestions_path,
+                                           search_target: 'input'
+                                         }
+                                       }
+                                      ) %>
           </div>
+
 
           <div class="col">
             <%= form.label :mobile_phone_1, style: "display: block" %>
