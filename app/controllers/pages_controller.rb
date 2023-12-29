@@ -194,8 +194,23 @@ class PagesController < ApplicationController
 		# FIX
 		@avoid_or_fix_locations = current_user.locations.limit(5)
 
-		# FIX
-		@huge_let_downs = @contacts
+		# All those who: Had their first meeting more than 3 months ago; had interactions within 
+		# the last 10 years, at least 10% of the total interactions for each contact have emotional 
+		# reactions with names 'Let Down' or 'Abandoned', and has had at least 3 interactions.
+		@huge_let_downs = current_user.contacts
+  .joins(:interactions)
+  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+  .where("contacts.date_first_met <= ?", 3.months.ago)
+  .where("interactions.date >= ?", 10.years.ago)
+  .group("contacts.id")
+  .having("SUM(CASE WHEN emotional_reactions.name IN ('Let Down', 'Abandoned') THEN 1 ELSE 0 END) >= 0.1 * COUNT(*)")  # At least 10% of total interactions are 'Let Down' or 'Abandoned'
+  .having("COUNT(*) >= 3")
+  .distinct
+
+
+
+		@huge_let_downs_count = @huge_let_downs.count
 
 		# FIX
 		@takers_and_leeches = @contacts

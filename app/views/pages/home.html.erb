@@ -481,10 +481,10 @@
 			</div>
 		</div>
 
-		<div class="col">
-			<div class="card p-4">			
-				<h5>Huge Let Downs (<%= @huge_let_downs.count %>)</h5>
-		<!-- People who have consistently let you down -->
+<div class="col">
+  <div class="card p-4">
+    		
+				<h5>Huge Let Downs (<%= @huge_let_downs.any? ? @huge_let_downs_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
 				    <tr>
