@@ -222,8 +222,7 @@
 		</div>
 
 		<div class="col">
-			<h4>Acquaintances (<%= @acquaintances.count %>)</h4>
-	<!-- All those whose points are above 25, who you've known for more than three months, and with whom you've interacted at least once in a social manner in the last 3 months, and who gives you at least 60% or more positive than negative emotions -->
+			<h4>Acquaintances (<%= @acquaintances_count.any? ? @acquaintances_count.count : 0 %>)</h4>
 				<table class="table">
 				<thead>
 			    <tr>

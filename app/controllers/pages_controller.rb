@@ -32,10 +32,10 @@ class PagesController < ApplicationController
 		# FIX
 		@needs_attention = @contacts		
 
-		# DONE
+		# TRUE BEST FRIENDS
 		# All those whose points are above 200, who you've known for more than two years, 
-		# and who have reached out to your within the last two years at least 5 times 
-		# in a social manner and who gives you 90% or more positive than negative emotions
+		# and who have reached out to you within the last 2 years at least 5 times 
+		# [in a social manner] and who gives you 90% or more positive than negative emotions
 
 		# NEED TO ADD: And... who you've interacted with in any way over the last three months
 		@true_best_friends = current_user.contacts
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
 		  .where("contacts.points > ?", 200)
 		  .where("contacts.date_first_met <= ?", 2.years.ago)
 		  .where("interactions.date >= ?", 2.years.ago)
-		  .group("contacts.id")  # Modify the group clause
+		  .group("contacts.id")
 		  .having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.9 * COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
 		  .having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 5")
 
@@ -54,52 +54,79 @@ class PagesController < ApplicationController
 		  puts "@true_best_friends: #{@true_best_friends.inspect}"
 		  puts "@true_best_friends_count: #{@true_best_friends_count.inspect}"
 
-
+		# BEST FRIENDS
 		# All those whose points are above 100, who you've known for more than one year, 
-		# who have reached out to you within the last year at least 3 times in a social manner, 
+		# who have reached out to you within the last year at least 3 times [in a social manner], 
 		# and who gives you at least 80% or more positive than negative emotions
 
 		# NEED TO ADD: And... who you've interacted with in any way over the last six months
 		@best_friends = current_user.contacts
-			.joins(:interactions)
+		  .joins(:interactions)
 		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
 		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
 		  .where("contacts.points > ?", 100)
-		  .where("contacts.date_first_met <= ?", 1.years.ago)
-		  .where("interactions.date >= ?", 1.years.ago)
-		  .group("contacts.id")  # Modify the group clause
-			.having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.8 * COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
-			.having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 3")
-
+		  .where("contacts.date_first_met <= ?", 1.year.ago)
+		  .where("interactions.date >= ?", 1.year.ago)
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.8 * COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
+		  .having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 3")
+		  .where.not(id: @true_best_friends)
+		  .where.not(id: @best_friends)
+		  .where.not(id: @acquaintances)
+		  .distinct
 
 		@best_friends_count = @best_friends.count
 
 			puts @best_friends.to_sql
 			 
-
-		#All those whose points are above 50, who you've known for more than six months, who has 
-		# reached out to you within the last six months at least once in a social manner, and 
+		# FRIENDS
+		# All those whose points are above 50, who you've known for more than six months, who has 
+		# reached out to you within the last six months at least once [in a social manner], and 
 		# who gives you at least 70% or more positive than negative emotions
 
 		# NEED TO ADD: And... who you've interacted with in any way over the last nine months
 		# Maybe just change the interaction.date query to 2 years here, 1 year above, 6 months 
 		# for TBFs.  That may work.
 		@friends = current_user.contacts
-			.joins(:interactions)
+		  .joins(:interactions)
 		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
 		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
 		  .where("contacts.points > ?", 50)
 		  .where("contacts.date_first_met <= ?", 6.months.ago)
 		  .where("interactions.date >= ?", 6.months.ago)
-		  .group("contacts.id")  # Modify the group clause
-			.having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.7 * 
-				COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
-			.having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 1")
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.7 * COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
+		  .having("COUNT(CASE WHEN interactions.you_initiated_contact = false THEN 1 ELSE NULL END) >= 1")
+		  .where.not(id: @true_best_friends)
+		  .where.not(id: @best_friends)
+		  .where.not(id: @acquaintances)
+		  .distinct
 
 		@friends_count = @friends.count
 
-		# FIX
-		@acquaintances = @contacts
+		# ACQUAINTANCES
+		# All those whose points are above 25, who you've known for more than three months, 
+		# and with whom you've interacted at least once [in a social manner] in the last 3 months, 
+		# and who gives you at least 60% or more positive than negative emotions
+
+		# Again: Change it to interacted at least once in a social manner in the last 3 years
+		@acquaintances = current_user.contacts
+		  .joins(:interactions)
+		  .joins("JOIN interaction_emotional_reactions ON interaction_emotional_reactions.interaction_id = interactions.id")
+		  .joins("JOIN emotional_reactions ON emotional_reactions.id = interaction_emotional_reactions.emotional_reaction_id")
+		  .where("contacts.points > ?", 25)
+		  .where("contacts.date_first_met <= ?", 3.months.ago)
+		  .where("interactions.date >= ?", 3.months.ago)
+		  .group("contacts.id")
+		  .having("COUNT(CASE WHEN emotional_reactions.name = 'positive' THEN 1 ELSE NULL END) >= 0.6 * 
+		  	COUNT(CASE WHEN emotional_reactions.name = 'negative' THEN 1 ELSE NULL END)")
+		  .where.not(id: @true_best_friends)
+		  .where.not(id: @best_friends)
+		  .where.not(id: @friends)
+		  .distinct
+
+	
+		@acquaintances_count = @acquaintances.count
 
 		# FIX
 		@close_to_zero = @contacts
