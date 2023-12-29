@@ -1,0 +1,14 @@
+<div id="<%= dom_id last_known_country %>">
+  <p>
+    <strong>Name:</strong>
+    <%= last_known_country.name %>
+  </p>
+
+  <p>
+    <strong>Associated Contacts:</strong>
+    <% last_known_country.contacts.each do |contact| %>
+      <%= link_to contact.full_name, contact %><br>
+    <% end %>
+  </p>
+
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Last known countries</h1>
+
+<div id="last_known_countries">
+  <% @last_known_countries.each do |last_known_country| %>
+    <%= render last_known_country %>
+    <p>
+      <%= link_to "Show this last known country", last_known_country %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New last known country", new_last_known_country_path %>

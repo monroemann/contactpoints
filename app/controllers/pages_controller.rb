@@ -21,6 +21,7 @@ class PagesController < ApplicationController
 			points_going_down?(contact) }.flatten.uniq
 
 		# DONE (though perhaps best to redo this query using 'points' from contact.rb)
+		# AT ZERO POINTS
 		contacts_with_zero_points = current_user.contacts.select do |contact|
 		  contact.total_points == 0
 		end

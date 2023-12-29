@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  before_action :set_last_known_countries, only: [:new, :edit, :update, :create]
+  before_action :set_last_known_cities, only: [:new, :edit, :update, :create]
 
   # GET /contacts or /contacts.json
   def index
@@ -70,6 +72,14 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
     end
 
+    def set_last_known_countries
+      @last_known_countries = LastKnownCountry.all
+    end
+
+    def set_last_known_cities
+      @last_known_cities = LastKnownCity.all
+    end    
+
     # Only allow a list of trusted parameters through.
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :last_known_country, 
@@ -81,7 +91,8 @@ class ContactsController < ApplicationController
                                       :website_7, :website_8, :contact_apps, :birthday, 
                                       :address_1, :address_2, :how_we_met, :things_I_like, 
                                       :best_memories, :areas_for_improvement, :notes, :points,
-                                      :date_first_met, category_ids:[], contact_group_ids:[], 
-                                      contact_type_ids:[])
+                                      :date_first_met,
+                                      category_ids:[], contact_group_ids:[], contact_type_ids:[],
+                                      last_known_country_ids:[], last_known_city_ids:[])
     end
 end

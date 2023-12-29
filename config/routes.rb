@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :last_known_cities
+  resources :last_known_countries
   resources :locations
   resources :emotional_reactions
 

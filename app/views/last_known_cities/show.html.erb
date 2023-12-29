@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @last_known_city %>
+
+<div>
+  <%= link_to "Edit this last known city", edit_last_known_city_path(@last_known_city) %> |
+  <%= link_to "Back to last known cities", last_known_cities_path %>
+
+  <%= button_to "Destroy this last known city", @last_known_city, method: :delete %>
+</div>

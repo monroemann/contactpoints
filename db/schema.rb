@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_28_235623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_contact_categories_on_category_id"
     t.index ["contact_id"], name: "index_contact_categories_on_contact_id"
+  end
+
+  create_table "contact_cities", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.bigint "last_known_city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_cities_on_contact_id"
+    t.index ["last_known_city_id"], name: "index_contact_cities_on_last_known_city_id"
+  end
+
+  create_table "contact_countries", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.bigint "last_known_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_countries_on_contact_id"
+    t.index ["last_known_country_id"], name: "index_contact_countries_on_last_known_country_id"
   end
 
   create_table "contact_groupings", force: :cascade do |t|
@@ -106,7 +124,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
     t.integer "points", default: 0
     t.bigint "category_id", default: 1, null: false
     t.date "date_first_met"
+    t.bigint "last_known_country_id"
+    t.bigint "last_known_city_id"
     t.index ["category_id"], name: "index_contacts_on_category_id"
+    t.index ["last_known_city_id"], name: "index_contacts_on_last_known_city_id"
+    t.index ["last_known_country_id"], name: "index_contacts_on_last_known_country_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -178,6 +200,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
     t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   end
 
+  create_table "last_known_cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "last_known_countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -213,7 +247,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_142452) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "contact_cities", "contacts"
+  add_foreign_key "contact_cities", "last_known_cities"
+  add_foreign_key "contact_countries", "contacts"
+  add_foreign_key "contact_countries", "last_known_countries"
   add_foreign_key "contacts", "categories"
+  add_foreign_key "contacts", "last_known_cities"
+  add_foreign_key "contacts", "last_known_countries"
   add_foreign_key "interaction_emotional_reactions", "emotional_reactions"
   add_foreign_key "interaction_emotional_reactions", "interactions"
   add_foreign_key "interaction_locations", "interactions"

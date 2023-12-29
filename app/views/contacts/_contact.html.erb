@@ -22,7 +22,11 @@
 
           <p class="col-md-3">
             <strong>Last known country:</strong>
-            <%= contact.last_known_country %>
+              <% if contact.contact_countries.any? %>
+                <%= contact.contact_countries.first.name %>
+              <% else %>
+                No last known country
+              <% end %>
           </p>
 
           <p class="col-md-3">
