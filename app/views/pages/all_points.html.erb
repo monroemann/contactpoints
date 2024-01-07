@@ -1,0 +1,506 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+        <p id="notice" style="color: green"><%= notice %></p>
+
+        <h1>All Points</h1>
+        <p>Note: This page only shows the top 30 contacts in each category.  Click each tab to cycle through the difference categories.</p>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+<!--           <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="up-tab" data-bs-toggle="tab" data-bs-target="#up" type="button" role="tab" aria-controls="home" aria-selected="true">Going Up</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="down-tab" data-bs-toggle="tab" data-bs-target="#down" type="button" role="tab" aria-controls="profile" aria-selected="false">Going Down</button>
+          </li> -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="at-zero-tab" data-bs-toggle="tab" data-bs-target="#at-zero" type="button" role="tab" aria-controls="at-zero" aria-selected="false">At Zero</button>
+          </li>
+<!--           <li class="nav-item" role="presentation">
+            <button class="nav-link" id="steady-tab" data-bs-toggle="tab" data-bs-target="#steady" type="button" role="tab" aria-controls="steady" aria-selected="false">Holding Steady</button>
+          </li> -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="attention-tab" data-bs-toggle="tab" data-bs-target="#attention" type="button" role="tab" aria-controls="attention" aria-selected="false">Needs Attention</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="recently-tab" data-bs-toggle="tab" data-bs-target="#recently" type="button" role="tab" aria-controls="recently" aria-selected="false">Recently Added</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tbf-tab" data-bs-toggle="tab" data-bs-target="#tbf" type="button" role="tab" aria-controls="tbf" aria-selected="false">True Best Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bf-tab" data-bs-toggle="tab" data-bs-target="#bf" type="button" role="tab" aria-controls="bf" aria-selected="false">Best Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="f-tab" data-bs-toggle="tab" data-bs-target="#f" type="button" role="tab" aria-controls="f" aria-selected="false">Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="a-tab" data-bs-toggle="tab" data-bs-target="#a" type="button" role="tab" aria-controls="a" aria-selected="false">Acquaintances</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="sad-tab" data-bs-toggle="tab" data-bs-target="#sad" type="button" role="tab" aria-controls="sad" aria-selected="false">When Sad, Call</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="limit-tab" data-bs-toggle="tab" data-bs-target="#limit" type="button" role="tab" aria-controls="limit" aria-selected="false">Limit Your Time With</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="hang-tab" data-bs-toggle="tab" data-bs-target="#hang" type="button" role="tab" aria-controls="hang" aria-selected="false">Hang Out More With</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="false">Your Future Is</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="friendly-tab" data-bs-toggle="tab" data-bs-target="#friendly" type="button" role="tab" aria-controls="friendly" aria-selected="false">Friendliest Places</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="happy-tab" data-bs-toggle="tab" data-bs-target="#happy" type="button" role="tab" aria-controls="happy" aria-selected="false">Happiest Locations</button>
+          </li>
+<!--           <li class="nav-item" role="presentation">
+            <button class="nav-link" id="avoid-tab" data-bs-toggle="tab" data-bs-target="#avoid" type="button" role="tab" aria-controls="avoid" aria-selected="false">Avoid/Fix Locations</button>
+          </li> -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="let-down-tab" data-bs-toggle="tab" data-bs-target="#let-down" type="button" role="tab" aria-controls="let-down" aria-selected="false">Huge Letdowns</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="takers-tab" data-bs-toggle="tab" data-bs-target="#takers" type="button" role="tab" aria-controls="takers" aria-selected="false">Takers & Leeches</button>
+          </li>
+        </ul>
+
+       <div class="tab-content" id="myTabContent">
+<!--          <div class="tab-pane fade show active" id="up" role="tabpanel" aria-labelledby="up-tab">
+            <h3>Going Up</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <%# @going_up.first(5).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%#= link_to contact.full_name, contact %>
+                      <%#= contact[:points] %>
+                    </td>
+                  </tr>            
+                <%# end %>
+              </tbody>
+            </table>
+          </div> -->
+
+<!--           <div class="tab-pane fade" id="down" role="tabpanel" aria-labelledby="down-tab">
+            <h3>Going Down</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <%#if @going_down %>
+                  <%# @going_down.compact.first(30).each do |contact| %>
+                    <%# if contact %>
+                      <tr>
+                        <td style="display: flex; justify-content: space-between;">
+                          <%#= link_to contact.full_name, contact %>
+                          <%#= contact[:points] %>
+                        </td>
+                      </tr>
+                    <%# end %>
+                  <%# end %>
+                <%# end %>
+              </tbody>
+            </table>
+          </div> -->
+
+<!--           <div class="tab-pane fade" id="steady" role="tabpanel" aria-labelledby="steady-tab">
+            <h3>Holding Steady</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <%# @holding_steady.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%#= link_to contact.full_name, contact %>
+                      <%#= contact[:points] %>
+                    </td>
+                  </tr>
+                <%# end %>
+              </tbody>
+            </table>
+          </div> -->
+
+          <div class="tab-pane fade show active" id="at-zero" role="tabpanel" aria-labelledby="at-zero-tab">
+            <h3>At Zero</h3>
+            <p>Those contacts all have zero points.  You should either reach out to these people, or if you repeatedly see the same name, and you continue to do nothing about it, you may want to consider removing that person from the database.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @at_zero.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>          
+
+          <div class="tab-pane fade" id="attention" role="tabpanel" aria-labelledby="attention-tab">
+            <h3>Needs Attention</h3>
+            <p>Those contacts with less than 25 points</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @needs_attention.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tab-pane fade" id="recently" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Recently Added</h3>
+            <p>Contacts you added most recently</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @recently_added_contacts.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>  
+          </div>
+          
+          <div class="tab-pane fade" id="tbf" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>True Best Friends</h3>
+            <p>Contacts whose points are above 200, who you've known for more than two years, who have reached out to you within the last 2 years at least 5 times, and who gives you 90% or more positive than negative emotions</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @true_best_friends.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="bf" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Best Friends</h3>
+            <p>Contacts whose points are above 100, who you've known for more than one year, who have reached out to you within the last year at least 3 times, and who gives you at least 80% or more positive than negative emotions</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @best_friends.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="f" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Friends</h3>
+            <p>All those whose points are above 50, who you've known for more than six months, who have reached out to you within the last six months at least once, and who gives you at least 70% or more positive than negative emotions</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @friends.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="a" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Acquaintances</h3>
+            <p>All those whose points are above 25, who you've known for more than three months, with whom you've interacted at least once in the last 3 months, and who give you at least 60% or more positive than negative emotions</p>  
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @acquaintances.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+                  
+          <div class="tab-pane fade" id="sad" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>When Sad, Call</h3>
+            <p>All those who are at least a friend, who over the last year has consistently listened to you, cheered you up, or solved problems for you, and who do not have more than 30% negative emotions in the previous 1-year period.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @when_sad_call.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tab-pane fade" id="limit" role="tabpanel" aria-labelledby="limit-tab">
+            <h3>Limit Your Time With</h3>
+            <p>All those with at least 10 points and at least 3 interactions who leave you with 60% or more negative emotions.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @limit_your_time_with.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="hang" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Hang Out More With</h3>
+            <p>All those with at least 10 points and at least 3 interactions who leave you with 80% or more positive emotions.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @hang_out_more_with.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="future" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Your Future Is</h3>
+            <p>You spend the most time with these people based on total minutes over the last 3 months.  The best and worst qualities of these people will rub off on you.  These people are your future.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @your_future_is.first(30).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="friendly" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Friendliest Places</h3>
+            <p>Where you have the most interactions with your TBFs, BFs, and Fs.  You are likely to find your best people at these places.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @friendliest_places.first(30).each do |location| %>
+                  <tr>
+                    <td><%= link_to location.name, location %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="happy" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Happiest Locations</h3>
+            <p>Your emotions are always 70% or more positive after going to these locations.  Go to these places more often!</p>  
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @happiest_locations.first(30).each do |location| %>
+                  <tr>
+                    <td><%= link_to location.name, location %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+<!--           <div class="tab-pane fade" id="avoid" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Avoid/Fix Locations</h3>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <%# @avoid_or_fix_locations.first(30).each do |location| %>
+                  <tr>
+                    <td><%#= link_to location.name, location %></td>
+                  </tr>
+                <%# end %>
+              </tbody>
+            </table>
+          </div> -->
+          
+          <div class="tab-pane fade" id="let-down" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Huge Let Downs</h3>
+            <p>All those who had their first meeting with you more than 3 months ago, had interactions within the last 10 years, with at least 10% of the total interactions for each contact having emotional reactions with the names 'Let Down' or 'Abandoned', and with at least 3 interactions total.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @huge_let_downs.first(5).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="tab-pane fade" id="takers" role="tabpanel" aria-labelledby="recently-tab">
+            <h3>Takers & Leeches</h3>
+            <p>All those who who had their first meeting with you more than 3 months ago, had at least 3 interactions with you within the last 10 years, with at least 10% of the total interactions for each contact having emotional reactions with names 'Let Down' or 'Abandoned'.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @takers_and_leeches.first(5).each do |contact| %>
+                  <tr>
+                    <td style="display: flex; justify-content: space-between;">
+                      <%= link_to contact.full_name, contact %>
+                      <%= contact[:points] %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <br>
+
+    </div><!-- end container div -->
+  </div><!-- end card div -->
+</div><!-- end container div -->

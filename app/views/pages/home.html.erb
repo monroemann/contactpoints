@@ -2,7 +2,7 @@
 
 	<br>
 
-	<div class="row mb-4">
+	<div class="row">
 		<div class="col">
 			<h4>Recommended Next To Contact</h4>
 				<!-- 1 with zero points, 1 recently_added_contact, 1 whose points have dropped recently -->
@@ -33,12 +33,12 @@
 		</div>
 	</div>
 	
-	<div class="row mb-4">
-		<div class="col">
-			<div class="card p-4">
-			<h5>Going Up (<%= @going_up.count %>)</h5>
+	<div class="row">
+	<!-- 	<div class="col">
+			<div class="card p-4 mb-4">
+			<h5>Going Up (<%#= @going_up.count %>)</h5> -->
 				<!-- All those whose points have gone up recently, most poits gained at top -->
-			  <table class="table">
+			  <!--<table class="table">
 				  <thead>
 				    <tr>
 				      <th>Name</th>
@@ -46,24 +46,25 @@
 				  </thead>
 
 				  <tbody>
-				    <% @going_up.first(5).each do |contact| %>
+				    <%# @going_up.first(5).each do |contact| %>
 				      <tr>
 				        <td style="display: flex; justify-content: space-between;">
-				        	<%= link_to contact.full_name, contact %>
-				        	<%= contact[:points] %>
+				        	<%#= link_to contact.full_name, contact %>
+				        	<%#= contact[:points] %>
 				        </td>
 				      </tr>			       
-				    <% end %>
+				    <%# end %>
 				  </tbody>
 				</table>
+				<%#= link_to "Show More", all_points_path, class: "text-center" %>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="col">
-			<div class="card p-4">
-				<h5>Going Down (<%= @going_down.compact.count %>)</h5>
+	<!-- 	<div class="col-md-4">
+			<div class="card p-4 mb-4">
+				<h5>Going Down (<%#= @going_down.compact.count %>)</h5> -->
 					<!-- All those whose points have gone down recently, most points lost at top -->
-					<table class="table">
+					<!-- <table class="table">
 					<thead>
 				    <tr>
 				      <th>Name</th>
@@ -71,27 +72,28 @@
 				  </thead>
 
 				  <tbody>
-						<% if @going_down %>
-						  <% @going_down.compact.first(5).each do |contact| %>
-						    <% if contact %>
+						<%# if @going_down %>
+						  <%# @going_down.compact.first(5).each do |contact| %>
+						    <%# if contact %>
 						      <tr>
 						        <td style="display: flex; justify-content: space-between;">
-						        	<%= link_to contact.full_name, contact %>
-						        	<%= contact[:points] %>
+						        	<%#= link_to contact.full_name, contact %>
+						        	<%#= contact[:points] %>
 						        </td>
 						      </tr>
-						    <% end %>
-						  <% end %>
-						<% end %>
-
+						    <%# end %>
+						  <%# end %>
+						<%# end %>
 				  </tbody>
 				</table>
+				<%#= link_to "Show More", all_points_path, class: "text-center" %>
 			</div>	
-		</div>	
+		</div> -->	
 
-		<div class="col">
-			<div class="card p-4">
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">
 				<h5>At Zero (<%= @at_zero.count %>)</h5>
+				<p>Those contacts with zero points</p>
 					<!-- All contacts with zero points -->
 					<table class="table">
 					<thead>
@@ -111,13 +113,13 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
-				<h5>Holding Steady (<%= @holding_steady.count %>)</h5>
-	<!-- All those whose points have stayed at same value for last month -->
+		<!-- <div class="col-md-4">
+			<div class="card p-4 mb-4">			
+				<h5>Holding Steady (<%#= @holding_steady.count %>)</h5>
 				<table class="table">
 					<thead>
 				    <tr>
@@ -126,23 +128,22 @@
 				  </thead>
 
 				  <tbody>
-				    <% @holding_steady.first(5).each do |contact| %>
+				    <%# @holding_steady.first(5).each do |contact| %>
 				      <tr>
 				        <td style="display: flex; justify-content: space-between;">
-				        	<%= link_to contact.full_name, contact %>
-				        	<%= contact[:points] %>
+				        	<%#= link_to contact.full_name, contact %>
+				        	<%#= contact[:points] %>
 				        </td>
 				      </tr>
-				    <% end %>
+				    <%# end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
-	</div>	
-
-	<div class="row mb-4">		
-		<div class="col">
-			<div class="card p-4">			
+				<%#= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	 -->
+	
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Needs Attention (<%= @needs_attention.count %>)</h5>	
 					<table class="table">
 					<thead>
@@ -162,15 +163,14 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Recently Added (<%= @recently_added_contacts.count %>)</h5>
-	<!-- All those who have been added within the last 3 months -->
-
-					<table class="table">
+				<table class="table">
 					<thead>
 				    <tr>
 				      <th>Name</th>
@@ -188,11 +188,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>True Best Friends (<%= @true_best_friends.any? ? @true_best_friends_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
@@ -212,11 +213,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>		
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>			
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Best Friends (<%= @best_friends_count.any? ? @best_friends_count.count : 0 %>)</h5>
 				<table class="table">
 					<thead>
@@ -236,13 +238,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
-	</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-	<div class="row mb-4">
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Friends (<%= @friends_count.any? ? @friends_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
@@ -262,11 +263,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Acquaintances (<%= @acquaintances_count.any? ? @acquaintances_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
@@ -286,35 +288,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
-				<h5>Close to Zero (<%= @close_to_zero.count %>)</h5>	
-					<table class="table">
-					<thead>
-				    <tr>
-				      <th>Name</th>
-				    </tr>
-				  </thead>
-
-				  <tbody>
-				    <% @close_to_zero.first(5).each do |contact| %>
-							<tr>
-							  <td style="display: flex; justify-content: space-between;">
-							    <%= link_to "#{contact.full_name}:", contact %> 
-							    <%= contact[:points] %>
-							  </td>
-							</tr>
-				    <% end %>
-				  </tbody>
-				</table>
-			</div>
-		</div>
-
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>When Sad, Call (<%= @when_sad_call_count.count %>)</h5>
 					<table class="table">
 					<thead>
@@ -334,13 +313,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
-	</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-	<div class="row mb-4">
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Limit Your Time With (<%= @limit_your_time_with.any? ? @limit_your_time_with_count.count : 0 %>)</h5>				
 					<table class="table">
 					<thead>
@@ -360,13 +338,13 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Hang Out More With (<%= @hang_out_more_with.any? ? @hang_out_more_with_count.count : 0 %>)</h5>
-		<!-- All those whose points are positive, who consistently leave you with 90% positive emotions.  -->			
 					<table class="table">
 					<thead>
 				    <tr>
@@ -385,13 +363,13 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">
 				<h5>Your Future Is (<%= @your_future_is.count %>)</h5>
-			<!-- You spend the most time with these people based on minutes.  These people are your future. -->
 					<table class="table">
 					<thead>
 				    <tr>
@@ -410,11 +388,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Friendliest Places (<%= @friendliest_places.any? ? @friendliest_places_count : 0 %>)</h5>
 					<table class="table">
 					<thead>
@@ -431,15 +410,14 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
-	</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-	<div class="row mb-4">
-		<div class="col">
-			<div class="card p-4">		
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">		
 			<h5>Happiest Locations (<%= @happiest_locations.any? ? @happiest_locations_count : 0 %>)</h5>
-					<table class="table">
+				<table class="table">
 					<thead>
 				    <tr>
 				      <th>Name</th>
@@ -454,14 +432,15 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
-				<h5>Avoid or Fix These Locations (<%= @avoid_or_fix_locations.count %>)</h5>
+		<!-- <div class="col-md-4">
+			<div class="card p-4 mb-4">			
+				<h5>Avoid or Fix These Locations (<%# @avoid_or_fix_locations.count %>)</h5> -->
 		<!-- Places that have 70% or higher negative emotions -->
-					<table class="table">
+					<!-- <table class="table">
 					<thead>
 				    <tr>
 				      <th>Name</th>
@@ -469,18 +448,19 @@
 				  </thead>
 
 				  <tbody>
-				    <% @avoid_or_fix_locations.first(5).each do |location| %>
+				    <%# @avoid_or_fix_locations.first(5).each do |location| %>
 				      <tr>
-				        <td><%= link_to location.name, location %></td>
+				        <td><%#= link_to location.name, location %></td>
 				      </tr>
-				    <% end %>
+				    <%# end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%#= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	 -->
 
-<div class="col">
-  <div class="card p-4">
+<div class="col-md-4">
+  <div class="card p-4 mb-4">
     		
 				<h5>Huge Let Downs (<%= @huge_let_downs.any? ? @huge_let_downs_count.count : 0 %>)</h5>
 					<table class="table">
@@ -501,11 +481,12 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 
-		<div class="col">
-			<div class="card p-4">			
+		<div class="col-md-4">
+			<div class="card p-4 mb-4">			
 				<h5>Takers & Leeches (<%= @takers_and_leeches.any? ? @takers_and_leeches_count.count : 0 %>)</h5>
 					<table class="table">
 					<thead>
@@ -525,8 +506,9 @@
 				    <% end %>
 				  </tbody>
 				</table>
-			</div>
-		</div>
+				<%= link_to "Show More", all_points_path, class: "text-center" %>
+			</div>	
+		</div>	
 	</div>
 
 
