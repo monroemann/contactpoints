@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+  get 'all_points', to: 'pages#all_points', as: 'all_points'
 
   root to: 'pages#index'
 

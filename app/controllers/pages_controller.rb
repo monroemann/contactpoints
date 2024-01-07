@@ -3,6 +3,9 @@ class PagesController < ApplicationController
 	def index
 	end
 
+	def all_points
+	end
+
 	def home
 		@contacts = current_user.contacts.limit(5)
 

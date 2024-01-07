@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="card">
+
+    <div class="container">
+
+        <p id="notice" style="color: green"><%= notice %></p>
+
+        <h1>All Points</h1>
+        <p>Note: This page only shows the top 30 contacts in each category.  Click each tab to cycle through the difference categories.</p>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="up-tab" data-bs-toggle="tab" data-bs-target="#up" type="button" role="tab" aria-controls="home" aria-selected="true">Going Up</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="down-tab" data-bs-toggle="tab" data-bs-target="#down" type="button" role="tab" aria-controls="profile" aria-selected="false">Going Down</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="at-zero-tab" data-bs-toggle="tab" data-bs-target="#at-zero" type="button" role="tab" aria-controls="at-zero" aria-selected="false">At Zero</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="steady-tab" data-bs-toggle="tab" data-bs-target="#steady" type="button" role="tab" aria-controls="steady" aria-selected="false">Holding Steady</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="attention-tab" data-bs-toggle="tab" data-bs-target="#attention" type="button" role="tab" aria-controls="attention" aria-selected="false">Needs Attention</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="recently-tab" data-bs-toggle="tab" data-bs-target="#recently" type="button" role="tab" aria-controls="recently" aria-selected="false">Recently Added</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tbf-tab" data-bs-toggle="tab" data-bs-target="#tbf" type="button" role="tab" aria-controls="tbf" aria-selected="false">True Best Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bf-tab" data-bs-toggle="tab" data-bs-target="#bf" type="button" role="tab" aria-controls="bf" aria-selected="false">Best Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="f-tab" data-bs-toggle="tab" data-bs-target="#f" type="button" role="tab" aria-controls="f" aria-selected="false">Friends</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="a-tab" data-bs-toggle="tab" data-bs-target="#a" type="button" role="tab" aria-controls="a" aria-selected="false">Acquaintances</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="close-zero-tab" data-bs-toggle="tab" data-bs-target="#close-zero" type="button" role="tab" aria-controls="close-zero" aria-selected="false">Close To Zero</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="sad-tab" data-bs-toggle="tab" data-bs-target="#sad" type="button" role="tab" aria-controls="sad" aria-selected="false">When Sad, Call</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="hang-tab" data-bs-toggle="tab" data-bs-target="#hang" type="button" role="tab" aria-controls="hang" aria-selected="false">Hang Out More With</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="future-tab" data-bs-toggle="tab" data-bs-target="#future" type="button" role="tab" aria-controls="future" aria-selected="false">Your Future Is</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="friendly-tab" data-bs-toggle="tab" data-bs-target="#friendly" type="button" role="tab" aria-controls="friendly" aria-selected="false">Friendliest Places</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="happy-tab" data-bs-toggle="tab" data-bs-target="#happy" type="button" role="tab" aria-controls="happy" aria-selected="false">Happiest Locations</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="avoid-tab" data-bs-toggle="tab" data-bs-target="#avoid" type="button" role="tab" aria-controls="avoid" aria-selected="false">Avoid/Fix Locations</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="let-down-tab" data-bs-toggle="tab" data-bs-target="#let-down" type="button" role="tab" aria-controls="let-down" aria-selected="false">Huge Letdowns</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="takers-tab" data-bs-toggle="tab" data-bs-target="#takers" type="button" role="tab" aria-controls="takers" aria-selected="false">Takers & Leeches</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="up" role="tabpanel" aria-labelledby="up-tab">Going Up</div>
+          <div class="tab-pane fade" id="down" role="tabpanel" aria-labelledby="down-tab">Going Down</div>
+          <div class="tab-pane fade" id="at-zero" role="tabpanel" aria-labelledby="at-zero-tab">At Zero</div>
+          <div class="tab-pane fade" id="steady" role="tabpanel" aria-labelledby="steady-tab">Holding Steady</div>
+          <div class="tab-pane fade" id="attention" role="tabpanel" aria-labelledby="attention-tab">Needs Attention</div>
+          <div class="tab-pane fade" id="recently" role="tabpanel" aria-labelledby="recently-tab">Recently Added</div>
+          <div class="tab-pane fade" id="tbf" role="tabpanel" aria-labelledby="recently-tab">True Best Friends</div>
+          <div class="tab-pane fade" id="bf" role="tabpanel" aria-labelledby="recently-tab">Best Friends</div>
+          <div class="tab-pane fade" id="f" role="tabpanel" aria-labelledby="recently-tab">Friends</div>
+          <div class="tab-pane fade" id="a" role="tabpanel" aria-labelledby="recently-tab">Acquaintances</div>
+          <div class="tab-pane fade" id="close-zero" role="tabpanel" aria-labelledby="recently-tab">Close to Zero</div>
+          <div class="tab-pane fade" id="sad" role="tabpanel" aria-labelledby="recently-tab">When Sad, Call</div>
+          <div class="tab-pane fade" id="hang" role="tabpanel" aria-labelledby="recently-tab">Hang Out More With</div>
+          <div class="tab-pane fade" id="future" role="tabpanel" aria-labelledby="recently-tab">Your Future Is</div>
+          <div class="tab-pane fade" id="friendly" role="tabpanel" aria-labelledby="recently-tab">Friendliest Places</div>
+          <div class="tab-pane fade" id="happy" role="tabpanel" aria-labelledby="recently-tab">Happiest Locations</div>
+          <div class="tab-pane fade" id="avoid" role="tabpanel" aria-labelledby="recently-tab">Avoid/Fix Locations</div>
+          <div class="tab-pane fade" id="let-down" role="tabpanel" aria-labelledby="recently-tab">Huge Let Downs</div>
+          <div class="tab-pane fade" id="takers" role="tabpanel" aria-labelledby="recently-tab">Takers & Leeches</div>
+        </div>
+
+        <br>
+
+    </div><!-- end container div -->
+  </div><!-- end card div -->
+</div><!-- end container div -->
