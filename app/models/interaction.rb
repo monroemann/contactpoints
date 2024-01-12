@@ -40,6 +40,22 @@ class Interaction < ApplicationRecord
     )
   end
 
+  def calculate_points_for_interaction_length
+    case length
+    when 'less than 5 min' then 1
+    when '15 min' then 3
+    when '30 min' then 5
+    when '45 min' then 7
+    when '1 hour' then 9
+    when '2 hours' then 11
+    when 'Half Day' then 13
+    when 'Full Day' then 15
+    when 'Overnight, Two-Day Adventure, or Weekend' then 17
+    when 'Full-On Vacation' then 20
+    else 0
+    end
+  end
+
   private
 
   def calculate_points_based_on_attributes
@@ -64,22 +80,6 @@ class Interaction < ApplicationRecord
     when 'Typed Letter' then 12
     when 'Handwritten Letter - 1 page' then 15
     when 'Handwritten Letter - More than 1 page' then 20
-    else 0
-    end
-  end
-
-  def calculate_points_for_interaction_length
-    case length
-    when 'less than 5 min' then 1
-    when '15 min' then 3
-    when '30 min' then 5
-    when '45 min' then 7
-    when '1 hour' then 9
-    when '2 hours' then 11
-    when 'Half Day' then 13
-    when 'Full Day' then 15
-    when 'Overnight, Two-Day Adventure, or Weekend' then 17
-    when 'Full-On Vacation' then 20
     else 0
     end
   end
