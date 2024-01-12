@@ -6,14 +6,14 @@ class PagesController < ApplicationController
 	# When you change the queries here, they may need to also be changed in home method too
 	def all_points
 
-		@contacts = current_user.contacts.limit(30)
+		@contacts = current_user.contacts
 
 		# DONE
 		@recently_added_contacts = current_user.contacts
 																					.order(created_at: :desc)
 
 		# FIX
-		@next_to_contact = @contacts
+		@next_to_contact = @contacts.shuffle.take(30)
 
 		# FIX OR REMOVE
 		@going_up = @contacts
@@ -186,7 +186,24 @@ class PagesController < ApplicationController
 		@hang_out_more_with_count = @hang_out_more_with.count
 
 		# FIX
-		@your_future_is = @contacts
+		# Get the interactions within the last 3 months for the current_user
+		# Assuming the models are named User, Contact, and Interaction
+		recent_contacts = current_user.contacts.joins(:interactions).where('interactions.created_at >= ?', 3.months.ago).distinct
+
+		# Calculate total points for each contact
+		contact_points = recent_contacts.map do |contact|
+		  total_points = contact.interactions.where('interactions.created_at >= ?', 3.months.ago).sum { |interaction| interaction.calculate_points_for_interaction_length }
+		  [contact, total_points]
+		end
+
+		# Sort contacts by points in descending order
+		sorted_contacts = contact_points.sort_by { |contact, points| -points }
+
+		# Fetch the contacts with the most points
+		@your_future_is = sorted_contacts.map(&:first)
+
+
+ 		@your_future_is_count = @your_future_is.count
 
 		# FRIENDLIEST PLACES
 		# Where you have the most TBFs, BFs, and Fs
@@ -282,16 +299,18 @@ class PagesController < ApplicationController
 
 	end
 
+
+	# HOME ACTION
 	# When you change the queries here, they may need to also be changed in all_points method too
 	def home
-		@contacts = current_user.contacts.limit(5)
+		@contacts = current_user.contacts
 
 		# DONE
 		@recently_added_contacts = current_user.contacts
 																					.order(created_at: :desc)
 
 		# FIX
-		@next_to_contact = @contacts
+		@next_to_contact = @contacts.shuffle.take(5)
 
 		# FIX OR REMOVE
 		@going_up = @contacts
@@ -463,7 +482,25 @@ class PagesController < ApplicationController
 		# YOUR FUTURE IS
 		# FIX
 		# Should show contacts you have spent the most total time with over the last 3 months
-		@your_future_is = @contacts
+
+		# Get the interactions within the last 3 months for the current_user
+		# Assuming the models are named User, Contact, and Interaction
+		recent_contacts = current_user.contacts.joins(:interactions).where('interactions.created_at >= ?', 3.months.ago).distinct
+
+		# Calculate total points for each contact
+		contact_points = recent_contacts.map do |contact|
+		  total_points = contact.interactions.where('interactions.created_at >= ?', 3.months.ago).sum { |interaction| interaction.calculate_points_for_interaction_length }
+		  [contact, total_points]
+		end
+
+		# Sort contacts by points in descending order
+		sorted_contacts = contact_points.sort_by { |contact, points| -points }
+
+		# Fetch the contacts with the most points
+		@your_future_is = sorted_contacts.map(&:first)
+
+
+ 		@your_future_is_count = @your_future_is.count
 
 		# FRIENDLIEST PLACES
 		# Where you have the most TBFs, BFs, and Fs
