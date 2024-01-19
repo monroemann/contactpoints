@@ -20,14 +20,20 @@
 			  </thead>
 
 			  <tbody>
-			    <% @next_to_contact.each do |contact| %>
-			      <tr>
-							<td><%= link_to contact.full_name, contact %></td>
-			        <td><%= link_to contact.mobile_phone_1, contact %></td>
-			        <td><%= link_to contact.email_1, contact %></td>
-			        <td><%= link_to contact.total_points, contact %></td>
-			      </tr>
-			    <% end %>
+<% @next_to_contact.each do |contact| %>
+  <tr>
+    <td><%= link_to contact.full_name, contact if contact.present? %></td>
+    <td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 if contact&.mobile_phone_1.present? %></td>
+    <td><%= link_to contact.email_1, contact.email_1 if contact&.email_1.present? %></td>
+    <td><%= contact.total_points if contact.present? %></td>
+  </tr>
+  <% if contact.blank? || contact.full_name.nil? %>
+    <p style="color: red;">Blank or nil contact found: <%= contact.inspect %></p>
+  <% end %>
+<% end %>
+
+
+
 			  </tbody>
 			</table>
 		</div>
