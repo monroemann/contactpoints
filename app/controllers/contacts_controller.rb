@@ -16,6 +16,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1 or /contacts/1.json
   def show
+    @contact = Contact.find(params[:id])
+    @interactions = current_user.interactions.where(contact: @contact).order(date: :DESC)
   end
 
   # GET /contacts/new
