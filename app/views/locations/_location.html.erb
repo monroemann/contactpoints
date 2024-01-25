@@ -10,4 +10,42 @@
     <%= location.description %>
   </p>
 
+    <div>
+        <br>
+        <h3>Interactions With This Location</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">What</th>
+                <th scope="col">When</th>
+                <th scope="col">Length</th>
+                <th scope="col">Type</th>
+                <th scope="col">With Whom</th>
+                <th scope="col">You Initiated?</th>
+                <th scope="col">Description</th>
+                <th scope="col">Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% location.interactions.each do |interaction| %>
+                <tr>
+                  <th scope="row"><%= link_to interaction.name, interaction %></th>
+                  <td><% if interaction.date %>
+                    <%= interaction.date.strftime("%B %e, %Y") %>
+                    <br>(<%= time_ago_in_words(interaction.date) %> ago)
+                  <% else %>
+                    None
+                  <% end %></td>
+                  <td><%= interaction.length %></td>
+                  <td><%= interaction.interaction_type&.name %></td>
+                  <td><%= interaction.contact&.full_name %></td>
+                  <td><%= interaction.you_initiated_contact %></td>
+                  <td><%= interaction.description&.truncate(20) %></td>
+                  <td><%= interaction.total_points %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>    
+        </div>
+
 </div>
