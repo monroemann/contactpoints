@@ -14,29 +14,15 @@
   <% end %>
 
     <div>
-      <%= form.label :name, style: "display: block" %>
-      <%= form.text_field :name, placeholder: "What is the best name for this Interaction?", class: "form-control" %>
+      <h4><%= form.label :what_happened, "What Happened?", style: "display: block" %></h4>
+      <%= form.text_field :name, placeholder: "What happened?", class: "form-control" %>
     </div>
 
-    <div>
-      <p>Location?</p>
-        <%= form.select :location_id, @locations.map{|l| ["#{l.name}", l.id]}, 
-          {prompt: 'Where did you have this Interaction?'},
-          class: 'autocomplete-form',
-          data: {
-            controller: 'search',
-            oldaction: 'keyup->search#suggestions',
-            suggestions_url: search_suggestions_path, search_target: "input"
-                } %>
-    </div>
+    <br>
 
     <div>
-      <%= form.label :description, style: "display: block" %>
-      <%= form.text_area :description, placeholder: "Where did it happen? Doing What? Why were you there?", class: "form-control" %>
-    </div>
+      <h4>With Whom?</h4>
 
-    <div>
-      <p>With Whom?</p>
         <%= form.select :contact_id, @contacts.map{|c| ["#{c.first_name} #{c.last_name}", c.id]}, 
           {prompt: 'With whom did you have this Interaction?'},
           class: 'autocomplete-form',
@@ -45,45 +31,85 @@
             oldaction: 'keyup->search#suggestions',
             suggestions_url: search_suggestions_path, search_target: "input"
                 } %>
+
+      <span>Need to <%= link_to "add a new contact", new_contact_path, target: "_blank" %>?</span>
     </div>
 
+    <br>
+
     <div>
-      <p>Date of Interaction</p>
+      <h4>Location?</h4>
+        <%= form.select :location_id, @locations.map{|l| ["#{l.name}", l.id]}, 
+          {prompt: 'Where were you when this happened?'},
+          class: 'autocomplete-form',
+          data: {
+            controller: 'search',
+            oldaction: 'keyup->search#suggestions',
+            suggestions_url: search_suggestions_path, search_target: "input"
+                } %>
+        <span>Need to <%= link_to "add a new location", new_location_path, target: "_blank" %>?</span>
+    </div>
+    <br>
+
+    <div>
+      <h4><%= form.label :description, style: "display: block" %></h4>
+      <%= form.text_area :description, placeholder: "Any additional details?", class: "form-control" %>
+    </div>
+
+    <br>
+
+    <div>
+      <h4>Date of Interaction</h4>
       <%= form.date_select :date, default: Date.today %>
     </div>
 
     <br>
     
     <div>
-      <p>Length of Interaction?</p>
+      <h4>Length of Interaction?</h4>
       <%= form.select :length, [['less than 5 min'],['15 min','15 min'],['30 min','30 min'],['45 min','45 min'],['1 hour','1 hour'],['2 hours','2 hours'],['Half Day','Half Day'],['Full Day','Full Day'],['Overnight, Two-Day Adventure, or Weekend','Overnight, Two-Day Adventure, or Weekend'],['Full-On Vacation', 'Full-On Vacation']], class: "form-select", style: "width: 200px; border-radius: 5px"  %>
     </div>  
 
     <br>
 
     <div>
-      <p>Interaction Type?<p>
+      <h4>Interaction Type?</h4>
       <%= form.select :interaction_type_id, @interaction_types.map{|i| ["#{i.name}", i.id]} %>
     </div>
 
+    <br>
+
     <div>
-      <p><strong>You Initiated Contact?</strong></p>
+      <h4>You Initiated Contact?</h4>
       <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select' %>
     </div>
 
+    <br>
+
     <div>
-      <p><strong>Interaction Category?</strong></p>
-      <%= form.collection_check_boxes :interaction_category_ids, @interaction_categories, :id, :name, { multiple: true, include_hidden: false } %>
+      <h4>Interaction Category?</h4>
+      <div class="form-check">
+        <%= form.collection_check_boxes :interaction_category_ids, @interaction_categories, :id, :name, { multiple: true, include_hidden: false } do |cb| %>
+          <%= cb.check_box(class: 'form-check-input') %>
+          <%= cb.label(class: 'form-check-label') %><br> <!-- Add a line break for each checkbox -->
+        <% end %>
+      </div>
     </div>
     <br>
 
     <div>
-      <p><strong>Emotional Reaction</strong>
-      <%= form.collection_check_boxes :emotional_reaction_ids, @emotional_reactions, :id, :name, { multiple: true, include_hidden: false } %>
+      <h4>Emotional Reaction</h4>
+      <div class="form-check">
+        <%= form.collection_check_boxes :emotional_reaction_ids, @emotional_reactions, :id, :name, { multiple: true, include_hidden: false } do |cb| %>
+          <%= cb.check_box(class: 'form-check-input') %>
+          <%= cb.label(class: 'form-check-label') %><br> <!-- Add a line break for each checkbox -->
+        <% end %>
+      </div>
     </div>
+    <br>
 
     <div>
-      <%= form.submit %>
+      <%= form.submit class: "btn btn-primary" %>
     </div>
   
 <% end %>
