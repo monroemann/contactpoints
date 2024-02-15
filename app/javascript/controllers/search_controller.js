@@ -13,6 +13,11 @@ export default class extends Controller {
         // createOnBlur: true,
         // create: false,
         // plugins: ['no_add']
+        render:{
+          no_results:function(data,escape){
+            return '<div class="no-results">No results found - <a href="/contacts/new" target="_blank">create new (opens new tab)</a></div>';
+          }
+        }
       });
     // document.addEventListener("click", (event) => { // <-- Corrected syntax
     //   if (!this.element.contains(event.target)) {
