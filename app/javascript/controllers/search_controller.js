@@ -9,9 +9,11 @@ export default class extends Controller {
   connect() { 
     console.log("YES search controller working - connect method called", this.element);
     new TomSelect(this.element, {
-      createOnBlur: true,
-      create: true
-    });
+        //Uncomment below and change create to true to allow user to add new entries from forms
+        // createOnBlur: true,
+        // create: false,
+        // plugins: ['no_add']
+      });
     // document.addEventListener("click", (event) => { // <-- Corrected syntax
     //   if (!this.element.contains(event.target)) {
     //     this.hideSuggestions();
