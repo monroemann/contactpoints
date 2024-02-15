@@ -4,6 +4,7 @@
 
       <h3 class=text-center><%= contact.full_name %><br>
         (<%= contact.total_points %> Points)</h3>
+      <h4 class="text-center">Last Contacted: <%= time_ago_in_words(contact.interactions&.last.created_at) %> ago</h4>  
 
       <br>
 
@@ -224,8 +225,11 @@
               <% @interactions.each do |interaction| %>
                 <tr>
                   <th scope="row"><%= link_to interaction.name, interaction %></th>
-                  <td><%= interaction.date.strftime("%B %e, %Y") %>
-                    <br>(<%= time_ago_in_words(interaction.date) %> ago)</td>
+                  <td>
+                    <%= interaction.date&.strftime("%B %e, %Y") %>
+                    <br>
+                    (<%= time_ago_in_words(interaction.date) if interaction.date %> ago)
+                  </td>
                   <td><%= interaction.length %></td>
                   <td><%= interaction.interaction_type.name %></td>
                   <td><%= interaction.location.name %></td>
