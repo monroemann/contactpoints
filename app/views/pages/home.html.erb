@@ -15,6 +15,7 @@
 			      <th>Name</th>
 			      <th>Mobile</th>
 			      <th>Email</th>
+			      <th>Last Interaction</th>
 			      <th>Points</th>
 			    </tr>
 			  </thead>
@@ -25,6 +26,11 @@
     <td><%= link_to contact.full_name, contact if contact.present? %></td>
     <td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 if contact&.mobile_phone_1.present? %></td>
     <td><%= link_to contact.email_1, contact.email_1 if contact&.email_1.present? %></td>
+    <% if contact.interactions.any? %>
+	    <td><%= time_ago_in_words(contact.interactions.last.created_at) %> ago</td>
+	  <% else %>
+	  	<td>None Yet</td>
+	  <% end %>
     <td><%= contact.total_points if contact.present? %></td>
   </tr>
   <% if contact.blank? || contact.full_name.nil? %>
