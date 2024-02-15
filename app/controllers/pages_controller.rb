@@ -16,11 +16,11 @@ class PagesController < ApplicationController
 		@next_to_contact = @contacts.shuffle.take(30)
 
 		# FIX OR REMOVE
-		@going_up = @contacts
+		#@going_up = @contacts
 
 		# FIX OR REMOVE
-		@going_down = current_user.contacts.map { |contact| 
-			points_going_down?(contact) }.flatten.uniq
+		#@going_down = current_user.contacts.map { |contact| 
+		#	points_going_down?(contact) }.flatten.uniq
 
 		# DONE (though perhaps best to redo this query using 'points' from contact.rb)
 		# AT ZERO POINTS
@@ -359,11 +359,11 @@ puts "Recently Added Contact: #{recently_added_contact.inspect}"
 
 
 		# FIX OR REMOVE
-		@going_up = @contacts
+		#@going_up = @contacts
 
 		# FIX OR REMOVE
-		@going_down = current_user.contacts.map { |contact| 
-			points_going_down?(contact) }.flatten.uniq
+		#@going_down = current_user.contacts.map { |contact| 
+		#	points_going_down?(contact) }.flatten.uniq
 
 		# DONE (though perhaps best to redo this query using 'points' from contact.rb)
 		# AT ZERO POINTS
