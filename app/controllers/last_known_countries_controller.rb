@@ -3,7 +3,7 @@ class LastKnownCountriesController < ApplicationController
 
   # GET /last_known_countries or /last_known_countries.json
   def index
-    @last_known_countries = LastKnownCountry.all
+    @last_known_countries = current_user.last_known_country
   end
 
   # GET /last_known_countries/1 or /last_known_countries/1.json

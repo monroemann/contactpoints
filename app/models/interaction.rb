@@ -6,6 +6,7 @@ class Interaction < ApplicationRecord
 	belongs_to :interaction_type
 
 	validates :user, presence: true
+  validates :what_happened, presence: true
 
 	has_many :interact_interact_categories, dependent: :destroy
 	has_many :interaction_categories, through: :interact_interact_categories
