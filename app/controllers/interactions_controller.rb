@@ -3,7 +3,7 @@ class InteractionsController < ApplicationController
 
   # GET /interactions or /interactions.json
   def index
-    @interactions = Interaction.all
+    @interactions = current_user.interactions
 
   end
 

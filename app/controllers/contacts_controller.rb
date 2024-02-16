@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     @contacts = current_user.contacts
 
     #Ransack variables for search
-    @query = Contact.ransack(params[:q])
+    @query = @contacts.ransack(params[:q])
     @results = @query.result(distinct: true)
 
   end
