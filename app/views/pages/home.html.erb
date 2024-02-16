@@ -23,19 +23,40 @@
 			  <tbody>
 <% @next_to_contact.each do |contact| %>
   <tr>
-    <td><%= link_to contact.full_name, contact if contact.present? %></td>
-    <td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 if contact&.mobile_phone_1.present? %></td>
-    <td><%= link_to contact.email_1, contact.email_1 if contact&.email_1.present? %></td>
-    <% if contact.interactions.any? %>
-	    <td><%= time_ago_in_words(contact.interactions.last.created_at) %> ago</td>
-	  <% else %>
-	  	<td>None Yet</td>
-	  <% end %>
-    <td><%= contact.total_points if contact.present? %></td>
+    <% if contact.present? && contact.interactions&.any? %>
+      <td><%= link_to contact.full_name, contact if contact.present? %></td>
+    <% else %>
+    	<td>None Yet</td>
+    <% end %>
+
+    <% if contact.present? && contact.interactions&.any? %>
+    	<td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 if contact&.mobile_phone_1.present? %></td>
+    <% else %>
+    	<td>None Yet</td>
+    <% end %>
+
+   	<% if contact.present? && contact.interactions&.any? %>
+    	<td><%= link_to contact.email_1, contact.email_1 if contact&.email_1.present? %></td>
+    <% else %>
+    	<td>None Yet</td>
+    <% end %>
+
+		<% if contact.present? && contact.interactions&.any? %>
+		  <td><%= time_ago_in_words(contact.interactions.last.created_at) %> ago</td>
+		<% else %>
+		  <td>None Yet</td>
+		<% end %>
+
+		<% if contact.present? && contact.interactions&.any? %>
+    	<td><%= contact.total_points if contact.present? %></td>
+    <% else %>
+    	<td>None Yet</td>
+    <% end %>
+
   </tr>
-  <% if contact.blank? || contact.full_name.nil? %>
-    <p style="color: red;">Blank or nil contact found: <%= contact.inspect %></p>
-  <% end %>
+  <%# if contact.blank? || contact.full_name.nil? %>
+    <!-- <p style="color: red;">Blank or nil contact found: <%# contact.inspect %></p> -->
+  <%# end %>
 <% end %>
 
 
@@ -524,14 +545,6 @@
 
 
 
-	<p>ADMIN:</p> 
-	<p><%= link_to "Contact Types", contact_types_path %></p> 
-	<p><%= link_to "Point Category Types", categories_path %></p>
-	<p><%= link_to "Interaction Category Types", interaction_categories_path %></p>
-	<p><%= link_to "Interaction Type", interaction_types_path %></p>
-	<p><%= link_to "Emotional Reactions", emotional_reactions_path %></p>
-	<p><%= link_to "Last Known Cities", last_known_cities_path %></p>
-	<p><%= link_to "Last Known Countries", last_known_countries_path %></p>
-
+	<p>ADMIN: <p><%= link_to "Contact Types", contact_types_path %> - <%= link_to "Point Category Types", categories_path %> - <%= link_to "Interaction Category Types", interaction_categories_path %> - <%= link_to "Interaction Type", interaction_types_path %> - <%= link_to "Emotional Reactions", emotional_reactions_path %> - <%= link_to "Last Known Cities", last_known_cities_path %> - <%= link_to "Last Known Countries", last_known_countries_path %></p>
 
 </div>
