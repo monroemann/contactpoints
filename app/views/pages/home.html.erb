@@ -2,6 +2,24 @@
 
 	<br>
 
+	<% if current_user.contacts.empty? || 
+				current_user.contact_types.empty? ||
+				current_user.contact_groups.empty? ||
+				current_user.locations.empty? ||
+				current_user.interactions.empty?	%>
+					<div>
+						<ol>
+							HOW TO GET STARTED: 
+							<li>Click 'New Type' to create at least one contact type.</li>
+							<li>Click 'New Group' to create at least one contact group.</li>
+							<li>Click 'New Location' to create at least one interaction location.</li>
+							<li>Click 'New Contact' to create at least one contact.</li>
+							<li>Click 'New Interaction' to create a new interaction.</li>  
+						</ol>
+						<p>Once you have completed the above, these instructions will disappear.  As you add more contacts and interactions, the sections below will start to fill up with names.  If you continue to see 'None Yet' or no names at all, it means you don't have contacts yet that meet the criteria for 'next to contact'--it will all change in time.</p>
+					</div>
+	<% end %>  
+
 	<div class="row">
 		<div class="col">
 			<h4>Recommended Next To Contact</h4>

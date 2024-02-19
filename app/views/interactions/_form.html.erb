@@ -14,7 +14,7 @@
   <% end %>
 
     <div>
-      <h4><%= form.label :what_happened, "What Happened?", style: "display: block" %></h4>
+      <h4><%= form.label :what_happened, "What Happened?", style: "display: block", required: true %></h4>
       <%= form.text_field :name, placeholder: "What happened?", class: "form-control" %>
     </div>
 
@@ -67,21 +67,21 @@
     
     <div>
       <h4>Length of Interaction?</h4>
-      <%= form.select :length, [['less than 5 min'],['15 min','15 min'],['30 min','30 min'],['45 min','45 min'],['1 hour','1 hour'],['2 hours','2 hours'],['Half Day','Half Day'],['Full Day','Full Day'],['Overnight, Two-Day Adventure, or Weekend','Overnight, Two-Day Adventure, or Weekend'],['Full-On Vacation', 'Full-On Vacation']], class: "form-select", style: "width: 200px; border-radius: 5px"  %>
+      <%= form.select :length, [['less than 5 min'],['15 min','15 min'],['30 min','30 min'],['45 min','45 min'],['1 hour','1 hour'],['2 hours','2 hours'],['Half Day','Half Day'],['Full Day','Full Day'],['Overnight, Two-Day Adventure, or Weekend','Overnight, Two-Day Adventure, or Weekend'],['Full-On Vacation', 'Full-On Vacation']], class: "form-select", style: "width: 200px; border-radius: 5px", required: true %>
     </div>  
 
     <br>
 
     <div>
       <h4>Interaction Type?</h4>
-      <%= form.select :interaction_type_id, @interaction_types.map{|i| ["#{i.name}", i.id]} %>
+      <%= form.select :interaction_type_id, @interaction_types.map{|i| ["#{i.name}", i.id]}, required: true %>
     </div>
 
     <br>
 
     <div>
       <h4>You Initiated Contact?</h4>
-      <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select' %>
+      <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select', required: true  %>
     </div>
 
     <br>

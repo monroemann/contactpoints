@@ -7,6 +7,8 @@ class ContactsController < ApplicationController
   def index
   
     @contacts = current_user.contacts
+    @contact_groups = current_user.contact_groups
+    @contact_types = current_user.contact_types
 
     #Ransack variables for search
     @query = @contacts.ransack(params[:q])
@@ -23,10 +25,14 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @contact_groups = current_user.contact_groups
+    @contact_types = current_user.contact_types
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact_groups = current_user.contact_groups
+    @contact_types = current_user.contact_types
   end
 
   # POST /contacts or /contacts.json

@@ -304,14 +304,15 @@ class PagesController < ApplicationController
 	#######################
 
 
-	# HOME ACTION
-	# When you change the queries here, they may need to also be changed in all_points method too
-	def home
-		@contacts = current_user.contacts
+# HOME ACTION
+# When you change the queries here, they may need to also be changed in all_points method too
+def home
+	
+	@contacts = current_user.contacts
 
-		# DONE
-		@recently_added_contacts = current_user.contacts
-																					.order(created_at: :desc)
+	# DONE
+	@recently_added_contacts = current_user.contacts
+																				.order(created_at: :desc)
 
 # NEXT TO CONTACT
 # Get contacts with recent interactions (3 months)

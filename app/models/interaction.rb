@@ -6,6 +6,15 @@ class Interaction < ApplicationRecord
 	belongs_to :interaction_type
 
 	validates :user, presence: true
+  validates :name, presence: true #this is the what_happened field
+  validates :contact_id, presence: true
+  validates :interaction_type_id, presence: true
+  validates :date, presence: true
+  validates :length, presence: true
+  validates :location_id, presence: true
+  validates :you_initiated_contact, presence: true
+  validate :at_least_one_interaction_category
+  validate :at_least_one_emotional_reaction
 
 	has_many :interact_interact_categories, dependent: :destroy
 	has_many :interaction_categories, through: :interact_interact_categories
@@ -113,6 +122,18 @@ class Interaction < ApplicationRecord
 
   def calculate_points_for_who_initiated_contact
     you_initiated_contact == true ? 1 : 3
+  end
+
+  def at_least_one_interaction_category
+    if interaction_category_ids.blank? || interaction_category_ids.all?(&:blank?)
+      errors.add(:interaction_category_ids, "must have at least one interaction category")
+    end
+  end
+
+  def at_least_one_emotional_reaction
+    if emotional_reaction_ids.blank? || emotional_reaction_ids.all?(&:blank?)
+      errors.add(:emotional_reaction_ids, "must have at least one emotional reaction")
+    end
   end
 
 end
