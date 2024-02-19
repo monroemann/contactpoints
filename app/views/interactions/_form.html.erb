@@ -89,7 +89,7 @@
     <div>
       <h4>Interaction Category?</h4>
       <div class="form-check">
-        <%= form.collection_check_boxes :interaction_category_ids, @interaction_categories, :id, :name, { multiple: true, include_hidden: false }, required: true do |cb| %>
+        <%= form.collection_check_boxes :interaction_category_ids, @interaction_categories, :id, :name, { multiple: true, include_hidden: false } do |cb| %>
           <%= cb.check_box(class: 'form-check-input') %>
           <%= cb.label(class: 'form-check-label') %><br> <!-- Add a line break for each checkbox -->
         <% end %>
@@ -100,7 +100,7 @@
     <div>
       <h4>Emotional Reaction</h4>
       <div class="form-check">
-        <%= form.collection_check_boxes :emotional_reaction_ids, @emotional_reactions, :id, :name, { multiple: true, include_hidden: false }, required: true do |cb| %>
+        <%= form.collection_check_boxes :emotional_reaction_ids, @emotional_reactions, :id, :name, { multiple: true, include_hidden: false } do |cb| %>
           <%= cb.check_box(class: 'form-check-input') %>
           <%= cb.label(class: 'form-check-label') %><br> <!-- Add a line break for each checkbox -->
         <% end %>

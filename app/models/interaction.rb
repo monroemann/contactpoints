@@ -6,7 +6,6 @@ class Interaction < ApplicationRecord
 	belongs_to :interaction_type
 
 	validates :user, presence: true
-  validates :what_happened, presence: true
   validates :contact_id, presence: true
   validates :description, presence: true
   validates :interaction_type_id, presence: true
@@ -127,7 +126,7 @@ class Interaction < ApplicationRecord
 
   def at_least_one_interaction_category
     if interaction_category_ids.blank? || interaction_category_ids.all?(&:blank?)
-      errors.add(:interaction_category_ids, "must have at least one interaction category")
+      errors.add(:interaction_category_ids, "must have at least one itneraction category")
     end
   end
 
