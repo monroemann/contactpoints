@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_235623) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_25_145759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -204,12 +204,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_235623) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_last_known_cities_on_user_id"
   end
 
   create_table "last_known_countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_last_known_countries_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -260,6 +264,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_235623) do
   add_foreign_key "interaction_locations", "locations"
   add_foreign_key "interactions", "contacts"
   add_foreign_key "interactions", "interaction_types"
+  add_foreign_key "last_known_cities", "users"
+  add_foreign_key "last_known_countries", "users"
   add_foreign_key "locations", "users"
   add_foreign_key "points", "contacts"
   add_foreign_key "points", "interactions"
