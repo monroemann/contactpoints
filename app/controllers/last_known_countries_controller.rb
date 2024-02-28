@@ -21,7 +21,7 @@ class LastKnownCountriesController < ApplicationController
 
   # POST /last_known_countries or /last_known_countries.json
   def create
-    @last_known_country = LastKnownCountry.new(last_known_country_params)
+    @last_known_country = current_user.last_known_countries.new(last_known_country_params)
 
     respond_to do |format|
       if @last_known_country.save

@@ -27,6 +27,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new
     @contact_groups = current_user.contact_groups
     @contact_types = current_user.contact_types
+    @last_known_cities = current_user.last_known_cities
+    @last_known_countries = current_user.last_known_countries
   end
 
   # GET /contacts/1/edit

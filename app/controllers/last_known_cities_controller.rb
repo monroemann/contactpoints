@@ -21,7 +21,7 @@ class LastKnownCitiesController < ApplicationController
 
   # POST /last_known_cities or /last_known_cities.json
   def create
-    @last_known_city = LastKnownCity.new(last_known_city_params)
+    @last_known_city = current_user.last_known_cities.new(last_known_city_params)
 
     respond_to do |format|
       if @last_known_city.save

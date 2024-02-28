@@ -1,9 +1,15 @@
-<h1>New last known city</h1>
+<div class="container">
+  <div class="card p-2">
 
-<%= render "form", last_known_city: @last_known_city %>
+    <h1>Add New City</h1>
 
-<br>
+    <%= render "form", last_known_city: @last_known_city %>
 
-<div>
-  <%= link_to "Back to last known cities", last_known_cities_path %>
+    <br>
+
+    <div>
+      <%= link_to "Back to last known cities", last_known_cities_path %>
+    </div>
+
+  </div>
 </div>
