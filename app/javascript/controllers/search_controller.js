@@ -15,7 +15,7 @@ export default class extends Controller {
         // plugins: ['no_add']
         render:{
           no_results:function(data,escape){
-            return '<div class="no-results">No results found - <a href="/contacts/new" target="_blank">create new (opens new tab)</a></div>';
+            return '<div class="no-results">No results found - Please add to database via menu</a></div>';
           }
         }
       });

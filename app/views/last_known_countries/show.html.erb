@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card p-2">
 
-<%= render @last_known_country %>
+    <p style="color: green"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this last known country", edit_last_known_country_path(@last_known_country) %> |
-  <%= link_to "Back to last known countries", last_known_countries_path %>
+    <%= render @last_known_country %>
 
-  <%= button_to "Destroy this last known country", @last_known_country, method: :delete %>
+    <div>
+      <%= link_to "Edit this last known country", edit_last_known_country_path(@last_known_country) %> |
+      <%= link_to "Back to last known countries", last_known_countries_path %>
+
+      <%= button_to "Destroy this last known country", @last_known_country, method: :delete %>
+    </div>
+
+  </div>
 </div>

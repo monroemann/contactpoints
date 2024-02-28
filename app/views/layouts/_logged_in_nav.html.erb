@@ -2,11 +2,38 @@
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="/">Home <span class="sr-only">(current)</span></a>
 </li> -->
 
-<li class="nav-item me-2">
-  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contacts" style="color: white" href="/contacts">C</a>
+
+
+<li class="nav-item me-2 dropdown">
+  <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+    Go To
+  </button>
+  <div class="dropdown-menu dropdown-menu-end">
+    <ul class="list-unstyled">
+      <li><a class="dropdown-item" href="/">Home</a></li>
+      <li><a class="dropdown-item" href="/all_points">All Points</a></li>
+      <li><a class="dropdown-item" href="/contacts">Contacts</a></li>
+      <li><a class="dropdown-item" href="/interactions">Interactions</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/contact_groups">Contact Groups</a></li>
+      <li><a class="dropdown-item" href="/contact_types">Contact Types</a></li>
+      <li><a class="dropdown-item" href="/locations">Locations</a></li>
+      <li><a class="dropdown-item" href="/last_known_cities">Cities</a></li>
+      <% if current_user.admin? %>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/admin">User List</a></li>
+        <li><a class="dropdown-item" href="/last_known_countries">Countries</a></li>
+      <% end %>
+    </ul>
+  </div>
 </li>
 
-<li class="nav-item me-2">
+
+<!-- <li class="nav-item me-2">
+  <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contacts" style="color: white" href="/contacts">C</a>
+</li> -->
+
+<!-- <li class="nav-item me-2">
   <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="Contact Groups" style="color: white" href="/contact_groups">G</a>
 </li>
 
@@ -24,7 +51,7 @@
 
 <li class="nav-item me-2">
   <a class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="0" title="All Points" style="color: white" href="/all_points">AP</a>
-</li>
+</li> -->
 
 <!-- <li class="nav-item mr-2">
   <a class="nav-link btn btn-outline-success btn-sm" style="color: white" href="#">Tasks</a>
@@ -40,6 +67,10 @@
 
 <li class="nav-item me-2" style="float: right">
   <%= link_to 'New Location', new_location_path, class: "btn btn-secondary btn-sm", type: "button", style: "color: white" %>
+</li>
+
+<li class="nav-item me-2" style="float: right">
+  <%= link_to 'New City', new_last_known_city_path, class: "btn btn-secondary btn-sm", type: "button", style: "color: white" %>
 </li>
 
 <li class="nav-item me-2" style="float: right">
