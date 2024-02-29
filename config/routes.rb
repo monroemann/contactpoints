@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :last_known_cities
   resources :last_known_countries
   resources :locations
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
   get 'all_points', to: 'pages#all_points', as: 'all_points'
+  get 'all_contacts', to: 'contacts#all_contacts', as: 'all_contacts'
 
   root to: 'pages#index'
 

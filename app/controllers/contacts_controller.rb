@@ -3,17 +3,24 @@ class ContactsController < ApplicationController
   before_action :set_last_known_countries, only: [:new, :edit, :update, :create]
   before_action :set_last_known_cities, only: [:new, :edit, :update, :create]
 
+  include Pagy::Backend
+
   # GET /contacts or /contacts.json
-  def index
   
+  def index
     @contacts = current_user.contacts
     @contact_groups = current_user.contact_groups
     @contact_types = current_user.contact_types
 
     #Ransack variables for search
     @query = @contacts.ransack(params[:q])
-    @results = @query.result(distinct: true)
+    @results = @query.result(distinct: true)  
+  end
 
+  def all_contacts
+    @pagy, @contacts = pagy(current_user.contacts, items: 10)
+    @contact_groups = current_user.contact_groups
+    @contact_types = current_user.contact_types
   end
 
   # GET /contacts/1 or /contacts/1.json

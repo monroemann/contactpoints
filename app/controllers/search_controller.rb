@@ -8,7 +8,7 @@ class SearchController < ApplicationController
 				render turbo_stream: 
 					turbo_stream.update('contacts',
 															partial: 'contacts/contacts',
-															locals: {contacts: @raults})
+															locals: {contacts: @results})
 
 			end
 		end
@@ -22,7 +22,7 @@ class SearchController < ApplicationController
 				render turbo_stream: 
 					turbo_stream.update('suggestions',
 															partial: 'search/suggestions',
-															locals: {contacts: @raults})
+															locals: {contacts: @results})
 
 			end
 		end
@@ -31,7 +31,7 @@ class SearchController < ApplicationController
 	private
 
 	def search_for_contacts
-		if params [:query].blank?
+		if params[:query].blank?
 			Contact.all?
 		else
 			Contact.search(params[:query], 

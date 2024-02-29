@@ -1,6 +1,8 @@
 class LastKnownCitiesController < ApplicationController
   before_action :set_last_known_city, only: %i[ show edit update destroy ]
 
+  include Pagy::Backend
+
   # GET /last_known_cities or /last_known_cities.json
   def index
     @last_known_cities = current_user.last_known_cities

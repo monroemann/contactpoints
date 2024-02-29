@@ -1,6 +1,8 @@
 class InteractionsController < ApplicationController
   before_action :set_interaction, only: %i[ show edit update destroy ]
 
+  include Pagy::Backend
+
   # GET /interactions or /interactions.json
   def index
     @interactions = current_user.interactions

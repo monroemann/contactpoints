@@ -1,9 +1,11 @@
 class ContactTypesController < ApplicationController
   before_action :set_contact_type, only: %i[ show edit update destroy ]
 
+  include Pagy::Backend
+
   # GET /contact_types or /contact_types.json
   def index
-    @contact_types = current_user.contact_types
+    @pagy, @contact_types = pagy(current_user.contact_types, items: 2)
   end
 
   # GET /contact_types/1 or /contact_types/1.json
