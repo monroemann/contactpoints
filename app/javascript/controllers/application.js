@@ -11,3 +11,6 @@ export { application }
 
 console.log("other javascript.js is being called");
 console.log("why do we have two application.js?");
+
+//= require pagy
+//= require pagy/extras/bootstrap

@@ -1,9 +1,11 @@
 class ContactGroupsController < ApplicationController
   before_action :set_contact_group, only: %i[ show edit update destroy ]
 
+  include Pagy::Backend
+
   # GET /contact_groups or /contact_groups.json
   def index
-    @contact_groups = current_user.contact_groups
+    @pagy, @contact_groups = pagy(current_user.contact_groups, items: 25)
   end
 
   # GET /contact_groups/1 or /contact_groups/1.json

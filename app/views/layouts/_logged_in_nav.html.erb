@@ -11,8 +11,9 @@
   <div class="dropdown-menu dropdown-menu-end">
     <ul class="list-unstyled">
       <li><a class="dropdown-item" href="/">Home</a></li>
+      <li><a class="dropdown-item" href="/contacts">Search</a></li>
+      <li><a class="dropdown-item" href="/all_contacts">All Contacts</a></li>
       <li><a class="dropdown-item" href="/all_points">All Points</a></li>
-      <li><a class="dropdown-item" href="/contacts">Contacts</a></li>
       <li><a class="dropdown-item" href="/interactions">Interactions</a></li>
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="/contact_groups">Contact Groups</a></li>
@@ -81,8 +82,8 @@
   <a class="btn btn-secondary btn-sm" type="button" style="color: white" href="/contact_types/new">New Type</a>
 </li>
 
-<form class="form-inline my-2 my-lg-0">
-    <%= render 'contacts/search_form' %>
-</form>
+<!-- <form class="form-inline my-2 my-lg-0">
+    <%# render 'contacts/search_form' %>
+</form> -->
 
 <%= button_to 'LogOut', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>

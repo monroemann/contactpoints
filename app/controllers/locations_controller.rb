@@ -1,9 +1,11 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
 
+  include Pagy::Backend
+
   # GET /locations or /locations.json
   def index
-    @locations = current_user.locations.all
+    @pagy, @locations = pagy(current_user.locations.all, items: 25)
   end
 
   # GET /locations/1 or /locations/1.json

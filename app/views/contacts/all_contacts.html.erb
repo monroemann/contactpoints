@@ -5,13 +5,10 @@
 
         <p id="notice" style="color: green"><%= notice %></p>
 
-        <h1>Contacts</h1>
+        <h1>All Contacts</h1>
+        <p>To find a particular contact, use the search bar in nav</p>
 
-        <form class="form-inline my-2 my-lg-0">
-            <%= render 'contacts/search_form' %>
-        </form>
-
-        <%= pluralize(@results.count, "Results") %>
+        <%= pluralize(@contacts.count, "Results") %>
 
       <div class="table-responsive">  
         <table class="table">
@@ -56,7 +53,7 @@
           </thead>
 
           <tbody>
-            <% @results.each do |contact| %>
+            <% @contacts.each do |contact| %>
               <tr>
                 <td><%= link_to contact.first_name, contact %></td>
                 <td><%= link_to contact.last_name, contact %></td>
@@ -103,7 +100,8 @@
         <br>
 
         <%= link_to 'New Contact', new_contact_path, class: 'button-link' %>
-    </div>
 
+        <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   </div>
 </div>
