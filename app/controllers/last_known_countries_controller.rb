@@ -5,7 +5,7 @@ class LastKnownCountriesController < ApplicationController
 
   # GET /last_known_countries or /last_known_countries.json
   def index
-    @last_known_countries = current_user.last_known_countries
+    @pagy, @last_known_countries = pagy(current_user.last_known_countries, items: 25)
   end
 
   # GET /last_known_countries/1 or /last_known_countries/1.json

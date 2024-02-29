@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
   end
 
   def all_contacts
-    @pagy, @contacts = pagy(current_user.contacts, items: 10)
+    @pagy, @contacts = pagy(current_user.contacts, items: 25)
     @contact_groups = current_user.contact_groups
     @contact_types = current_user.contact_types
   end

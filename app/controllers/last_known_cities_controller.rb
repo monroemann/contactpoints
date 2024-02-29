@@ -5,7 +5,7 @@ class LastKnownCitiesController < ApplicationController
 
   # GET /last_known_cities or /last_known_cities.json
   def index
-    @last_known_cities = current_user.last_known_cities
+    @pagy, @last_known_cities = pagy(current_user.last_known_cities, items: 25)
   end
 
   # GET /last_known_cities/1 or /last_known_cities/1.json
