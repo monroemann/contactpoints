@@ -5,7 +5,7 @@ class ContactTypesController < ApplicationController
 
   # GET /contact_types or /contact_types.json
   def index
-    @pagy, @contact_types = pagy(current_user.contact_types, items: 2)
+    @pagy, @contact_types = pagy(current_user.contact_types, items: 25)
   end
 
   # GET /contact_types/1 or /contact_types/1.json
