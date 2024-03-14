@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'
   get 'checkouts/failure', to: 'checkouts#failure'
-  get 'billing', to: 'billing#show'
+  get 'billing', to: 'checkouts#billing'
 
   root to: 'pages#index'
 
