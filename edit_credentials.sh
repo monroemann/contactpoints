@@ -1,0 +1,1 @@
+EDITOR="subl.exe --wait" rails credentials:edit
