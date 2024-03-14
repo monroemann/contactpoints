@@ -28,6 +28,12 @@ Rails.application.routes.draw do
   get 'all_points', to: 'pages#all_points', as: 'all_points'
   get 'all_contacts', to: 'contacts#all_contacts', as: 'all_contacts'
 
+  # Stripe checkout
+  get 'checkout', to: 'checkouts#show'
+  get 'checkout/success', to: 'checkouts#success'
+  get 'checkouts/failure', to: 'checkouts#failure'
+  get 'billing', to: 'billing#show'
+
   root to: 'pages#index'
 
 end

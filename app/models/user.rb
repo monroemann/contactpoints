@@ -13,5 +13,19 @@ class User < ApplicationRecord
   has_many :categories
   has_many :locations, class_name: 'Location', dependent: :destroy
 
+  pay_customer stripe_attributes: :stripe_attributes
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+        city: pay_customer.owner.city,
+        country: pay_customer.owner.country
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id 
+      }
+    }
+  end
 
 end

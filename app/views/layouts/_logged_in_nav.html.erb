@@ -20,6 +20,11 @@
       <li><a class="dropdown-item" href="/contact_types">Contact Types</a></li>
       <li><a class="dropdown-item" href="/locations">Locations</a></li>
       <li><a class="dropdown-item" href="/last_known_cities">Cities</a></li>
+        <li><hr class="dropdown-divider"></li>
+      <% if current_user %>
+        <li><%= link_to "Manage Billing", @portal_session.url, class: "dropdown-item" %></li>
+      <% end %>
+
       <% if current_user.admin? %>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="/admin">User List</a></li>
@@ -86,4 +91,6 @@
     <%# render 'contacts/search_form' %>
 </form> -->
 
+
+<%= button_to 'Upgrade', checkout_path, class: "btn btn-success btn-sm", type: "button" %>
 <%= button_to 'LogOut', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>
