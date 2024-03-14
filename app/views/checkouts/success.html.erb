@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="card p-5">
+
+
+		<h1>Payment Success.</h1>
+
+		<h2>Your total was $<%= @session.amount_total.to_f / 100 %>  </h2>
+
+		<% @line_items.each do |item| %>
+			<p><%= item.description %></p>
+			<p>Your total is: $<%= item.price.unit_amount.to_f / 100 %></p>
+
+			<% product = Stripe::Product::retrieve(item.price.product) %>
+			
+			<%# image_tag(product.images.first, width: 300) %>
+		
+		<% end %>
+
+		<%= @product_name %>
+
+	</div>
+</div>

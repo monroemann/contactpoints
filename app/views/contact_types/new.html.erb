@@ -4,14 +4,16 @@
     <div class="container">
 
       <h1>New Contact Type</h1>
-      <p>Contact types are ways to categorize your contacts based on what they do, e.g. Doctor, Pilot, Teacher, Publicist, etc. You can create 5 on the free plan, and unlimited on the paid plan.</p>
+      <p>Contact types are ways to categorize your contacts based on what they do.</p>
+      <p>Here is a starter list of suggestions: Doctor, Pilot, Teacher, Publicist, Salesman, Web Developer, Fireman, Police Officer, Athlete, Speaker, Actor, Model, etc.  Think of all the people you know and what they do in life.  Then create a new contact type for each occupation or position.  You can always add more later.</p>
 
       <%= render "form", contact_type: @contact_type %>
 
       <br>
 
       <div>
-        <%= link_to "Back to contact types", contact_types_path %>
+        <%= link_to "See All", contact_types_path %>
+        <%= link_to "Home", root_path %>
       </div>
 
     </div>

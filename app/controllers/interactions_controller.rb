@@ -1,5 +1,6 @@
 class InteractionsController < ApplicationController
   before_action :set_interaction, only: %i[ show edit update destroy ]
+  before_action :require_subscription, except: [:index, :show]
 
   include Pagy::Backend
 
@@ -91,6 +92,12 @@ class InteractionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_interaction
       @interaction = Interaction.find(params[:id])
+    end
+
+    def require_subscription
+      if current_user.interactions.count > 15
+        redirect_to checkout_path unless current_user.lifetime?
+      end
     end
 
     # Only allow a list of trusted parameters through.

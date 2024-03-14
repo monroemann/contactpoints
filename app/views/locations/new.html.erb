@@ -5,12 +5,17 @@
 
       <h1>New location</h1>
 
+      <p>Add locations where you have had or intend to have interactions with your contacts.</p>
+
+      <p>For example, if you often meet people at Dolphin Mall, Pleasant Mountain, and My Apartment, add those here.  Later, you'll be able to see which locations are most conducive to great relationships.</p>
+
       <%= render "form", location: @location %>
 
       <br>
 
       <div>
-        <%= link_to "Back to locations", locations_path %>
+        <%= link_to "See All", locations_path %>
+        <%= link_to "Home", root_path %>
       </div>
 
     </div>

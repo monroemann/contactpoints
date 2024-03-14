@@ -11,6 +11,9 @@ module Contactpoints
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # Adjust this to properly work with MailTrap
+    config.action_mailer.default_url_options = { host: "http://localhost:3000" }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

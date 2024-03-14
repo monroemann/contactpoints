@@ -3,12 +3,16 @@
 
     <h1>Add New City</h1>
 
+    <p>These are cities where a contact currently lives or was last seen.</p>
+    <p>For example, if you met a lot of people in Shanghai, and you last remember these contacts to be living in Shanghai, add Shanghai as a city here.  Later, you will be able to know who of your contacts live where.</p>
+
     <%= render "form", last_known_city: @last_known_city %>
 
     <br>
 
     <div>
-      <%= link_to "Back to last known cities", last_known_cities_path %>
+      <%= link_to "See All", last_known_cities_path %>
+      <%= link_to "Home", root_path %>
     </div>
 
   </div>

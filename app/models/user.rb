@@ -13,5 +13,50 @@ class User < ApplicationRecord
   has_many :categories
   has_many :locations, class_name: 'Location', dependent: :destroy
 
+  # STRIPE RELATED
+  pay_customer stripe_attributes: :stripe_attributes
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+        city: pay_customer.owner.city,
+        country: pay_customer.owner.country
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id 
+      }
+    }
+  end
+
+  has_one :pay_customer, as: :owner, class_name: 'Pay::Customer'
+
+  def stripe_customer_id
+    pay_customer&.processor_id
+  end
+
+  def stripe_customer
+    @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
+  end
+
+  def has_purchased_product?(product_name)
+    return false unless stripe_customer_id.present?
+
+    charges = Stripe::Charge.list(customer: stripe_customer_id)
+    charges.data.any? do |charge|
+      charge.description == product_name
+    end
+  end
+
+  def billing_portal_url
+    return nil unless stripe_customer_id.present?
+    
+    return_url = "http://localhost:3000/billing"  # Use http:// or https:// based on your setup
+    
+    Stripe::BillingPortal::Session.create({
+      customer: stripe_customer_id,
+      return_url: return_url,
+    }).url
+  end
 
 end
