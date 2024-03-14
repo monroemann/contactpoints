@@ -62,16 +62,33 @@ class User < ApplicationRecord
     }).url
   end
 
+  # def has_active_subscription?(subscription_name)
+  #   return false unless stripe_customer_id.present?
+
+  #   subscriptions = Stripe::Subscription.list(customer: stripe_customer_id)
+  #   subscriptions.data.any? do |subscription|
+  #     subscription.items.data.any? do |item|
+  #       item.price.product == subscription_name && subscription.status == 'active'
+  #     end
+  #   end
+  # end
+
   def has_active_subscription?(subscription_name)
     return false unless stripe_customer_id.present?
 
     subscriptions = Stripe::Subscription.list(customer: stripe_customer_id)
     subscriptions.data.any? do |subscription|
       subscription.items.data.any? do |item|
-        item.price.product == subscription_name && subscription.status == 'active'
+        product_id = item.plan.product
+        product = Stripe::Product.retrieve(product_id)
+        product_name = product.name
+        product_name == subscription_name && subscription.status == 'active'
       end
     end
   end
+
+
+
 
   def lifetime?
     has_purchased_product?("Lifetime Subscription")

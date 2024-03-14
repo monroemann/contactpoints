@@ -16,10 +16,10 @@
 		<% elsif current_user.admin? %>
 			<p><strong>Admin - No payment ever required while Admin.  Can be revoked.</strong></p>
 
-		<% elsif current_user.has_active_subscription?("Monthly Subscription") %>
+		<% elsif current_user.has_active_subscription?("Annual Subscription") %>
 			<p><strong>Annual Subscription - Recurring once a year.</strong></p>
 
-		<% elsif current_user.has_active_subscription?("Annual Subscription") %>
+		<% elsif current_user.has_active_subscription?("Monthly Subscription") %>
 			<p><strong>Monthly Subscription - Recurring once a month.</strong></p>
 
 		<% else %>
