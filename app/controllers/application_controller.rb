@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_portal_session
-	  if current_user
+	  if current_user && current_user.payment_processor
 	    @portal_session = current_user.payment_processor.billing_portal
 	  end
 	end

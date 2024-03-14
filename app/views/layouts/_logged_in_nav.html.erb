@@ -5,7 +5,7 @@
 
 
 <li class="nav-item me-2 dropdown">
-  <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+  <button type="button" class="btn btn-sm btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
     Go To
   </button>
   <div class="dropdown-menu dropdown-menu-end">
@@ -91,6 +91,16 @@
     <%# render 'contacts/search_form' %>
 </form> -->
 
+<div>
+  <% if current_user.has_purchased_product?("Lifetime Subscription") %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% elsif current_user.vip? %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% elsif current_user.admin? %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% else %>
+    <%= link_to 'Upgrade', checkout_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% end %>
+</div>
 
-<%= link_to 'Upgrade', checkout_path, class: "btn btn-success btn-sm", type: "button" %>
 <%= button_to 'LogOut', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-sm mx-5", type: "button" %>

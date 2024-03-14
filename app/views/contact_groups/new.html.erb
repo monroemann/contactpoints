@@ -4,14 +4,16 @@
     <div class="container">
 
       <h1>New contact group</h1>
-      <p>Contact groups are ways to categorize your contacts based on where you met them, e.g. School Friends, Army Buddies, Paris, Etc.  You can create 5 on the free plan, and unlimited on the paid plan.</p>
+      <p>Contact groups are ways to categorize your contacts based on where or how you met them.</p>
+      <p>Here is a starter list of suggestions: School Friends, Army Buddies, Paris, University of Florida, New York, Wizard of Oz Play, Film Set, Book Club, BreakDiving.io, Skydiving, etc.</p>
 
       <%= render "form", contact_group: @contact_group %>
 
       <br>
 
       <div>
-        <%= link_to "Back to contact groups", contact_groups_path %>
+        <%= link_to "See All", contact_groups_path %>
+        <%= link_to "Home", root_path %>
       </div>
 
     </div>
