@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  include SubscriptionConcern
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -57,6 +60,21 @@ class User < ApplicationRecord
       customer: stripe_customer_id,
       return_url: return_url,
     }).url
+  end
+
+  def has_active_subscription?(subscription_name)
+    return false unless stripe_customer_id.present?
+
+    subscriptions = Stripe::Subscription.list(customer: stripe_customer_id)
+    subscriptions.data.any? do |subscription|
+      subscription.items.data.any? do |item|
+        item.price.product == subscription_name && subscription.status == 'active'
+      end
+    end
+  end
+
+  def lifetime?
+    has_purchased_product?("Lifetime Subscription")
   end
 
 end

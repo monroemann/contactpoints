@@ -4,22 +4,37 @@
 	
 		<h1>Checkout</h1>
 
-
 		<h3>Lifetime</h3>
-		<p>Purchase a Lifetime Subscription That Never Expires for $275.  Pays for itself after 2.5 years!</p>
+		<p>Purchase a Lifetime Subscription That Never Expires for $275.  Pays for itself after 2.5 years!  You can get access instantly by paying via the Stripe button below, or you can reach out and pay via Paypal or Zelle and we will manually process your account within a few days.</p>
 		
 		<div>
 				<%= render partial: 'pay/stripe/checkout_button', locals: {
-				session: @checkout_session,
-				title: "Get Lifetime"
+				session: @lifetime_checkout_session,
+				title: "Get Lifetime: $275 One Time"
 			} %>
 		</div>
+		<br>
 
 		<h3>Annual</h3>
 		<p>Supercharge Your Relationships For Just $88/year.  Get 1 Month Free!</p>
 
+		<div>
+				<%= render partial: 'pay/stripe/checkout_button', locals: {
+				session: @annual_checkout_session,
+				title: "Get Annual: $88/Year Recurring"
+			} %>
+		</div>
+		<br>
+
 		<h3>Monthly</h3>
 		<p>Supercharge Your Relationships For Just $8/month. Give it a try. Cancel anytime.</p>
+
+		<div>
+				<%= render partial: 'pay/stripe/checkout_button', locals: {
+				session: @monthly_checkout_session,
+				title: "Get Monthly: $8/Month Recurring"
+			} %>
+		</div>
 
 	</div>
 </div>
