@@ -11,6 +11,7 @@
   <div class="dropdown-menu dropdown-menu-end">
     <ul class="list-unstyled">
       <li><a class="dropdown-item" href="/">Home</a></li>
+      <li><a class="dropdown-item" href="/support">Contact Support</a></li>
       <li><a class="dropdown-item" href="/contacts">Search</a></li>
       <li><a class="dropdown-item" href="/all_contacts">All Contacts</a></li>
       <li><a class="dropdown-item" href="/all_points">All Points</a></li>
@@ -23,6 +24,7 @@
         <li><hr class="dropdown-divider"></li>
       <% if current_user %>
         <li><%= link_to "Manage Billing", billing_path, class: "dropdown-item" %></li>
+
       <% end %>
 
       <% if current_user.admin? %>
@@ -92,11 +94,15 @@
 </form> -->
 
 <div>
-  <% if current_user.has_purchased_product?("Lifetime Subscription") %>
-    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
-  <% elsif current_user.vip? %>
+  <% if current_user.vip? %>
     <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
   <% elsif current_user.admin? %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% elsif current_user.lifetime? %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% elsif current_user.has_active_subscription?("Annual Subscription") %>
+    <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
+  <% elsif current_user.has_active_subscription?("Monthly Subscription") %>
     <%= link_to 'Billing', billing_path, class: "btn btn-success btn-sm", type: "button" %>
   <% else %>
     <%= link_to 'Upgrade', checkout_path, class: "btn btn-success btn-sm", type: "button" %>

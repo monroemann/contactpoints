@@ -9,10 +9,19 @@
 		<% if current_user.has_purchased_product?("Lifetime Subscription") %>
 			<p><strong>Lifetime Subscription</strong></p>
 			<p>Remember: via the lifetime plan, you have paid for a minimum of two years of service.  If the app shuts down before 2 years, you will receive a pro-rata refund.  After two years, you are entitled to unlimited continued benefits (at the same level available when you signed up), for either the lifetime of the app, or your lifetime, whichever comes first.  If at any time you are unable to be reached via email after a number of reasonable attempts, your account may be canceled without recourse.  Your use of the service asserts your assent to the above terms.</p> 
+
 		<% elsif current_user.vip? %>
-			<p><strong>VIP</strong></p>
+			<p><strong>VIP - No payment ever required while VIP.  Can be revoked.</strong></p>
+
 		<% elsif current_user.admin? %>
-			<p><strong>Admin</strong></p>
+			<p><strong>Admin - No payment ever required while Admin.  Can be revoked.</strong></p>
+
+		<% elsif current_user.has_active_subscription?("Annual Subscription") %>
+			<p><strong>Annual Subscription - Recurring once a year.</strong></p>
+
+		<% elsif current_user.has_active_subscription?("Monthly Subscription") %>
+			<p><strong>Monthly Subscription - Recurring once a month.</strong></p>
+
 		<% else %>
 			<p><strong>Free</strong></p>
 			<p>Once you reach a total of 15 interactions, you will have to upgrade to a paid plan</p>

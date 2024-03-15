@@ -5,21 +5,30 @@
 	<% if current_user.contacts.empty? || 
 				current_user.contact_types.empty? ||
 				current_user.contact_groups.empty? ||
+				current_user.last_known_cities.empty? ||
 				current_user.locations.empty? ||
 				current_user.interactions.empty?	%>
-					<div>
-						<ol>
-							HOW TO GET STARTED: 
-							<p>(Working from right to left on the desktop nav bar.)</p>
-							<li>Click 'New Type' to create at least one contact type.</li>
-							<li>Click 'New Group' to create at least one contact group.</li>
-							<li>Click 'New City' to create at least one city.</li>
-							<li>Click 'New Location' to create at least one interaction location.</li>
-							<li>Click 'New Contact' to create at least one contact.</li>
-							<li>Click 'New Interaction' to create a new interaction.</li>  
-						</ol>
-						<p>Once you have completed the above, these instructions will disappear.  As you add more contacts and interactions, the sections below will start to fill up with names.  If you continue to see 'None Yet' or no names at all, it means you don't have contacts yet that meet the criteria for 'next to contact'--it will all change in time.</p>
+					<div class=containter>
+						<div class="card p-5">
+							<h3>Welcome to Contact Points! - Here is how to get started:</h2>
+							<ol>
+								<li>Read the section marked "IMPORTANT" below first.</li>
+								<li>Working from right to left on the desktop nav bar, do the following:</li>
+								<li>Click 'New Type' to create at least one contact type.</li>
+								<li>Click 'New Group' to create at least one contact group.</li>
+								<li>Click 'New City' to create at least one city.</li>
+								<li>Click 'New Location' to create at least one interaction location.</li>
+								<li>Click 'New Contact' to create at least one contact.</li>
+								<li>Click 'New Interaction' to create a new interaction.</li>  
+							</ol>
+							<strong>
+							<p>IMPORTANT: Once you have completed the above, these instructions will disappear. Follow the steps in order or I promise you'll get confused.</p>
+							<p>Scroll down a bit.  Cool right?  As you add more contacts and interactions, these sections below (and on the <a href="/all_points">All Points</a> page) will start to fill up with names.  If you continue to see 'None Yet', duplicate names, or no names at all for 'Recommended Next to Contact', it simply means you don't have enough contacts yet that meet the criteria.  Keep in mind that the algorithm for Recommended Next to Contact is complicated, and works best with at least 25 contacts, so give it some time.  All of the categories will normalize the more contacts and interactions you create.  </p>
+							<p>The free plan has only one restriction: once you reach 15 interactions, you will have to upgrade to continue using Contact Points.  We hope you will!  Please tell your friends and colleagues about us!</p>
+							<p>If you find any bugs or have any questions, email Monroe at roe at monroe mann dott com.  You can always find our contact info on the 'Go To' dropdown.</p>
+							</strong>
 					</div>
+				</div>
 	<% end %>  
 
 	<div class="row">

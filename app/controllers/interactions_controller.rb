@@ -95,8 +95,18 @@ class InteractionsController < ApplicationController
     end
 
     def require_subscription
-      if current_user.interactions.count > 15
-        redirect_to checkout_path unless current_user.lifetime?
+      if current_user.interactions.count >= 1
+        unless  current_user.admin? || 
+                current_user.vip? || 
+                current_user.lifetime? || 
+                current_user.active_subscription?
+          flash[:alert] = "Great news!  You love using Contact Points! 
+          You have arrived at this page because you have exceeded the free plan and must now upgrade. 
+          We hope you will!  Your subscription will mean we can keep improving Contact Points, and you
+          get to see how powerful this software really can be in improving your relationships.  
+          Shall we?"
+          redirect_to checkout_path
+        end
       end
     end
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'members/dashboard'
   
   resources :last_known_cities
   resources :last_known_countries
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
   get 'all_points', to: 'pages#all_points', as: 'all_points'
   get 'all_contacts', to: 'contacts#all_contacts', as: 'all_contacts'
+  get 'support', to: 'pages#support', as: 'support'
 
   # Stripe checkout
   get 'checkout', to: 'checkouts#show'

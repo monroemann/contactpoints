@@ -34,9 +34,13 @@
 
     <%= render '/layouts/topnav' %>
 
+    <% if flash[:alert].present? %>
+      <div style="background-color: yellow; text-align: center; padding: 10px;">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
-    <span class="notice"><%= notice %></span>
-    <span class="alert"><%= alert %></span>
+    <br>
 
     <%= yield %>
 
