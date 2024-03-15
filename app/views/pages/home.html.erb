@@ -50,43 +50,51 @@
 			  </thead>
 
 			  <tbody>
+
 <% @next_to_contact.each do |contact| %>
-  <tr>
-    <% if contact.present? && contact.interactions&.any? %>
-      <td><%= link_to contact.full_name, contact if contact.present? %></td>
-    <% else %>
-    	<td>None Yet</td>
-    <% end %>
+  <% if contact.is_a?(Contact) %>
+    <tr>
+      <td><%= contact.present? ? link_to(contact.full_name, contact) : 'None Yet' %></td>
 
-    <% if contact.present? && contact.interactions&.any? %>
-    	<td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 if contact&.mobile_phone_1.present? %></td>
-    <% else %>
-    	<td>None Yet</td>
-    <% end %>
+      <% if contact.present? && contact.interactions&.any? %>
+        <% if contact.mobile_phone_1.present? && !contact.mobile_phone_1.empty? %>
+          <td><%= link_to contact.mobile_phone_1, contact.mobile_phone_1 %></td>
+        <% else %>
+          <td>None Yet</td>
+        <% end %>
+      <% else %>
+        <td>None Yet</td>
+      <% end %>
 
-   	<% if contact.present? && contact.interactions&.any? %>
-    	<td><%= link_to contact.email_1, contact.email_1 if contact&.email_1.present? %></td>
-    <% else %>
-    	<td>None Yet</td>
-    <% end %>
+      <% if contact.present? && contact.interactions&.any? %>
+        <% if contact.email_1.present? && !contact.email_1.empty? %>
+          <td><%= link_to contact.email_1, contact.email_1 %></td>
+        <% else %>
+          <td>None Yet</td>
+        <% end %>
+      <% else %>
+        <td>None Yet</td>
+      <% end %>
 
-		<% if contact.present? && contact.interactions&.any? %>
-		  <td><%= time_ago_in_words(contact.interactions.last.created_at) %> ago</td>
-		<% else %>
-		  <td>None Yet</td>
-		<% end %>
+      <% if contact.present? && contact.interactions&.any? %>
+        <td><%= time_ago_in_words(contact.interactions.last.created_at) %> ago</td>
+      <% else %>
+        <td>None Yet</td>
+      <% end %>
 
-		<% if contact.present? && contact.interactions&.any? %>
-    	<td><%= contact.total_points if contact.present? %></td>
-    <% else %>
-    	<td>None Yet</td>
-    <% end %>
+      <td><%= contact.total_points.present? ? contact.total_points : 'None Yet' %></td>
 
-  </tr>
-  <%# if contact.blank? || contact.full_name.nil? %>
-    <!-- <p style="color: red;">Blank or nil contact found: <%# contact.inspect %></p> -->
-  <%# end %>
+    </tr>
+  <% else %>
+    <!-- Handle the case where contact is not a valid Contact object -->
+  <% end %>
 <% end %>
+
+
+
+
+
+
 
 
 
