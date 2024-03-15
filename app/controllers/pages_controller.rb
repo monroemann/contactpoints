@@ -314,38 +314,44 @@ def home
 	@recently_added_contacts = current_user.contacts
 																				.order(created_at: :desc)
 
-# NEXT TO CONTACT
-# Get contacts with recent interactions (3 months)
-recent_interaction_contacts = current_user.contacts.joins(:interactions)
-                           .where('interactions.created_at >= ?', 3.months.ago).distinct
+	# NEXT TO CONTACT
+	# Get contacts with recent interactions (3 months)
+	recent_interaction_contacts = current_user.contacts.joins(:interactions)
+	                           .where('interactions.created_at >= ?', 3.months.ago).distinct
 
-puts "Recent Interaction Contacts: #{recent_interaction_contacts.inspect}"
+	puts "Recent Interaction Contacts: #{recent_interaction_contacts.inspect}"
 
-# Choose 1 contact with recent interactions (3 months)
-one_recent_contact = recent_interaction_contacts.to_a.shuffle.first
+	# 1
+	# Choose 1 contact with recent interactions (3 months)
+	one_recent_contact = recent_interaction_contacts.to_a.shuffle.first
 
-puts "One Recent Contact: #{one_recent_contact.inspect}"
+	puts "One Recent Contact: #{one_recent_contact.inspect}"
 
-# Chooses 2 contacts who haven't been contacted recently (3 months)
-random_contacts = current_user.contacts.to_a.shuffle.take(2)
+	# 2 & 3
+	# Chooses 2 random contacts 
+	random_contacts = current_user.contacts.to_a.shuffle.take(2)
 
-puts "Random Contacts: #{random_contacts.inspect}"
+	puts "Random Contacts: #{random_contacts.inspect}"
 
-# Chooses 1 contact with zero points (if they exist)
-zero_points_contact = current_user.contacts.where('points = 0').order('RANDOM()').first
+	# 4
+	# Chooses 1 contact with zero points (if they exist)
+	contacts_with_zero_points = current_user.contacts.select do |contact|
+	  contact.total_points == 0
+	end
+	zero_points_contact = contacts_with_zero_points.shuffle.take(1)
 
+	puts "Zero Points Contact: #{zero_points_contact.inspect}"
 
-puts "Zero Points Contact: #{zero_points_contact.inspect}"
+	# 5
+	# Choose 1 contact who was added recently (3 months) (if they exist)
+	recently_added_contact = current_user.contacts
+	                          .where('created_at >= ?', 3.months.ago)
+	                          .order('created_at DESC').limit(1).first
 
-# Choose 1 contact who was added recently (3 months) (if they exist)
-recently_added_contact = current_user.contacts
-                          .where('created_at >= ?', 3.months.ago)
-                          .order('created_at DESC').limit(1).first
+	puts "Recently Added Contact: #{recently_added_contact.inspect}"
 
-puts "Recently Added Contact: #{recently_added_contact.inspect}"
-
-# Combine all selected contacts and shuffle the array using Ruby's shuffle method
-@next_to_contact = [one_recent_contact, zero_points_contact, recently_added_contact, *random_contacts].shuffle
+	# Combine all selected contacts and shuffle the array using Ruby's shuffle method
+	@next_to_contact = [one_recent_contact, zero_points_contact, recently_added_contact, *random_contacts].shuffle
 
 
 
