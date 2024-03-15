@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :contacts
 
   devise_for :users
+  resources :users, only: [:show, :edit, :update, :destroy]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   get 'all_points', to: 'pages#all_points', as: 'all_points'
   get 'all_contacts', to: 'contacts#all_contacts', as: 'all_contacts'
   get 'support', to: 'pages#support', as: 'support'
+  get 'admin', to: 'admin#index', as: 'admin'
 
   # Stripe checkout
   get 'checkout', to: 'checkouts#show'
