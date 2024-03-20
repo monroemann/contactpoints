@@ -12,7 +12,7 @@ class Interaction < ApplicationRecord
   validates :date, presence: true
   validates :length, presence: true
   validates :location_id, presence: true
-  validates :you_initiated_contact, presence: true
+  validates :you_initiated_contact, inclusion: { in: [true, false], message: "must be selected" }
   validate :at_least_one_interaction_category
   validate :at_least_one_emotional_reaction
 
