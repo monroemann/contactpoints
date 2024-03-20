@@ -81,8 +81,9 @@
 
     <div>
       <h4>You Initiated Contact?</h4>
-      <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select', required: true  %>
+      <%= form.select :you_initiated_contact, options_for_select([['Yes', true], ['No', false]], @interaction.you_initiated_contact), {}, class: 'form-select', required: true, include_blank: false %>
     </div>
+
 
     <br>
 

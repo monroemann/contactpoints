@@ -8,12 +8,12 @@
         <table class="table">
           <thead>
             <tr>
-              <th><%# sort_link(@query, :first_name, "First", default_order: :asc) %></th>
-              <th><%# sort_link(@query, :last_name, "Last", default_order: :asc) %></th>
+              <!--<th><%# sort_link(@query, :first_name, "First", default_order: :asc) %></th>
+              <th><%# sort_link(@query, :last_name, "Last", default_order: :asc) %></th> -->
               <th><%= sort_link(@query, :email, "Email", default_order: :asc) %></th>
+              <th><%= sort_link(@query, @updated_at, "Last Login", default_order: :asc) %></th>
               <th><%= sort_link(@query, :subscription_status, "Status", default_order: :asc) %></th>
-              <!-- <th><%# sort_link(@query, @updated_at, "Last Login", default_order: :asc) %></th>
-              <th><%# sort_link(@query, @next_renewal_date, "Date Joined", default_order: :asc) %></th>
+              <!--<th><%# sort_link(@query, @next_renewal_date, "Date Joined", default_order: :asc) %></th>
               <th><%# sort_link(@query, @number_of_contacts, "Contacts", default_order: :asc) %></th>
               <th><%# sort_link(@query, @number_of_interactions, "Interactions", default_order: :asc) %></th>
               <th><%# sort_link(@query, @number_of_cities, "Cities", default_order: :asc) %></th>
@@ -28,16 +28,17 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td><%# link_to user.first_name, user %></td>
-                <td><%# link_to user.last_name, user %></td>
+                <!-- <td><%# link_to user.first_name, user %></td>
+                <td><%# link_to user.last_name, user %></td> -->
                 <td><%= user.email %></td>
+                <td><%= time_ago_in_words(user.updated_at) %></td>
                 <td>      
 							    <% @subscription_statuses[user.id].each do |status| %>
 							      <strong><%= status %></strong><br>
 							    <% end %>
 								</td>
-								<!-- <td><%# user.updated_at %></td>              
-                <td><%# user.next_renewal_date %></td>
+								              
+              <!--  <td><%# user.next_renewal_date %></td>
                 <td><%# user.number_of_contacts %></td>
                 <td><%# user.number_of_interactions %></td>
                 <td><%# user.number_of_cities %></td>
