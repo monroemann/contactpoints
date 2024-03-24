@@ -2,6 +2,9 @@ class Contact < ApplicationRecord
 
   extend Pagy::ElasticsearchRails
 
+  # after_save :update_points_after_interaction_and_leeching
+  # before_save :leech_points
+
 	validates :first_name, presence: true
   validates :last_name, presence: true
 
@@ -88,5 +91,59 @@ class Contact < ApplicationRecord
   end
 
   searchkick text_middle: [:first_name, :last_name, :last_known_country, :last_known_city]
+
+  #LEECHING METHODS test in command line with: rake scheduler:point_leech
+def update_points_after_interaction_and_leeching
+  # Debug output for leeching_days
+  puts "Leeching days: #{leeching_days}"
+
+  # Convert leeching_days to integer
+  leeching_points = leeching_days.to_i * 1  # Assuming 1 point is leeched per day
+  total_points = interactions.sum(&:total_points).to_i
+
+  puts "Total points: #{total_points}"
+  puts "Leeching points: #{leeching_points}"
+
+  new_points = total_points - leeching_points
+  puts "Before max operation: #{new_points}"
+  new_points = [new_points, 0].max  # Ensure points don't go below 0
+  puts "After max operation: #{new_points}"
+  
+  update(points: new_points)  
+
+  puts "Updated points: #{new_points}"
+end
+
+
+def leech_points
+  current_points = self[:points]
+  puts "User ID: #{id} - Name: #{first_name} #{last_name} Current points: #{current_points}"  # Debugging output with user ID
+  
+  if current_points <= 0 || leeching_today?
+    puts "LEECH SKIPPED: User ID: #{id} - Last Leech Day: #{last_leeching_date} - Points: #{current_points}"
+    return
+  end
+  
+  puts "User ID: #{id} - Before decrement: #{current_points}"  # Debugging output with user ID
+  
+  update_columns(points: current_points - 1)
+  
+  puts "User ID: #{id} - After decrement: #{self[:points]}"  # Debugging output with user ID
+  
+  update(last_leeching_date: Date.today)
+end
+
+
+
+
+
+
+  def leeching_days
+    (Date.today - created_at.to_date).to_i
+  end
+
+  def leeching_today?
+    last_leeching_date == Date.today
+  end
 
 end
