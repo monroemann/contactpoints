@@ -43,7 +43,7 @@ class InteractionsController < ApplicationController
     respond_to do |format|
       if @interaction.save
         @interaction.update_points
-        @interaction.contact.update_points
+        @interaction.contact.update_points(@interaction.contact, @interaction)
         format.html { redirect_to interaction_url(@interaction), 
           notice: "Interaction was successfully created." }
         format.json { render :show, status: :created, location: @interaction }

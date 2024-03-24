@@ -46,7 +46,7 @@
               <th><%= sort_link(@query, :birthday, "Bday", default_order: :asc) %></th>
         <!--  <th>Address 1</th>
               <th>Address 2</th>-->
-              <th><%= sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th>
+        <!-- <th><%# sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th> -->
         <!--  <th>Things i like</th> -->
               <th><%= sort_link(@query, :best_memories, "Best Memories", default_order: :asc) %></th>
         <!--  <th>Areas for improvement</th>
@@ -61,7 +61,7 @@
                 <td><%= link_to contact.first_name, contact %></td>
                 <td><%= link_to contact.last_name, contact %></td>
         <!--         <td><%# contact.last_known_country %></td> -->
-                <td><%= contact.total_points %></td>
+                <td><%= contact.points %></td>
                 <td><%= contact.last_known_city %></td>
                 <!-- <td><%# contact.contact_apps %></td> -->
                 <td><%= contact.mobile_phone_1 %></td>
@@ -86,7 +86,7 @@
                 <td><%= contact.birthday %></td>
                 <!-- <td><%# contact.address_1 %></td>
                 <td><%# contact.address_2 %></td> -->
-                <td><%= contact.how_we_met %></td>
+          <!-- <td><%# contact.how_we_met %></td> -->
                 <!-- <td><%# contact.things_I_like %></td> -->
                 <td><%= contact.best_memories %></td>
         <!--         <td><%# contact.areas_for_improvement %></td>
