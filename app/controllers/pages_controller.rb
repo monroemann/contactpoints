@@ -177,7 +177,7 @@ class PagesController < ApplicationController
   # Perhaps better to redo this query using 'points' from contact.rb)
   def contacts_with_zero_points
     current_user.contacts.select do |contact|
-      contact.total_points == 0
+      contact[:points] == 0
     end
   end
 
@@ -433,10 +433,7 @@ class PagesController < ApplicationController
 		puts "Random Contacts: #{random_contacts.inspect}"
 		# 4
 		# Chooses 1 contact with zero points (if they exist)
-		contacts_with_zero_points = user.contacts.select do |contact|
-		  contact.total_points == 0
-		end
-		zero_points_contact = contacts_with_zero_points.shuffle.take(1)
+		zero_points_contact = contacts_with_zero_points.sample
 		puts "Zero Points Contact: #{zero_points_contact.inspect}"
 		# 5
 		# Choose 1 contact who was added recently (3 months) (if they exist)
