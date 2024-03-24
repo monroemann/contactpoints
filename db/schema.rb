@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_14_175828) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_24_155823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_175828) do
     t.date "date_first_met"
     t.bigint "last_known_country_id"
     t.bigint "last_known_city_id"
+    t.date "last_leeching_date"
     t.index ["category_id"], name: "index_contacts_on_category_id"
     t.index ["last_known_city_id"], name: "index_contacts_on_last_known_city_id"
     t.index ["last_known_country_id"], name: "index_contacts_on_last_known_country_id"
