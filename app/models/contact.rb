@@ -92,7 +92,7 @@ class Contact < ApplicationRecord
 
   searchkick text_middle: [:first_name, :last_name, :last_known_country, :last_known_city]
 
-  #LEECHING METHODS
+  #LEECHING METHODS test in command line with: rake scheduler:point_leech
 def update_points_after_interaction_and_leeching
   # Debug output for leeching_days
   puts "Leeching days: #{leeching_days}"
@@ -117,7 +117,7 @@ end
 
 def leech_points
   current_points = self[:points]
-  puts "User ID: #{id} - Current points: #{current_points}"  # Debugging output with user ID
+  puts "User ID: #{id} - Name: #{first_name} #{last_name} Current points: #{current_points}"  # Debugging output with user ID
   
   if current_points <= 0 || leeching_today?
     puts "LEECH SKIPPED: User ID: #{id} - Last Leech Day: #{last_leeching_date} - Points: #{current_points}"
