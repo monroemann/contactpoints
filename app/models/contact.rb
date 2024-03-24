@@ -27,7 +27,6 @@ class Contact < ApplicationRecord
   has_many :contact_cities, dependent: :destroy
   has_many :last_known_cities, through: :contact_cities
 
-
   #Automatically adds each new contact as Recently Added
   # after_create :assign_to_default_category
 

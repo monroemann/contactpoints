@@ -6,7 +6,7 @@
         <p id="notice" style="color: green"><%= notice %></p>
 
         <h1>All Contacts</h1>
-        <p>To find a particular contact, use the search bar in nav</p>
+        <p>To find a particular contact, click search in 'go to' menu.</p>
 
         <%= pluralize(@contacts.count, "Results") %>
 
@@ -43,7 +43,7 @@
               <th><%= sort_link(@query, :birthday, "Bday", default_order: :asc) %></th>
         <!--  <th>Address 1</th>
               <th>Address 2</th>-->
-              <th><%= sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th>
+        <!-- <th><%# sort_link(@query, :how_we_met, "How Met", default_order: :asc) %></th> -->
         <!--  <th>Things i like</th> -->
               <th><%= sort_link(@query, :best_memories, "Best Memories", default_order: :asc) %></th>
         <!--  <th>Areas for improvement</th>
@@ -83,7 +83,7 @@
                 <td><%= contact.birthday %></td>
                 <!-- <td><%# contact.address_1 %></td>
                 <td><%# contact.address_2 %></td> -->
-                <td><%= contact.how_we_met %></td>
+                <!-- <td><%# contact.how_we_met %></td> -->
                 <!-- <td><%# contact.things_I_like %></td> -->
                 <td><%= contact.best_memories %></td>
         <!--         <td><%# contact.areas_for_improvement %></td>
