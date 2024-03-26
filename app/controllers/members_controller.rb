@@ -15,4 +15,4 @@ class MembersController < ApplicationController
 #       redirect_to checkout_path, alert: "You have exceed the free plan and must upgrade."
 #     end
 #   end
-# end
+end
